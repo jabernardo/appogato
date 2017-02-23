@@ -1,0 +1,16 @@
+# Enable running of scripts
+AddHandler cgi-script .pl .cgi
+Options +ExecCGI +FollowSymLinks
+
+# Disable Indexing of Directories
+Options -Indexes
+
+# Enable RewriteEngine
+RewriteEngine on
+
+# Enable page access 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirect all pages to index
+RewriteRule ^(.*)$/? index.php [L]
