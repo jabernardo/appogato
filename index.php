@@ -4,7 +4,7 @@
  * Load Lollipop-PHP
  *
  */
-require_once('./lmvc/vendor/lollipop-php/autoload.php');
+require_once('./lmvc/sys/autoload.php');
 
 /**
  * Paths
