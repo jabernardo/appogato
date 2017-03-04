@@ -13,6 +13,6 @@ class WelcomeController
      *
      */
     public function indexAction() {
-        ViewHelper::render('hello.php');
+        return ViewHelper::render('hello.php');
     }
 }
