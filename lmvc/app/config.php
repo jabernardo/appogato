@@ -7,6 +7,18 @@
 $config['app_version'] = 1.0;
 
 /**
+ * Anti-CSRF
+ * 
+ * 
+ */
+$config['anti_csrf'] = array(
+        'enable' => true,       // Enable or disable this functionality
+        'name' => 'sugar',      // Application keyword
+        'key' => '',            // Salt
+        'expiration' => 1800    // or 30mins
+    );
+
+/**
  * Feature Switches
  *
  */
