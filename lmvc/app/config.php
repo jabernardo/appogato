@@ -4,7 +4,9 @@
  * Application version
  *
  */
-$config['app_version'] = 1.0;
+$config['app'] = array(
+        'version' => 1.0
+    );
 
 /**
  * Anti-CSRF
