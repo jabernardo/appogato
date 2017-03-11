@@ -1,25 +1,22 @@
-# [Lollipop](http://lollipop.aldrich.online/)
+# [Lollipop](http://github.com/4ldrich/lollipop-php)
 A slim and very flexible framework for PHP
-<br><br>
+
 ###### IS LOLLIPOP FOR YOU?
 You can use Lollipop when you're creating a simple and powerful web application. Lollipop removed the weight of large frameworks. Also Lollipop was created to offer cool functionalities and speed.
-<br><br>
+
 ###### IT's EASY!
-It's very easy to start with! See a sample below and love it!
+It's very easy to start with!
 ```php
 use \Lollipop\Route;
 
 // Your index page
 Route::get('/', function() {
-    echo 'Hello World!';
+    return 'Hello World!';
 }, true);
            
 ```
-Lollipop is also a well documented PHP framework. Making it easy to learn. See documentation [here](http://lollipop.aldrich.online/manual/).
-<br><br>
 ###### DOWNLOAD
 Get the latest version of Lollipop-PHP framework from our Git repository hosted on GitHub and start the development of your projects
 ```bash
 git clone https://github.com/4ldrich/lollipop-php.git lollipop-php
 ```
-
