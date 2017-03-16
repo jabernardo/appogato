@@ -10,7 +10,7 @@ use \Lollipop\Config;
  * @description Easy feature toggle using `switch` config
  * 
  */
-class SwitchHelper
+class Feature
 {
     /**
      * Checks if application is on

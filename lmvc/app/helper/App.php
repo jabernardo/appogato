@@ -1,7 +1,5 @@
 <?php
 
-use \Lollipop\App;
-
 /**
  * Application Helper
  * 
@@ -10,7 +8,7 @@ use \Lollipop\App;
  * @description Alias for \Lollipop\App;
  * 
  */
-class AppHelper
+class App
 {
     /**
      * Alias \Lollipop\App::getBenchmark()
@@ -19,6 +17,6 @@ class AppHelper
      *
      */
     public static function getBenchmark() {
-        return (object)App::getBenchmark();
+        return (object)\Lollipop\App::getBenchmark();
     }
 }

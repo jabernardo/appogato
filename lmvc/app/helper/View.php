@@ -11,7 +11,7 @@ use \Lollipop\Url;
  * @description Alias for \Lollipop\App;
  * 
  */
-class ViewHelper
+class View
 {
     /**
      * Render alias
