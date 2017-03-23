@@ -28,6 +28,15 @@ $config['switch'] = array(
         // For your custom logs you can use this switch
         'logs' => true
     );
+    
+/**
+ * Output
+ * 
+ */
+$config['output'] = array(
+        // Compression (gzip)
+        'compression' => false
+    );
 
 /**
  * Development tools
