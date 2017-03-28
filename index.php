@@ -31,27 +31,33 @@ require_once(APP_CORE . 'config.php');
 
 if (!isset($config) && !is_array($config))
     die('Configuration was invalid');
-
-/** Modify configuration based on environment **/
-if (isset($config['db_switcher']) && $config['db_switcher']) {
-    switch(strtolower($config['env'])) {
+    
+/**
+ * Check if environment is valid
+ * 
+ */
+if (isset($config['env'])) {
+    switch (strtolower($config['env'])) {
         case 'dev':
-        case 'development':
-            $config['db'] = $config['db_configs']['dev'];
-            break;
         case 'stg':
-        case 'staging':
-            $config['db'] = $config['db_configs']['stg'];
-            break;
         case 'prd':
-        case 'production':
-            $config['db'] = $config['db_configs']['prd'];
             break;
         default:
-            die('Invalid database configuration');
+            die('Environment was invalid');
             break;
     }
 }
+
+/** Modify configuration based on environment **/
+if (isset($config['env']) && 
+    isset($config['overrides']) && 
+    isset($config['overrides'][strtolower($config['env'])])) {
+    // Merge data
+    $config = array_merge($config, $config['overrides'][strtolower($config['env'])]);
+}
+
+/** Clear overrides **/
+if (isset($config['overrides'])) unset($config['overrides']);
 
 /**
  * Initialize configuration in Lollipop

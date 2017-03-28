@@ -5,7 +5,7 @@
  *
  */
 $config['app'] = array(
-        'version' => 1.0
+        'version' => '1.0'
     );
 
 /**
@@ -49,36 +49,10 @@ $config['dev_tools'] = true;
 /**
  * Environment switches
  *
+ * dev/stg/prd
  *
  */
 $config['env'] = 'dev';
-
-/**
- * Database connection configuration switcher
- *
- */
-$config['db_switcher'] = true;
-
-$config['db_configs'] = array(
-        'dev' => array(
-                'host' => 'localhost',
-                'username' => 'root',
-                'password' => '',
-                'database' => 'aldrich'
-            ),
-        'stg' => array(
-                'host' => 'localhost',
-                'username' => 'root',
-                'password' => '',
-                'database' => 'aldrich'
-            ),
-        'prd' => array(
-                'host' => 'localhost',
-                'username' => 'root',
-                'password' => '',
-                'database' => 'aldrich'
-            )
-    );
 
 /**
  * Cache location
@@ -105,4 +79,41 @@ $config['autoload'] = array(
          APP_CORE_CONTROLLER,
          APP_CORE_MODEL,
          APP_CORE_HELPER
+    );
+
+/**
+ * Overrides per environment
+ * 
+ */
+$config['overrides'] = array(
+        // Development
+        'dev' => array(
+                'db' => array(
+                        // Database
+                        'host' => 'localhost',
+                        'username' => 'root',
+                        'password' => '',
+                        'database' => 'phpmyadmin'
+                )
+            ),
+        // Staging
+        'stg' => array(
+                'db' => array(
+                        // Database
+                        'host' => 'localhost',
+                        'username' => 'root',
+                        'password' => '',
+                        'database' => 'aldrich'
+                )
+            ),
+        // Production
+        'prd' => array(
+                'db' => array(
+                        // Database
+                        'host' => 'localhost',
+                        'username' => 'root',
+                        'password' => '',
+                        'database' => 'aldrich'
+                )
+            )
     );
