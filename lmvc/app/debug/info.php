@@ -35,13 +35,15 @@
 
 use \Lollipop\App;
 use \Lollipop\Config;
+use \Lollipop\Page;
+use \Lollipop\Request;
 use \Lollipop\Route;
 use \Lollipop\Url;
-use \Lollipop\Page;
 
 Route::clean(function() {
     // Check if Debugger is enabled
     if (!Config::get('debugger')) return false;
+    if (Request::is('disable-debugger')) return false;
     
     $is_html = false;
     $content_type_headers_count = 0;
