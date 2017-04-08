@@ -5,7 +5,9 @@
  *
  */
 $config['app'] = array(
-        'version' => '1.0'
+        'name' => 'Lollipop Sample App',
+        'version' => '1.0',
+        'author' => 'Programmer'
     );
 
 /**
@@ -47,6 +49,18 @@ $config['output'] = array(
 $config['dev_tools'] = true;
 
 /**
+ * Lollipop Debugger
+ * 
+ */
+$config['debugger'] = true;
+
+/**
+ * 404 Not Found Page
+ * 
+ */
+$config['not_found_page'] = '';
+
+/**
  * Environment switches
  *
  * dev/stg/prd
@@ -67,7 +81,7 @@ $config['cache'] = array(
  *
  */
 $config['log'] = array(
-        'enable' => false,
+        'enable' => true,
         'folder' => APP_CORE_LOG
     );
 
@@ -88,6 +102,7 @@ $config['autoload'] = array(
 $config['overrides'] = array(
         // Development
         'dev' => array(
+                'debugger' => true,
                 'db' => array(
                         // Database
                         'host' => 'localhost',
@@ -98,6 +113,7 @@ $config['overrides'] = array(
             ),
         // Staging
         'stg' => array(
+                'debugger' => false,
                 'db' => array(
                         // Database
                         'host' => 'localhost',
@@ -108,6 +124,7 @@ $config['overrides'] = array(
             ),
         // Production
         'prd' => array(
+                'debugger' => false,
                 'db' => array(
                         // Database
                         'host' => 'localhost',
