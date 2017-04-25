@@ -3,57 +3,12 @@
 <script type="text/javascript">
     /* global $ */
     $(function() {
-        $(".ldebug-error-toggle").click(function() {
-            $("#ldebug-errors").toggle();
-            
-            if ($("#ldebug-errors").is(':visible')) {
-                $("#lollipop-debug-controller-min").show();
-            } else {
-                $("#lollipop-debug-controller-min").hide();
-            }
-        });
-        $(".ldebug-warning-toggle").click(function() {
-            $("#ldebug-warning").toggle();
-
-            if ($("#ldebug-warning").is(':visible')) {
-                $("#lollipop-debug-controller-min").show();
-            } else {
-                $("#lollipop-debug-controller-min").hide();
-            }
-        });
-        $(".ldebug-notice-toggle").click(function() {
-            $('#ldebug-notice').toggle();
-
-            if ($("#ldebug-notice").is(':visible')) {
-                $("#lollipop-debug-controller-min").show();
-            } else {
-                $("#lollipop-debug-controller-min").hide();
-            }
-        });
-        $(".ldebug-info-toggle").click(function() {
-            $('#ldebug-info').toggle();
-
-            if ($("#ldebug-info").is(':visible')) {
-                $("#lollipop-debug-controller-min").show();
-            } else {
-                $("#lollipop-debug-controller-min").hide();
-            }
-        });
-        $(".ldebug-files-toggle").click(function() {
-            $('#ldebug-files').toggle();
-
-            if ($("#ldebug-files").is(':visible')) {
-                $("#lollipop-debug-controller-min").show();
-            } else {
-                $("#lollipop-debug-controller-min").hide();
-            }
+        $(".ldebug-toggle").click(function() {
+            $("#" + $(this).attr("ldebug-toggle")).show();
+            $("#lollipop-debug-controller-min").show();
         });
         $("#lollipop-debug-controller-min").click(function() {
-            $("#ldebug-errors").hide();
-            $("#ldebug-warning").hide();
-            $('#ldebug-notice').hide();
-            $('#ldebug-info').hide();
-            $('#ldebug-files').hide();
+            $("[id^=ldebug-tab-]").hide();
             $(this).hide();
         });
     });
@@ -78,9 +33,9 @@
         </tr>
         <tr>
             <td><label class="lollipop-label">Files:</label></td>
-            <td><a class="ldebug-files-toggle" href="javascript: void(0);"><?= count(get_included_files()) ?> Total File(s)</a></td>
+            <td><a class="ldebug-toggle" ldebug-toggle="ldebug-tab-files" href="javascript: void(0);"><?= count(get_included_files()) ?> Total File(s)</a></td>
         </tr>
-        <tr id="ldebug-files" style="display: none;">
+        <tr id="ldebug-tab-files" style="display: none;">
             <td></td>
             <td><div class="container"><?= implode('<br>', get_included_files()) ?></div></td>
         </tr>
@@ -88,9 +43,9 @@
         <!-- Errors -->
         <tr class="error">
             <td><label class="lollipop-label">Error(s):</label></td>
-            <td><a class="ldebug-error-toggle" href="javascript: void(0);"><?= count(\Lollipop\Log::get('error')) ?> Total</a></td>
+            <td><a class="ldebug-toggle" ldebug-toggle="ldebug-tab-errors" href="javascript: void(0);"><?= count(\Lollipop\Log::get('error')) ?> Total</a></td>
         </tr>
-        <tr id="ldebug-errors" style="display: none;">
+        <tr id="ldebug-tab-errors" style="display: none;">
             <td></td>
             <td><div class="container"><?= implode('<br>', \Lollipop\Log::get('error')) ?></div></td>
         </tr>
@@ -99,9 +54,9 @@
         <!-- Warning -->
         <tr class="warning">
             <td><label class="lollipop-label">Warning(s):</label></td>
-            <td><a class="ldebug-warning-toggle" href="javascript: void(0);"><?= count(\Lollipop\Log::get('warn')) ?> Total</a></td>
+            <td><a class="ldebug-toggle" ldebug-toggle="ldebug-tab-warning" href="javascript: void(0);"><?= count(\Lollipop\Log::get('warn')) ?> Total</a></td>
         </tr>
-        <tr id="ldebug-warning" style="display: none;">
+        <tr id="ldebug-tab-warning" style="display: none;">
             <td></td>
             <td><div class="container"><?= implode('<br>', \Lollipop\Log::get('warn')) ?></div></td>
         </tr>
@@ -110,9 +65,9 @@
         <!-- Notice -->
         <tr class="notice">
             <td><label class="lollipop-label">Notice(s):</label></td>
-            <td><a class="ldebug-notice-toggle" href="javascript: void(0);"><?= count(\Lollipop\Log::get('notice')) ?> Total</a></td>
+            <td><a class="ldebug-toggle" ldebug-toggle="ldebug-tab-notice" href="javascript: void(0);"><?= count(\Lollipop\Log::get('notice')) ?> Total</a></td>
         </tr>
-        <tr id="ldebug-notice" style="display: none;">
+        <tr id="ldebug-tab-notice" style="display: none;">
             <td></td>
             <td><div class="container"><?= implode('<br>', \Lollipop\Log::get('notice')) ?></div></td>
         </tr>
@@ -121,9 +76,9 @@
         <!-- Infos -->
         <tr class="info">
             <td><label class="lollipop-label">Info Message(s):</label></td>
-            <td><a class="ldebug-info-toggle" href="javascript: void(0);"><?= count(\Lollipop\Log::get('info')) ?> Total</a></td>
+            <td><a class="ldebug-toggle" ldebug-toggle="ldebug-tab-info" href="javascript: void(0);"><?= count(\Lollipop\Log::get('info')) ?> Total</a></td>
         </tr>
-        <tr id="ldebug-info" style="display: none;">
+        <tr id="ldebug-tab-info" style="display: none;">
             <td></td>
             <td><div class="container"><?= implode('<br>', \Lollipop\Log::get('info')) ?></div></td>
         </tr>
@@ -132,6 +87,8 @@
 </div>
 <style type="text/css">
     .lollipop-debug {
+        font-family: Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
+        font-size: 14px;
         border: 2px blue solid;
         padding: 6px;
         background-color: #dedede;
@@ -161,19 +118,19 @@
         color: #4d4d4d;
     }
     
-    #ldebug-errors {
+    #ldebug-tab-errors {
         color: red;
     }
     
-    #ldebug-warning {
+    #ldebug-tab-warning {
         color: #b97a07;
     }
     
-    #ldebug-notice {
+    #ldebug-tab-notice {
         color: #77770a;
     }
     
-    #ldebug-info {
+    #ldebug-tab-info {
         color: #0d568a;
     }
 </style>
