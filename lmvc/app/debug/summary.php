@@ -13,7 +13,7 @@
         });
     });
 </script>
-<div id="draggable" class="lollipop-debug">
+<div id="lollipop-debugbox" class="lollipop-debug">
     <table>
         <tr>
             <td>
