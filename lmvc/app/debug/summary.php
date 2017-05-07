@@ -88,7 +88,7 @@
 <style type="text/css">
     .lollipop-debug {
         font-family: Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
-        font-size: 14px;
+        font-size: 12px;
         border: 2px blue solid;
         padding: 6px;
         background-color: #dedede;
@@ -106,6 +106,8 @@
     }
     
     .lollipop-debug > table {
+        font-family: inherit;
+        font-size: inherit;
         border-collapse: collapse;
         max-width: 100%;
     }
