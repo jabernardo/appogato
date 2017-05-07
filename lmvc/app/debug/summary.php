@@ -183,10 +183,7 @@
         }
     };
 
-    // onready
-    document.onreadystatechange = function(state) {
-        if (typeof window.LollipopDebug !== typeof undefined) {
-            window.LollipopDebug.init(); // initialize lollipop debug events
-        }
-    };
+    if (typeof window.LollipopDebug !== typeof undefined) {
+        window.LollipopDebug.init(); // initialize lollipop debug events
+    }
 </script>

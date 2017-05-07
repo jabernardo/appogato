@@ -45,7 +45,10 @@ Route::clean(function() {
     // Check if Debugger is enabled
     if (!Config::get('debugger')) return false;
     if (Request::is('disable-debugger')) return false;
-    if (Session::get('disable-debugger')) return false;
+    if (Session::get('disable-debugger')) {
+        Session::drop('disable-debugger');
+        return false;
+    }
 
     $is_html = false;
     $content_type_headers_count = 0;
