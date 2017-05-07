@@ -5,7 +5,7 @@
  * An extensive and flexible library for PHP
  *
  * @package    Lollipop for MVC
- * @version    1.0
+ * @version    1.1
  * @author     John Aldrich Bernardo <bjohnaldrich@gmail.com>
  * @copyright  Copyright (C) 2015 John Aldrich Bernardo. All rights reserved.
  * @license
@@ -80,12 +80,6 @@ Route::clean(function() {
         if (isset($config_app->author)) $data['app']['author'] = Config::get('app')->author;
         
         $data['app'] = (object)$data['app'];
-        
-        // Required JS for Debugging Information
-        $data['js'] = array(
-            'jquery' => Url::base('static/js/jquery-3.2.0.min.js')
-        );
-        $data['js'] = (object)$data['js'];
         
         // Debugging Data
         $bm = (object)App::getBenchmark();
