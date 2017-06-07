@@ -5,7 +5,7 @@
  * An extensive and flexible library for PHP
  *
  * @package    Lollipop for MVC
- * @version    1.0
+ * @version    1.1
  * @author     John Aldrich Bernardo <bjohnaldrich@gmail.com>
  * @copyright  Copyright (C) 2015 John Aldrich Bernardo. All rights reserved.
  * @license
@@ -38,13 +38,18 @@ use \Lollipop\Config;
 use \Lollipop\Page;
 use \Lollipop\Request;
 use \Lollipop\Route;
+use \Lollipop\Session;
 use \Lollipop\Url;
 
 Route::clean(function() {
     // Check if Debugger is enabled
     if (!Config::get('debugger')) return false;
     if (Request::is('disable-debugger')) return false;
-    
+    if (Session::get('disable-debugger')) {
+        Session::drop('disable-debugger');
+        return false;
+    }
+
     $is_html = false;
     $content_type_headers_count = 0;
 
@@ -80,12 +85,6 @@ Route::clean(function() {
         if (isset($config_app->author)) $data['app']['author'] = Config::get('app')->author;
         
         $data['app'] = (object)$data['app'];
-        
-        // Required JS for Debugging Information
-        $data['js'] = array(
-            'jquery' => Url::base('static/js/jquery-3.2.0.min.js')
-        );
-        $data['js'] = (object)$data['js'];
         
         // Debugging Data
         $bm = (object)App::getBenchmark();

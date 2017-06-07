@@ -1,18 +1,4 @@
 <!-- <!-- Lollipop Debug -->
-<script src="<?= $js->jquery ?>"></script>
-<script type="text/javascript">
-    /* global $ */
-    $(function() {
-        $(".ldebug-toggle").click(function() {
-            $("#" + $(this).attr("ldebug-toggle")).show();
-            $("#lollipop-debug-controller-min").show();
-        });
-        $("#lollipop-debug-controller-min").click(function() {
-            $("[id^=ldebug-tab-]").hide();
-            $(this).hide();
-        });
-    });
-</script>
 <div id="lollipop-debugbox" class="lollipop-debug">
     <table>
         <tr>
@@ -88,7 +74,7 @@
 <style type="text/css">
     .lollipop-debug {
         font-family: Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
-        font-size: 14px;
+        font-size: 12px;
         border: 2px blue solid;
         padding: 6px;
         background-color: #dedede;
@@ -106,6 +92,8 @@
     }
     
     .lollipop-debug > table {
+        font-family: inherit;
+        font-size: inherit;
         border-collapse: collapse;
         max-width: 100%;
     }
@@ -135,3 +123,67 @@
     }
 </style>
 <!-- End of Lollipop Debug -->
+<script type="text/javascript">
+    /**
+     * Lollipop Debug Toggles
+     * 
+     */
+    window.LollipopDebug = {
+        /**
+         * Tabs toggle
+         * 
+         */
+        toggles: document.querySelectorAll('.ldebug-toggle'),
+        /**
+         * Minimize button
+         * 
+         */
+        buttonMinimize: document.querySelectorAll('#lollipop-debug-controller-min'),
+        /**
+         * initialize events
+         * 
+         */
+        init: function() {
+            // toggle for tabs
+            for (var j = 0; j < this.toggles.length; j++) {
+                if (this.toggles[j]) {
+                    this.toggles[j].onclick = function() {
+                        var _target_name = this.getAttribute('ldebug-toggle');
+                        var _target = document.querySelectorAll('#' + _target_name);
+
+                        if (_target) {
+                            for (var i = 0; i < _target.length; i++) {
+                                _target[i].style.display = '';
+                            }
+                        }
+
+                        if (window.LollipopDebug.buttonMinimize) {
+                            for (var i = 0; i < window.LollipopDebug.buttonMinimize.length; i++) {
+                                window.LollipopDebug.buttonMinimize[i].style.display = '';
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Set Minimize button events
+            if (window.LollipopDebug.buttonMinimize) {
+                for (var i = 0; i < window.LollipopDebug.buttonMinimize.length; i++) {
+                    window.LollipopDebug.buttonMinimize[i].onclick = function() {
+                        var _tabs = document.querySelectorAll('[id^=ldebug-tab-]');
+
+                        for (var k = 0; k < _tabs.length; k++) {
+                            _tabs[k].style.display = 'none';
+                        }
+
+                        this.style.display = 'none';
+                    }
+                }
+            }
+        }
+    };
+
+    if (typeof window.LollipopDebug !== typeof undefined) {
+        window.LollipopDebug.init(); // initialize lollipop debug events
+    }
+</script>
