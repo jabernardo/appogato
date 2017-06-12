@@ -37,13 +37,13 @@
  * Load Lollipop-PHP
  *
  */
-require_once('./lmvc/sys/autoload.php');
+require_once(realpath(dirname(__DIR__)) . '/lmvc/sys/autoload.php');
 
 /**
  * Paths
  * 
  */
-define('APP_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/lmvc/');
+define('APP_ROOT', realpath(dirname(__DIR__)) . '/lmvc/');
 define('APP_CORE', APP_ROOT . 'app/');
 define('APP_CORE_CONTROLLER', APP_CORE . 'controller/');
 define('APP_CORE_MODEL', APP_CORE . 'model/');
