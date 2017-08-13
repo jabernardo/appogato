@@ -1,15 +1,18 @@
 <?php
 
 /**
- * Application Routes
- *
+ * Application Routes goes here...
  *
  */
 
-use \Lollipop\Route;
-
-/**
- * Index Page using Controller
- *
- */
-Route::all('/', 'WelcomeController.indexAction', true);
+$routes = array(
+    /** Home Page**/
+    // '/' => 'WelcomeController.indexAction'
+    '/' => array(
+        '.' => 'WelcomeController.indexAction',
+        // 'controller' => 'WelcomeController',
+        // 'action' => 'indexAction',
+        'method' => 'GET' /*  array('GET', 'POST') */,
+        'cache' => true
+    )
+);

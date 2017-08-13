@@ -1,12 +1,5 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Hello World!</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <article>  
-            <pre class="candybox2">
+<article>
+    <pre class="candybox2">
         OOOOOOOOOO
       OO          OO
      O OOOOOOOOOOOOOO
@@ -29,10 +22,5 @@
             OO MM       M    VV VV    CC
             OO MM       M     VVV      CCCCCC
             OO            LOLLIPOP-PHP
-            </pre>
-        </article>
-        <link rel="stylesheet" href="<?= View::href('static/css/default.css') ?>">
-        <script type="text/javascript" src="<?= View::href('static/js/jquery-3.2.0.min.js') ?>"></script>
-        <script type="text/javascript" src="<?= View::href('static/js/default.js') ?>"></script>
-    </body>
-</html>
+    </pre>
+</article>

@@ -1,0 +1,53 @@
+[
+    {
+        "name": "4ldrich/lollipop-php",
+        "version": "v1.1.6",
+        "version_normalized": "1.1.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/4ldrich/lollipop-php.git",
+            "reference": "928b751e4208d7073124bb177375b79528dec14b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/4ldrich/lollipop-php/zipball/928b751e4208d7073124bb177375b79528dec14b",
+            "reference": "928b751e4208d7073124bb177375b79528dec14b",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^6.0"
+        },
+        "time": "2017-07-18 02:14:14",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Lollipop\\": "Library/"
+            },
+            "files": [
+                "lollipop.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "John Aldrich Bernardo",
+                "email": "4ldrich@protonmail.com",
+                "homepage": "https://github.com/4ldrich",
+                "role": "Developer"
+            }
+        ],
+        "description": "A slim and very flexible framework for PHP",
+        "homepage": "https://github.com/4ldrich/lollipop-php",
+        "keywords": [
+            "framework",
+            "library"
+        ]
+    }
+]

@@ -1,0 +1,25 @@
+{
+    "name": "4ldrich/lmvc",
+    "type": "library",
+    "description": "MVC Framework for PHP using lollipop-php",
+    "keywords": ["framework","library"],
+    "homepage": "https://github.com/4ldrich/lmvc",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "John Aldrich Bernardo",
+            "email": "4ldrich@protonmail.com",
+            "homepage": "https://github.com/4ldrich",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "4ldrich/lollipop-php": "^1.0"
+    },
+    "require-dev": {
+        "php": ">=5.4.0",
+        "4ldrich/lollipop-php": "^1.0"
+    }
+}

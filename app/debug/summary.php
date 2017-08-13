@@ -73,53 +73,74 @@
 </div>
 <style type="text/css">
     .lollipop-debug {
-        font-family: Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
-        font-size: 12px;
-        border: 2px blue solid;
-        padding: 6px;
-        background-color: #dedede;
-        max-width: 97%;
-        bottom: 0%;
-        right: 0%;
-        z-index: 2147483647;
-        position: fixed;
+        font-family: Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif !important;
+        font-size: 12px !important;
+        border: 2px blue solid !important;
+        padding: 6px !important;
+        background-color: #dedede !important;
+        max-width: 97% !important;
+        bottom: 0% !important;
+        right: 0% !important;
+        z-index: 2147483647 !important;
+        position: fixed !important;
+    }
+
+    .lollipop-debug * {
+        margin: initial !important;
+        padding: initial !important;
+    }
+
+    .lollipop-debug a:link,
+    .lollipop-debug a:visited,
+    .lollipop-debug a:hover {
+        color: blue !important;
+        background-color: initial !important;
+        text-decoration: none;
+        border-bottom: 1px solid blue !important;
     }
     
     .lollipop-debug .container {
-        width: 100%;
-        max-height: 100px;
-        overflow: auto;
+        width: 100% !important;
+        max-height: 100px !important;
+        overflow: auto !important;
     }
     
     .lollipop-debug > table {
-        font-family: inherit;
-        font-size: inherit;
-        border-collapse: collapse;
-        max-width: 100%;
+        color: black;
+        font-family: inherit !important;
+        font-size: inherit !important;
+        border: none !important;
+        border-collapse: collapse !important;
+        max-width: 100% !important;
+    }
+
+    .lollipop-debug > table tr,
+    .lollipop-debug > table tr td {
+        border: none;
     }
     
     .lollipop-green {
-        color: green;
+        color: green !important;
     }
     
     .lollipop-label {
-        color: #4d4d4d;
+        color: #4d4d4d !important;
     }
     
     #ldebug-tab-errors {
-        color: red;
+        color: red !important;
     }
     
     #ldebug-tab-warning {
-        color: #b97a07;
+        color: #b97a07 !important;
     }
     
     #ldebug-tab-notice {
-        color: #77770a;
+        color: #77770a !important;
     }
     
     #ldebug-tab-info {
-        color: #0d568a;
+        color: #0d568a !important;
     }
 </style>
 <!-- End of Lollipop Debug -->

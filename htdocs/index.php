@@ -37,7 +37,7 @@
  * Load Lollipop-PHP
  *
  */
-require_once(realpath(dirname(__DIR__)) . '/sys/autoload.php');
+require_once(realpath(dirname(__DIR__)) . '/vendor/autoload.php');
 
 /**
  * Paths
@@ -108,3 +108,26 @@ if (!file_exists(APP_CORE . 'routes.php'))
 
 require_once(APP_CORE_DEBUG . 'info.php');
 require_once(APP_CORE . 'routes.php');
+
+if (!isset($routes) && !is_array($routes))
+    die('Invalid routes!');
+
+/**
+ * Index Page using Controller
+ *
+ */
+foreach ($routes as $route => $value) {
+    if (is_string($value)) {
+        \Lollipop\Route::all($route, $value);
+    } else if (is_array($value)) {
+        $controller = isset($value['controller']) ? $value['controller'] : '';
+        $action = isset($value['action']) ? $value['action'] : '';
+        $controller_action = isset($value['.']) ? $value['.'] : "$controller.$action";
+        $cache = isset($value['cache']) ? $value['cache'] : false;
+        $method = isset($value['method']) ? $value['method'] : '';
+
+        \Lollipop\Route::serve($method, $route, $controller_action, $cache);
+    } else {
+        \Lollipop\Log::error('Invalid route value.', true);
+    }
+}
