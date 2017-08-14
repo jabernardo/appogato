@@ -3,6 +3,7 @@
 <?php } ?>
 
 <meta charset="<?= fuse($meta['charset'], 'UTF-8') ?>">
+<link rel="icon" type="<?= fuse($favicon_type, 'image/x-icon') ?>" href="<?= fuse($favicon, '') ?>">
 <link rel="shortcut icon" type="<?= fuse($favicon_type, 'image/x-icon') ?>" href="<?= fuse($favicon, '') ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
