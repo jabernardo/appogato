@@ -45,14 +45,14 @@ require_once(realpath(dirname(__DIR__)) . '/vendor/autoload.php');
  */
 define('APP_ROOT', realpath(dirname(__DIR__)));
 define('APP_CORE', APP_ROOT . '/app/');
-define('APP_CORE_CONTROLLER', APP_CORE . '/controller/');
-define('APP_CORE_MODEL', APP_CORE . '/model/');
-define('APP_CORE_VIEW', APP_CORE . '/view/');
-define('APP_CORE_HELPER', APP_CORE . '/helper/');
-define('APP_CORE_CACHE', APP_CORE . '/cache/');
-define('APP_CORE_LOG', APP_CORE . '/log/');
-define('APP_CORE_DB', APP_CORE . '/db/');
-define('APP_CORE_DEBUG', APP_CORE . '/debug/');
+define('APP_CORE_CONTROLLER', APP_CORE . 'controller/');
+define('APP_CORE_MODEL', APP_CORE . 'model/');
+define('APP_CORE_VIEW', APP_CORE . 'view/');
+define('APP_CORE_HELPER', APP_CORE . 'helper/');
+define('APP_CORE_CACHE', APP_CORE . 'cache/');
+define('APP_CORE_LOG', APP_CORE . 'log/');
+define('APP_CORE_DB', APP_CORE . 'db/');
+define('APP_CORE_DEBUG', APP_CORE . 'debug/');
 
 /**
  * Load configuration
@@ -117,17 +117,13 @@ if (!isset($routes) && !is_array($routes))
  *
  */
 foreach ($routes as $route => $value) {
-    if (is_string($value)) {
+    if (is_string($value) || is_callable($value)) {
         \Lollipop\Route::all($route, $value);
     } else if (is_array($value)) {
-        $controller = isset($value['controller']) ? $value['controller'] : '';
-        $action = isset($value['action']) ? $value['action'] : '';
-        $controller_action = isset($value['.']) ? $value['.'] : "$controller.$action";
+        $callback = isset($value['callback']) ? $value['callback'] : function() { return 'No callback declared.'; };
         $cache = isset($value['cache']) ? $value['cache'] : false;
         $method = isset($value['method']) ? $value['method'] : '';
 
-        \Lollipop\Route::serve($method, $route, $controller_action, $cache);
-    } else {
-        \Lollipop\Log::error('Invalid route value.', true);
+        \Lollipop\Route::serve($method, $route, $callback, $cache);
     }
 }
