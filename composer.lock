@@ -4,21 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e3160568d13aadfabbdf450a9c803360",
     "content-hash": "21a297978d01de78965bf16719fb8dd2",
     "packages": [
         {
             "name": "4ldrich/lollipop-php",
-            "version": "v1.1.6",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/4ldrich/lollipop-php.git",
-                "reference": "928b751e4208d7073124bb177375b79528dec14b"
+                "reference": "f20faaeca378bb518e747d8fdadc4e4a37ed122b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/4ldrich/lollipop-php/zipball/928b751e4208d7073124bb177375b79528dec14b",
-                "reference": "928b751e4208d7073124bb177375b79528dec14b",
+                "url": "https://api.github.com/repos/4ldrich/lollipop-php/zipball/f20faaeca378bb518e747d8fdadc4e4a37ed122b",
+                "reference": "f20faaeca378bb518e747d8fdadc4e4a37ed122b",
                 "shasum": ""
             },
             "require": {
@@ -54,7 +53,7 @@
                 "framework",
                 "library"
             ],
-            "time": "2017-07-18 02:14:14"
+            "time": "2017-08-09T07:24:23+00:00"
         }
     ],
     "packages-dev": [],
