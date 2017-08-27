@@ -50,6 +50,12 @@ Folder(s) to include in autoload
 - ```cache``` Enable or disable results caching
 - ```cache_time``` Cache expiration in minutes
 
+#### text ```(array)```
+* ```security```
++ ```key``` The key.
++ ```method``` See [openssl methods](https://secure.php.net/manual/en/function.openssl-get-cipher-methods.php)
++ ```iv``` Initialization Vector
+
 #### dev_tools ```(bool)```
 Activate developers tools for your own benefit. Options below only triggered by request (GET/POST) sent to application.
 
@@ -71,6 +77,13 @@ Change 404 page
 #### cache ```(array)```
 
 - ```folder``` Path for cache
+- ```driver``` Cache driver (sqlite/filesystem)
+
+> When using `sqlite` please do define `localdb` in config
+
+#### localdb ```(array)```
+
+- ```folder``` Path to localdb storage
 
 #### log ```(array)```
 

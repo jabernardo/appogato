@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "4ldrich/lollipop-php",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/4ldrich/lollipop-php.git",
-                "reference": "f20faaeca378bb518e747d8fdadc4e4a37ed122b"
+                "reference": "e0f251ffa90e039b57d7e271a0352cb7b286eca9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/4ldrich/lollipop-php/zipball/f20faaeca378bb518e747d8fdadc4e4a37ed122b",
-                "reference": "f20faaeca378bb518e747d8fdadc4e4a37ed122b",
+                "url": "https://api.github.com/repos/4ldrich/lollipop-php/zipball/e0f251ffa90e039b57d7e271a0352cb7b286eca9",
+                "reference": "e0f251ffa90e039b57d7e271a0352cb7b286eca9",
                 "shasum": ""
             },
             "require": {
@@ -53,7 +53,7 @@
                 "framework",
                 "library"
             ],
-            "time": "2017-08-09T07:24:23+00:00"
+            "time": "2017-08-26T09:40:41+00:00"
         }
     ],
     "packages-dev": [],
