@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "4ldrich/lollipop-php",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/4ldrich/lollipop-php.git",
-                "reference": "e0f251ffa90e039b57d7e271a0352cb7b286eca9"
+                "reference": "4471ab81d6915c46d6221443eeeff4649cda2b96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/4ldrich/lollipop-php/zipball/e0f251ffa90e039b57d7e271a0352cb7b286eca9",
-                "reference": "e0f251ffa90e039b57d7e271a0352cb7b286eca9",
+                "url": "https://api.github.com/repos/4ldrich/lollipop-php/zipball/4471ab81d6915c46d6221443eeeff4649cda2b96",
+                "reference": "4471ab81d6915c46d6221443eeeff4649cda2b96",
                 "shasum": ""
             },
             "require": {
@@ -28,11 +28,8 @@
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "Lollipop\\": "Library/"
-                },
                 "files": [
-                    "lollipop.php"
+                    "autoload.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -53,7 +50,7 @@
                 "framework",
                 "library"
             ],
-            "time": "2017-08-26T09:40:41+00:00"
+            "time": "2017-08-28T03:08:43+00:00"
         }
     ],
     "packages-dev": [],

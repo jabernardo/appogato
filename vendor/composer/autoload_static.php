@@ -7,28 +7,12 @@ namespace Composer\Autoload;
 class ComposerStaticInit90450979d172ea434dfe4e47d3ca1242
 {
     public static $files = array (
-        'da347f4ed7fdf49f0466fabbe24d75a1' => __DIR__ . '/..' . '/4ldrich/lollipop-php/lollipop.php',
-    );
-
-    public static $prefixLengthsPsr4 = array (
-        'L' => 
-        array (
-            'Lollipop\\' => 9,
-        ),
-    );
-
-    public static $prefixDirsPsr4 = array (
-        'Lollipop\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/4ldrich/lollipop-php/Library',
-        ),
+        '0c7ea7b720e895481501b76aa4fe5a1a' => __DIR__ . '/..' . '/4ldrich/lollipop-php/autoload.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit90450979d172ea434dfe4e47d3ca1242::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit90450979d172ea434dfe4e47d3ca1242::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }
