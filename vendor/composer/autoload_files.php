@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '0c7ea7b720e895481501b76aa4fe5a1a' => $vendorDir . '/4ldrich/lollipop-php/autoload.php',
+    'bbad387a660abcc9359398c8ef33a2f3' => $vendorDir . '/jabernardo/lollipop-php/autoload.php',
 );

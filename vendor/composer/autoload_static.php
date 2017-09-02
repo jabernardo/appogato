@@ -7,7 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit90450979d172ea434dfe4e47d3ca1242
 {
     public static $files = array (
-        '0c7ea7b720e895481501b76aa4fe5a1a' => __DIR__ . '/..' . '/4ldrich/lollipop-php/autoload.php',
+        'bbad387a660abcc9359398c8ef33a2f3' => __DIR__ . '/..' . '/jabernardo/lollipop-php/autoload.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -4,20 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "21a297978d01de78965bf16719fb8dd2",
-    "packages": [
+    "content-hash": "8383e8f8af67147467856aef3a0c4fef",
+    "packages": [],
+    "packages-dev": [
         {
-            "name": "4ldrich/lollipop-php",
-            "version": "v1.3.1",
+            "name": "jabernardo/lollipop-php",
+            "version": "v1.3.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/4ldrich/lollipop-php.git",
-                "reference": "4471ab81d6915c46d6221443eeeff4649cda2b96"
+                "url": "https://github.com/jabernardo/lollipop-php.git",
+                "reference": "cf33bc2bb03d6b49f4c004f1ba59ed3fd76151e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/4ldrich/lollipop-php/zipball/4471ab81d6915c46d6221443eeeff4649cda2b96",
-                "reference": "4471ab81d6915c46d6221443eeeff4649cda2b96",
+                "url": "https://api.github.com/repos/jabernardo/lollipop-php/zipball/cf33bc2bb03d6b49f4c004f1ba59ed3fd76151e7",
+                "reference": "cf33bc2bb03d6b49f4c004f1ba59ed3fd76151e7",
                 "shasum": ""
             },
             "require": {
@@ -40,20 +41,19 @@
                 {
                     "name": "John Aldrich Bernardo",
                     "email": "4ldrich@protonmail.com",
-                    "homepage": "https://github.com/4ldrich",
+                    "homepage": "https://github.com/jabernardo",
                     "role": "Developer"
                 }
             ],
             "description": "A slim and very flexible framework for PHP",
-            "homepage": "https://github.com/4ldrich/lollipop-php",
+            "homepage": "https://github.com/jabernardo/lollipop-php",
             "keywords": [
                 "framework",
                 "library"
             ],
-            "time": "2017-08-28T03:08:43+00:00"
+            "time": "2017-09-02T11:33:32+00:00"
         }
     ],
-    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": [],
