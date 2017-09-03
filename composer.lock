@@ -9,16 +9,16 @@
     "packages-dev": [
         {
             "name": "jabernardo/lollipop-php",
-            "version": "v1.3.3",
+            "version": "v1.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jabernardo/lollipop-php.git",
-                "reference": "cf33bc2bb03d6b49f4c004f1ba59ed3fd76151e7"
+                "reference": "e326dcfb527eb3f580386fe5f1ec9d5c7ff20851"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jabernardo/lollipop-php/zipball/cf33bc2bb03d6b49f4c004f1ba59ed3fd76151e7",
-                "reference": "cf33bc2bb03d6b49f4c004f1ba59ed3fd76151e7",
+                "url": "https://api.github.com/repos/jabernardo/lollipop-php/zipball/e326dcfb527eb3f580386fe5f1ec9d5c7ff20851",
+                "reference": "e326dcfb527eb3f580386fe5f1ec9d5c7ff20851",
                 "shasum": ""
             },
             "require": {
@@ -51,7 +51,7 @@
                 "framework",
                 "library"
             ],
-            "time": "2017-09-02T11:33:32+00:00"
+            "time": "2017-09-03T11:15:02+00:00"
         }
     ],
     "aliases": [],
