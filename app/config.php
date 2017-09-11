@@ -90,9 +90,7 @@ $config['log'] = array(
  *
  */
 $config['autoload'] = array(
-         APP_CORE_CONTROLLER,
-         APP_CORE_MODEL,
-         APP_CORE_HELPER
+         APP_CORE_CONTROLLER
     );
 
 /**

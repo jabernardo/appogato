@@ -6,7 +6,7 @@ use \Lollipop\Url;
 /**
  * View Helper
  * 
- * @version     1.0
+ * @version     1.1
  * @author      John Aldrich Bernardo
  * @description Alias for \Lollipop\App;
  * 
@@ -21,7 +21,7 @@ class View
      * @return  mixed
      * 
      */
-    public static function render($view, array $data = array()) {
+    public function render($view, array $data = array()) {
         return Page::render(APP_CORE_VIEW . $view, $data);
     }
     
@@ -32,7 +32,7 @@ class View
      * @return  string
      * 
      */
-    public static function href($link) {
+    public function href($link) {
         return Url::base($link);
     }
 }

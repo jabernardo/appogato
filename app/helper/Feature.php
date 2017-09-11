@@ -5,7 +5,7 @@ use \Lollipop\Config;
 /**
  * Feature Switch Helper
  * 
- * @version     1.0
+ * @version     1.1
  * @author      John Aldrich Bernardo
  * @description Easy feature toggle using `switch` config
  * 
@@ -19,7 +19,7 @@ class Feature
      * @param   string  $key    Switch key
      * 
      */
-    public static function on($key) {
+    public function on($key) {
         return isset(Config::get('switch')->$key) && Config::get('switch')->$key;
     }
 }

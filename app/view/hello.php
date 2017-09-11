@@ -21,6 +21,6 @@
             OO MM  MMM  M   VV   VV  CCC
             OO MM       M    VV VV    CC
             OO MM       M     VVV      CCCCCC
-            OO            LOLLIPOP-PHP
+            OO      LOLLIPOP-PHP <?= $version ?>
     </pre>
 </article>

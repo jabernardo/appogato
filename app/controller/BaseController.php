@@ -2,6 +2,7 @@
 
 use \Lollipop\Config;
 use \Lollipop\CsrfToken;
+use \Lollipop\Log;
 use \Lollipop\Page;
 use \Lollipop\Url;
 
@@ -17,6 +18,7 @@ class BaseController
      */
     function __construct() {
         $this->view = new stdClass();
+        $this->helpers = new stdClass();
         $this->_setDefaultView();
     }
     
@@ -110,6 +112,47 @@ class BaseController
         }
         
         return $attribs;
+    }
+    
+    /**
+     * Load Models or Helpers
+     * 
+     * @access  public
+     * @param   string  $name   Name to load
+     * @param   string  $alias  Alias for loaded class
+     * @return  void
+     * 
+     */
+    public function load($name, $alias = null) {
+        $f = false;
+        
+        // Load models
+        if (file_exists(APP_CORE_MODEL . $name . '.php')) {
+            require_once(APP_CORE_MODEL . $name . '.php');
+            $f = true;
+            
+            if ($alias) {
+                $this->{$alias} = new $name();
+            } else {
+                $this->{$name} = new $name();
+            }
+        }
+       
+        // Load helpers
+        if (file_exists(APP_CORE_HELPER . $name . '.php')) {
+            require_once(APP_CORE_HELPER . $name . '.php');
+            $f = true;
+            
+            if ($alias) {
+                $this->{$alias} = new $name();
+            } else {
+                $this->helpers->{$name} = new $name();
+            }
+        }
+        
+        if (!$f) {
+            Log::error('Tried to load non-existent: ' . $name);
+        }
     }
     
     /**
