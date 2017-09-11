@@ -8,6 +8,7 @@ To configure your ```Lollipop``` application you just need to send an array to
 ```\Lollipop\App::init``` function
 
 ```php
+<?php
 
 $config = [
     'app' => [
@@ -87,7 +88,13 @@ Change 404 page
 
 #### log ```(array)```
 
+- ```enable``` True/False
 - ```folder``` Path for logs
+- ```hourly``` Enable hourly format in log files
+
+#### anti_xss ```(bool)```
+
+Enable or Disable XSS injection in ```Page::render```
 
 
 ### getResponseTime ```(double)```

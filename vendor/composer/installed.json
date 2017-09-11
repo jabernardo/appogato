@@ -1,17 +1,17 @@
 [
     {
         "name": "jabernardo/lollipop-php",
-        "version": "v1.3.4",
-        "version_normalized": "1.3.4.0",
+        "version": "v1.3.5",
+        "version_normalized": "1.3.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/jabernardo/lollipop-php.git",
-            "reference": "e326dcfb527eb3f580386fe5f1ec9d5c7ff20851"
+            "reference": "98faf879fb3835d578999f131b63ca10dc4d1838"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/jabernardo/lollipop-php/zipball/e326dcfb527eb3f580386fe5f1ec9d5c7ff20851",
-            "reference": "e326dcfb527eb3f580386fe5f1ec9d5c7ff20851",
+            "url": "https://api.github.com/repos/jabernardo/lollipop-php/zipball/98faf879fb3835d578999f131b63ca10dc4d1838",
+            "reference": "98faf879fb3835d578999f131b63ca10dc4d1838",
             "shasum": ""
         },
         "require": {
@@ -20,7 +20,7 @@
         "require-dev": {
             "phpunit/phpunit": "^6.0"
         },
-        "time": "2017-09-03T11:15:02+00:00",
+        "time": "2017-09-11T05:19:25+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -36,7 +36,7 @@
             {
                 "name": "John Aldrich Bernardo",
                 "email": "4ldrich@protonmail.com",
-                "homepage": "https://github.com/jabernardo",
+                "homepage": "https://jabernardo.github.io",
                 "role": "Developer"
             }
         ],
@@ -44,7 +44,9 @@
         "homepage": "https://github.com/jabernardo/lollipop-php",
         "keywords": [
             "framework",
-            "library"
+            "library",
+            "php-framework",
+            "web-framework"
         ]
     }
 ]
