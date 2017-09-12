@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jabernardo/lollipop-php.git",
-                "reference": "8ddbf840deee4f9abf8dac2b05c3e1970d8cecde"
+                "reference": "78b1bf3c5eccdbff23147677c1ccd31bff4e56da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jabernardo/lollipop-php/zipball/8ddbf840deee4f9abf8dac2b05c3e1970d8cecde",
-                "reference": "8ddbf840deee4f9abf8dac2b05c3e1970d8cecde",
+                "url": "https://api.github.com/repos/jabernardo/lollipop-php/zipball/78b1bf3c5eccdbff23147677c1ccd31bff4e56da",
+                "reference": "78b1bf3c5eccdbff23147677c1ccd31bff4e56da",
                 "shasum": ""
             },
             "require": {
@@ -53,7 +53,7 @@
                 "php-framework",
                 "web-framework"
             ],
-            "time": "2017-09-12T02:38:45+00:00"
+            "time": "2017-09-12T03:25:49+00:00"
         }
     ],
     "aliases": [],
