@@ -13,7 +13,6 @@ $config['app'] = array(
 /**
  * Anti-CSRF
  * 
- * 
  */
 $config['anti_csrf'] = array(
         'enable' => true,       // Enable or disable this functionality
@@ -21,6 +20,12 @@ $config['anti_csrf'] = array(
         'key' => '',            // Salt
         'expiration' => 1800    // or 30mins
     );
+
+/**
+ * Disable XSS injection in Page::render
+ * 
+ */
+$config['anti_xss'] = true;
 
 /**
  * Feature Switches
@@ -74,6 +79,14 @@ $config['env'] = 'dev';
  */
 $config['cache'] = array(
         'folder' => APP_CORE_CACHE
+    );
+
+/**
+ * Local DB storage
+ * 
+ */
+$config['localdb'] = array(
+        'folder' => APP_CORE_DB
     );
 
 /**

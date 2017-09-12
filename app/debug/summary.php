@@ -25,48 +25,48 @@
             <td></td>
             <td><div class="container"><?= implode('<br>', get_included_files()) ?></div></td>
         </tr>
-        <?php if (count(\Lollipop\Log::get('error'))) { ?>
+        <?php if (count($logs->error)) { ?>
         <!-- Errors -->
         <tr class="error">
             <td><label class="lollipop-label">Error(s):</label></td>
-            <td><a class="ldebug-toggle" ldebug-toggle="ldebug-tab-errors" href="javascript: void(0);"><?= count(\Lollipop\Log::get('error')) ?> Total</a></td>
+            <td><a class="ldebug-toggle" ldebug-toggle="ldebug-tab-errors" href="javascript: void(0);"><?= count($logs->error) ?> Total</a></td>
         </tr>
         <tr id="ldebug-tab-errors" style="display: none;">
             <td></td>
-            <td><div class="container"><?= implode('<br>', \Lollipop\Log::get('error')) ?></div></td>
+            <td><div class="container"><?= implode('<br>', $logs->error) ?></div></td>
         </tr>
         <?php } ?>
-        <?php if (count(\Lollipop\Log::get('warn'))) { ?>
+        <?php if (count($logs->warn)) { ?>
         <!-- Warning -->
         <tr class="warning">
             <td><label class="lollipop-label">Warning(s):</label></td>
-            <td><a class="ldebug-toggle" ldebug-toggle="ldebug-tab-warning" href="javascript: void(0);"><?= count(\Lollipop\Log::get('warn')) ?> Total</a></td>
+            <td><a class="ldebug-toggle" ldebug-toggle="ldebug-tab-warning" href="javascript: void(0);"><?= count($logs->warn) ?> Total</a></td>
         </tr>
         <tr id="ldebug-tab-warning" style="display: none;">
             <td></td>
-            <td><div class="container"><?= implode('<br>', \Lollipop\Log::get('warn')) ?></div></td>
+            <td><div class="container"><?= implode('<br>', $logs->warn) ?></div></td>
         </tr>
         <?php } ?>
-        <?php if (count(\Lollipop\Log::get('notice'))) { ?>
+        <?php if (count($logs->notice)) { ?>
         <!-- Notice -->
         <tr class="notice">
             <td><label class="lollipop-label">Notice(s):</label></td>
-            <td><a class="ldebug-toggle" ldebug-toggle="ldebug-tab-notice" href="javascript: void(0);"><?= count(\Lollipop\Log::get('notice')) ?> Total</a></td>
+            <td><a class="ldebug-toggle" ldebug-toggle="ldebug-tab-notice" href="javascript: void(0);"><?= count($logs->notice) ?> Total</a></td>
         </tr>
         <tr id="ldebug-tab-notice" style="display: none;">
             <td></td>
-            <td><div class="container"><?= implode('<br>', \Lollipop\Log::get('notice')) ?></div></td>
+            <td><div class="container"><?= implode('<br>', $logs->notice) ?></div></td>
         </tr>
         <?php } ?>
-        <?php if (count(\Lollipop\Log::get('info'))) { ?>
+        <?php if (count($logs->info)) { ?>
         <!-- Infos -->
         <tr class="info">
             <td><label class="lollipop-label">Info Message(s):</label></td>
-            <td><a class="ldebug-toggle" ldebug-toggle="ldebug-tab-info" href="javascript: void(0);"><?= count(\Lollipop\Log::get('info')) ?> Total</a></td>
+            <td><a class="ldebug-toggle" ldebug-toggle="ldebug-tab-info" href="javascript: void(0);"><?= count($logs->info) ?> Total</a></td>
         </tr>
         <tr id="ldebug-tab-info" style="display: none;">
             <td></td>
-            <td><div class="container"><?= implode('<br>', \Lollipop\Log::get('info')) ?></div></td>
+            <td><div class="container"><?= implode('<br>', $logs->info) ?></div></td>
         </tr>
         <?php } ?>
     </table>

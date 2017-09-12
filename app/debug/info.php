@@ -5,7 +5,7 @@
  * An extensive and flexible library for PHP
  *
  * @package    Lollipop for MVC
- * @version    1.1
+ * @version    1.2
  * @author     John Aldrich Bernardo <bjohnaldrich@gmail.com>
  * @copyright  Copyright (C) 2015 John Aldrich Bernardo. All rights reserved.
  * @license
@@ -35,6 +35,7 @@
 
 use \Lollipop\App;
 use \Lollipop\Config;
+use \Lollipop\Log;
 use \Lollipop\Page;
 use \Lollipop\Request;
 use \Lollipop\Route;
@@ -97,6 +98,13 @@ Route::clean(function() {
         );
         $data['debug'] = (object)$data['debug'];
         
+        // Logs
+        $data['logs'] = (object)array(
+                'error' => Log::get('error'),
+                'warn' => Log::get('warn'),
+                'notice' => Log::get('notice'),
+                'info' => Log::get('info')
+            );
         
         exit(Page::render(APP_CORE_DEBUG . 'summary.php', $data));
     }
