@@ -6,12 +6,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/jabernardo/lollipop-php.git",
-            "reference": "78b1bf3c5eccdbff23147677c1ccd31bff4e56da"
+            "reference": "7c5e7b3e2066988d792b5fe3366c1fec6d401b68"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/jabernardo/lollipop-php/zipball/78b1bf3c5eccdbff23147677c1ccd31bff4e56da",
-            "reference": "78b1bf3c5eccdbff23147677c1ccd31bff4e56da",
+            "url": "https://api.github.com/repos/jabernardo/lollipop-php/zipball/7c5e7b3e2066988d792b5fe3366c1fec6d401b68",
+            "reference": "7c5e7b3e2066988d792b5fe3366c1fec6d401b68",
             "shasum": ""
         },
         "require": {
@@ -20,7 +20,7 @@
         "require-dev": {
             "phpunit/phpunit": "^6.0"
         },
-        "time": "2017-09-12T03:25:49+00:00",
+        "time": "2017-09-12T04:00:03+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
