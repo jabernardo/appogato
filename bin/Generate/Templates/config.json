@@ -1,0 +1,18 @@
+{
+    "controller": {
+        "template": "controller.template",
+        "path": "controller/",
+        "vars": {
+            "author": "$",
+            "package": "$"
+        }
+    },
+    "model": {
+        "template": "model.template",
+        "path": "model/",
+        "vars": {
+            "author": "$",
+            "package": "$"
+        }
+    }
+}
