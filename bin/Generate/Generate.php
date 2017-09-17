@@ -1,6 +1,9 @@
 <?php
 
-defined('APP_BIN_GENERATE_TEMPLATES') or exit('Generator: Templates folder can\'t be found.' . PHP_EOL);
+defined('APP_BIN') or exit('APP_BIN wasn\'t declared');
+
+define('APP_BIN_GENERATE', APP_BIN . 'Generate/');
+define('APP_BIN_GENERATE_TEMPLATES', APP_BIN_GENERATE . 'Templates/');
 
 /**
  * Generate Template
@@ -8,6 +11,7 @@ defined('APP_BIN_GENERATE_TEMPLATES') or exit('Generator: Templates folder can\'
  * @package lmvc
  * @version 1.0
  * @author  John Aldrich Bernardo
+ * @email   4ldrich@protonmail.com
  * @description
  * 
  * Class for generating LMVC template
@@ -57,7 +61,7 @@ class Generate
         $template_conf = $this->_parseTemplateConfig();
         
         if (!isset($template_conf[$this->_template])) {
-            exit('Generate: ' . CF_RED . 'Nothing to generate' . CF_RESET . PHP_EOL);
+            Console::error('Generate: Nothing to generate');
         }
         
         $template = $template_conf[$this->_template]['template'];
@@ -66,7 +70,7 @@ class Generate
         $args = array_splice($args, 1, count($args) - 1);
         
         if (!count($args)) {
-            exit('Generate: ' . CF_RED . 'missing names.' . CF_RESET . PHP_EOL);
+            Console::error('Generate: missing names.');
         }
         
         // Get output name
@@ -89,7 +93,7 @@ class Generate
             if (isset($this->_flags[$key])) {
                 $this->_flags[$key] = true;
             } else {
-                exit(CF_RED . 'Unknown flag: '  . CF_RESET . $arg . PHP_EOL);
+                Console::error('Unknown flag: ' . $arg);
             }
         }
         
@@ -113,7 +117,7 @@ class Generate
         $overwrite = $this->_flags['-f'];
         
         if (file_exists($file) && !$overwrite) {
-            exit(CF_RED . 'File already exists: ' . CF_RESET . $file . PHP_EOL);
+            Console::error('File already exists: ' . $file);
         }
         
         file_put_contents($file, $content);

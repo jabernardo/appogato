@@ -6,6 +6,7 @@
  * @package     {package}
  * @version     1.0
  * @author      {author}
+ * @email       {email}
  * 
  */
 class {name} extends BaseController

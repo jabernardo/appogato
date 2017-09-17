@@ -16,30 +16,20 @@ define('APP_CORE_LOG', APP_CORE . 'log/');
 define('APP_CORE_DB', APP_CORE . 'db/');
 define('APP_CORE_DEBUG', APP_CORE . 'debug/');
 define('APP_BIN', APP_ROOT . '/bin/');
-define('APP_BIN_GENERATE', APP_BIN . 'Generate/');
-define('APP_BIN_GENERATE_TEMPLATES', APP_BIN_GENERATE . 'Templates/');
 
-// Command-line colors
-define('CF_BLACK',  "\033[30m");
-define('CF_RED',    "\033[31m");
-define('CF_GREEN',  "\033[32m");
-define('CF_BROWN',  "\033[33m");
-define('CF_BLUE',   "\033[34m");
-define('CF_MAGENTA',"\033[35m");
-define('CF_CYAN',   "\033[36m");
-define('CF_WHITE',  "\033[37m");
-define('CF_RESET',  "\033[39m");
+// Autoload tools
+require_once(APP_BIN . 'autoload.php');
 
 // Check if config is active in current directory
 if (!file_exists(APP_CORE . 'config.php')) {
-    exit(CF_RED . 'LMVC config not found.' . CF_RESET . PHP_EOL);
+    Console::error('Project config not found.');
 }
 
 // Parse configuration file
 require_once(APP_CORE . 'config.php');
 
 if (!isset($config) && !isset($config['app']) && !is_array($config['app'])) {
-    exit(CF_RED . 'LMVC invalid config file.' . CF_RESET . PHP_EOL);
+    Console::error('Invalid project config file.');
 }
 
 // Export configuration from project
@@ -47,14 +37,12 @@ $proj_config = [
         'package' => isset($config['app']['name']) ? $config['app']['name'] : 'Application Name',
         'version' => isset($config['app']['version']) ? $config['app']['version'] : '1.0',
         'author' => isset($config['app']['author']) ? $config['app']['author'] : 'Programmer',
+        'email' => isset($config['app']['email']) ? $config['app']['email'] : 'youremail@domain.ext'
     ];
 
 // @var     array   Commands for application
 $commands = [
-        'generate' => [
-                'name' => 'Generate',
-                'path' => APP_BIN_GENERATE . '/Generate.php'
-            ]
+        'generate' => 'Generate'
     ];
 
 // Get first main parameter from command line
@@ -62,7 +50,7 @@ $commands = [
 $cmd_main = isset($argv[1]) ? strtolower($argv[1]) : null;
 
 if (!$cmd_main) {
-    exit(CF_RED . 'No parameters found.' . CF_RESET . PHP_EOL);
+    Console::error('No parameters found.');
 }
 
 if (isset($commands[$cmd_main])) {
@@ -72,12 +60,9 @@ if (isset($commands[$cmd_main])) {
     // Get other parameters after main command
     $params = array_splice($argv, 2, count($argv) - 1);
     
-    // Load command class
-    require_once($cmd_info['path']);
-    
-    $cmd = new $cmd_info['name']($proj_config, $params);
+    $cmd = new $cmd_info($proj_config, $params);
     
 } else {
     // Commamd is unknown
-    exit(CF_RED . 'Command not found: ' . CF_RESET . $cmd_main . PHP_EOL);    
+    Console::error('Command not found: ' . $cmd_main);
 }

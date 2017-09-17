@@ -4,6 +4,7 @@
         "path": "controller/",
         "vars": {
             "author": "$",
+            "email": "$",
             "package": "$"
         }
     },
@@ -12,6 +13,7 @@
         "path": "model/",
         "vars": {
             "author": "$",
+            "email": "$",
             "package": "$"
         }
     }

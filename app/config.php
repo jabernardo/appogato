@@ -7,7 +7,8 @@
 $config['app'] = array(
         'name' => 'Lollipop Sample App',
         'version' => '1.0',
-        'author' => 'Programmer'
+        'author' => 'Programmer',
+        'email' => 'youremail@domain.ext'
     );
 
 /**
