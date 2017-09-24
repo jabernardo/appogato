@@ -82,22 +82,15 @@ if (isset($config['env'])) {
     }
 }
 
-/** Modify configuration based on environment **/
-if (isset($config['env']) && 
-    isset($config['overrides']) && 
-    isset($config['overrides'][strtolower($config['env'])])) {
-    // Merge data
-    $config = array_merge($config, $config['overrides'][strtolower($config['env'])]);
-}
-
-/** Clear overrides **/
-if (isset($config['overrides'])) unset($config['overrides']);
-
 /**
  * Initialize configuration in Lollipop
  * 
  */
-\Lollipop\App::init($config);
+\Lollipop\Config::load($config);
+
+/** Clear overrides **/
+if (isset($config['overrides'])) unset($config['overrides']);
+
 
 /**
  * Include routes
@@ -111,6 +104,19 @@ require_once(APP_CORE . 'routes.php');
 
 if (!isset($routes) && !is_array($routes))
     die('Invalid routes!');
+
+/**
+ * Autoload function
+ * for controllers
+ * 
+ */
+spl_autoload_register(function($class) {
+    $control = APP_CORE_CONTROLLER . $class . '.php';
+    
+    if (file_exists($control)) {
+        require_once($control);
+    }
+});
 
 /**
  * Index Page using Controller

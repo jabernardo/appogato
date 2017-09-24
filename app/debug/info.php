@@ -5,7 +5,7 @@
  * An extensive and flexible library for PHP
  *
  * @package    Lollipop for MVC
- * @version    1.2
+ * @version    1.3
  * @author     John Aldrich Bernardo <bjohnaldrich@gmail.com>
  * @copyright  Copyright (C) 2015 John Aldrich Bernardo. All rights reserved.
  * @license
@@ -33,7 +33,7 @@
  *
  */
 
-use \Lollipop\App;
+use \Lollipop\Benchmark;
 use \Lollipop\Config;
 use \Lollipop\Log;
 use \Lollipop\Page;
@@ -42,7 +42,24 @@ use \Lollipop\Route;
 use \Lollipop\Session;
 use \Lollipop\Url;
 
+
+/**
+ * Prepare route: Benchmark
+ * 
+ */
+Route::prepare(function() {
+    Benchmark::mark('_lmvc_start');
+});
+
+
+/**
+ * Clean function
+ * 
+ */
 Route::clean(function() {
+    // End benchmark
+    Benchmark::mark('_lmvc_stop');
+    
     // Check if Debugger is enabled
     if (!Config::get('debugger')) return false;
     if (Request::is('disable-debugger')) return false;
@@ -88,7 +105,7 @@ Route::clean(function() {
         $data['app'] = (object)$data['app'];
         
         // Debugging Data
-        $bm = (object)App::getBenchmark();
+        $bm = (object)Benchmark::elapsed('_lmvc_start', '_lmvc_stop');
         
         $data['debug'] = array(
             'response' => (object)array(

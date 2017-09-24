@@ -99,14 +99,6 @@ $config['log'] = array(
         'folder' => APP_CORE_LOG
     );
 
-/** 
- * Autoload folders
- *
- */
-$config['autoload'] = array(
-         APP_CORE_CONTROLLER
-    );
-
 /**
  * Overrides per environment
  * 
