@@ -4,13 +4,12 @@ namespace Lollipop;
 
 defined('LOLLIPOP_BASE') or die('Lollipop wasn\'t loaded correctly.');
 
-use \Lollipop\App;
 use \Lollipop\Text;
 
 /**
  * Cookie Class
  * 
- * @version     1.1.1
+ * @version     1.1.3
  * @author      John Aldrich Bernardo
  * @email       4ldrich@protonmail.com
  * @package     Lollipop 
@@ -68,15 +67,6 @@ class Cookie
      */
     static function drop($key, $path = '/') {
         setcookie($key, '', time() - 2650000, $path);
-    }
-
-    /**
-     * Returns the key used in encrypting session variables
-     *
-     * @return string
-     */
-    static function key() {
-        return md5(Text::lock($_SERVER['REMOTE_ADDR'], App::SUGAR));
     }
 }
 

@@ -15,7 +15,7 @@ $f = new File('sample.txt');
 
 ```
 
-### contents($contents = null) ```(bool)```
+### contents($contents = null) ```:bool```
 Get or set file contents
 
 ```php
@@ -30,5 +30,20 @@ echo $f->contents();
 
 ```
 
-### size() ```(float)```
+### temp() ```:object```
+Mark file as temporary. Will delete file after unset.
+
+```php
+
+use \Lollipop\File;
+
+$f = (new File('sample.txt'))->temp();
+$f->contents('Hello World!');
+
+echo $f->contents();
+unset($f); // Will delete file
+
+```
+
+### size() ```:float```
 Return file size

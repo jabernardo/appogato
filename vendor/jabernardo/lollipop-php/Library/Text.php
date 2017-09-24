@@ -4,13 +4,12 @@ namespace Lollipop;
 
 defined('LOLLIPOP_BASE') or die('Lollipop wasn\'t loaded correctly.');
 
-use \Lollipop\App;
 use \Lollipop\Config;
 
 /**
  * Text Class 
  *
- * @version     2.1
+ * @version     2.2
  * @author      John Aldrich Bernardo
  * @email       4ldrich@protonmail.com
  * @package     Lollipop 
@@ -38,7 +37,7 @@ class Text
      * 
      */
     private static function _geteSecKey() {
-        return md5(spare(Config::get('text.security.key'), App::SUGAR));
+        return md5(spare(Config::get('text.security.key'), SUGAR));
     }
     
     /**
@@ -49,7 +48,7 @@ class Text
      * 
      */
     private static function _getSecIv() {
-        return spare(Config::get('text.security.iv'), substr(md5(App::SUGAR), 0, 16));
+        return spare(Config::get('text.security.iv'), substr(md5(SUGAR), 0, 16));
     }
     
     /**

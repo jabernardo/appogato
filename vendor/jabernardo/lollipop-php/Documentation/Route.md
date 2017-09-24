@@ -46,7 +46,7 @@ Route::all('/', function() {
 ## Routing
 Lollipop's Routing system is very simple
 
-### serve($method, $path, $callback, $cachable = false, $cache_time = 24) ```(void)```
+### serve($method, $path, $callback, $cachable = false, $cache_time = 24) ```:void```
 
 Serve a method for a specific request.
 Also you could use our pre-defined methods.
@@ -94,6 +94,26 @@ Route::serve(['GET', 'POST'], '/getorpost', function() {
 });
 
 ```
+
+## Parameters
+Getting beautified URL parameters
+
+- ```(%s)``` String
+- ```(%d)``` Numbers
+- ```(%%)``` Any character
+
+```php
+<?php
+
+use \Lollipop\Route;
+
+Route::get('/profile/(%s)', function($username) {
+   // @todo Insert code here 
+});
+
+
+```
+
 
 ## Setting the headers
 
@@ -158,6 +178,3 @@ Route::all('/oldpage', function() {
 
 `lollipop-cache` (true/false)
 - Is page from cache?
-
-`lollipop-cache-saved` (true/false)
-- If new cache is saved
