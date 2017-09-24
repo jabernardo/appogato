@@ -5,11 +5,13 @@ defined('APP_BIN') or exit('APP_BIN wasn\'t declared');
 define('APP_BIN_GENERATE', APP_BIN . 'Generate/');
 define('APP_BIN_GENERATE_TEMPLATES', APP_BIN_GENERATE . 'Templates/');
 
+use \Lollipop\Config;
+
 /**
  * Generate Template
  * 
  * @package lmvc
- * @version 1.0
+ * @version 1.1
  * @author  John Aldrich Bernardo
  * @email   4ldrich@protonmail.com
  * @description
@@ -53,15 +55,22 @@ class Generate
      * @return  void
      * 
      */
-    function __construct(array $config, array $args) {
-        $this->_config = $config;
+    function __construct(array $args) {
+        $this->_config = [
+                'package' => spare(Config::get('app.name'), 'Application Name'),
+                'version' => spare(Config::get('app.version'), '1.0'),
+                'author' => spare(Config::get('app.author'), 'Programmer'),
+                'email' => spare(Config::get('app.email'), 'youremail@domain.ext')
+            ];
+            
         $this->_args;
         $this->_template = isset($args[0]) ? $args[0] : '';
         
         $template_conf = $this->_parseTemplateConfig();
+    
         
         if (!isset($template_conf[$this->_template])) {
-            Console::error('Generate: Nothing to generate');
+            Console::error('Unknown template.');
         }
         
         $template = $template_conf[$this->_template]['template'];
@@ -70,7 +79,7 @@ class Generate
         $args = array_splice($args, 1, count($args) - 1);
         
         if (!count($args)) {
-            Console::error('Generate: missing names.');
+            Console::error('Missing names.');
         }
         
         // Get output name

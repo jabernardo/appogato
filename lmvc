@@ -1,4 +1,4 @@
-#!/usr/bin/php
+#!/usr/bin/env php
 <?php
 
 // Continue only if application is ran from CLI
@@ -19,6 +19,8 @@ define('APP_BIN', APP_ROOT . '/bin/');
 
 // Autoload tools
 require_once(APP_BIN . 'autoload.php');
+// Require lollipop-php
+require_once('./vendor/autoload.php');
 
 // Check if config is active in current directory
 if (!file_exists(APP_CORE . 'config.php')) {
@@ -32,17 +34,13 @@ if (!isset($config) && !isset($config['app']) && !is_array($config['app'])) {
     Console::error('Invalid project config file.');
 }
 
-// Export configuration from project
-$proj_config = [
-        'package' => isset($config['app']['name']) ? $config['app']['name'] : 'Application Name',
-        'version' => isset($config['app']['version']) ? $config['app']['version'] : '1.0',
-        'author' => isset($config['app']['author']) ? $config['app']['author'] : 'Programmer',
-        'email' => isset($config['app']['email']) ? $config['app']['email'] : 'youremail@domain.ext'
-    ];
+// Load configuration from LMVC application
+\Lollipop\Config::load($config);
 
 // @var     array   Commands for application
 $commands = [
-        'generate' => 'Generate'
+        'generate' => 'Generate',
+        'cache' => 'Cache'
     ];
 
 // Get first main parameter from command line
@@ -60,8 +58,8 @@ if (isset($commands[$cmd_main])) {
     // Get other parameters after main command
     $params = array_splice($argv, 2, count($argv) - 1);
     
-    $cmd = new $cmd_info($proj_config, $params);
-    
+    // Run application
+    $cmd = new $cmd_info($params);
 } else {
     // Commamd is unknown
     Console::error('Command not found: ' . $cmd_main);
