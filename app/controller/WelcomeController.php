@@ -63,17 +63,6 @@ class WelcomeController extends BaseController
         $this->view->version = Config::get('app')->version;
         
         // Start to render page
-        return $this->render(
-                array( // Your Page
-                    'head' => array( // Head section
-                        'default/meta' // Default meta widget
-                    ),
-                    'body' => array( // Body
-                        'hello',        // app/view/hello.php
-                        'default/css',  // app/view/default/css.php
-                        'default/js'    // app/view/default/js.php
-                    )
-                )
-            );
+        return $this->render('template');
     }
 }

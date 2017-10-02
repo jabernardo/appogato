@@ -92,29 +92,6 @@ class BaseController
     }
 
     /**
-     * Pre-process node
-     * 
-     * @access  private
-     * @param   ref &$node
-     * 
-     */
-    private static function _process(&$node) {
-        $attribs = '';
-        
-        // Add attributes
-        if (isset($node['.']) && is_array($node['.'])) {
-             foreach ($node['.'] as $key => $val) {
-                 $attribs .= " $key=\"" . implode(' ', $val) . "\""; 
-             }
-             
-             // Remove attributes key from widgets
-             unset($node['.']);
-        }
-        
-        return $attribs;
-    }
-    
-    /**
      * Load Models or Helpers
      * 
      * @access  public
@@ -159,47 +136,11 @@ class BaseController
      * Render structure
      * 
      * @access  public
-     * @param   array   $struct
+     * @param   string   $struct
      * @return  string
      * 
      */
-    public function render(array $struct) {
-        // If has layout
-        if (isset($this->view->layout) && is_array($this->view->layout)) {
-            $this->view->layout['data'] = $this->_getViewData();
-        }
-        
-        $data = $this->_getViewData();
-        
-        // Write content type
-        $out = '<!doctype html><html>';
-        
-        // Build header
-        foreach($struct as $section => $content) {
-            if (is_array($content)) {
-                // Inline attributes
-                $out .= '<' . $section . self::_process($content) . '>';
-                foreach ($content as $widget) {
-                    if (is_string($widget)) {
-                        $out .= Page::render(APP_CORE_VIEW . $widget . '.php', $data);
-                    } else {
-                        $out .= '<' . key($widget) . self::_process($widget) . '>';
-                    }
-                }
-                $out .= '</' . $section . '>';
-            } else {
-                $w = Page::render(APP_CORE_VIEW . $content . '.php', $data);
-                
-                if ($w) {
-                    $out .= '<' . $content . '>';
-                    $out .= $w;
-                    $out .= '</' . $content . '>';
-                } else {
-                    $out .= $w;
-                }
-            }
-        }
-        
-        return $out . '</html>';
+    public function render($page) {
+        return Page::render(APP_CORE_VIEW . $page . '.php', $this->_getViewData());
     }
 }
