@@ -56,7 +56,7 @@ class WelcomeController extends BaseController
 
         // Set CSS data
         $this->view->css = array(
-            Url::base('static/css/normalizet.css'),
+            Url::base('static/css/normalize.css'),
             Url::base('static/css/skeleton.css'),
             Url::base('static/css/default.css')
         );
