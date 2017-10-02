@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
     <head>
-        <?php include('default/js.php') ?>
+        <?php include('default/meta.php') ?>
     </head>
     <body>
         <?php include('sample/hello.php') ?>

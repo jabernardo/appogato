@@ -1,26 +1,6 @@
-<article>
-    <pre class="candybox2">
-        OOOOOOOOOO
-      OO          OO
-     O OOOOOOOOOOOOOO
-    O OO          OOOO
-   O OO OOOOOOOOOOOOOOO
-  O OO OOOOO      OOOOOO
-  O OO OOOOO OOOO OOOOOO
-   O OO OOOO  OOOO OOOO
-    O OO OOOOOOOO OOOO
-     OOOO        OOOO
-       OOOOOOOOOOOOO
-          OOOOOO
-            OO
-            OO
-            OO
-            OO MM      MM VVV     VVV  CCCCCC
-            OO MMMM   MMM  VV     VV  CC
-            OO MM MM MM M  VV     VV CCC
-            OO MM  MMM  M   VV   VV  CCC
-            OO MM       M    VV VV    CC
-            OO MM       M     VVV      CCCCCC
-            OO      LOLLIPOP-PHP <?= $version ?>
-    </pre>
-</article>
+<div class="container">
+    <div class="header">
+        <h1>Up and Running!</h1>
+        <p>Thank you for using <a href="https://github.com/jabernardo/lmvc">Lollipop for MVC</a>. Don't forget to give a star!</p>
+    </div>
+</div>

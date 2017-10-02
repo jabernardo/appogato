@@ -37,14 +37,19 @@ class WelcomeController extends BaseController
 
         // Set CSS data
         $this->view->css = array(
+            $this->helpers->View->href('static/css/normalizet.css'),
+            $this->helpers->View->href('static/css/skeleton.css'),
             $this->helpers->View->href('static/css/default.css')
         );
 
-        // JS to load
-        $this->view->js = array(
-            $this->helpers->View->href('static/js/jquery-3.2.0.min.js'),
-            $this->helpers->View->href('static/js/default.js')
-        );
+        /**
+         * JS to load
+         * 
+         * $this->view->js = array(
+         *       'https://code.jquery.com/jquery-3.2.1.min.js'
+         *   );
+         * 
+         */
         
         /**
          * Loading Models
