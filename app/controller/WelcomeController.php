@@ -1,6 +1,7 @@
 <?php
 
 use \Lollipop\Config;
+use \Lollipop\Url;
 
 /**
  * Welcome Controller
@@ -18,8 +19,26 @@ class WelcomeController extends BaseController
         // Call parent construct function
         parent::__construct();
         
-        // Load view helper
-        $this->load('View');
+        /**
+         * Loading Helpers
+         * 
+         *  $this->load('Feature');
+         *  $this->helpers->Feature->on('feature-name')
+         * 
+         */
+        
+        /**
+         * Loading Models
+         * 
+         *  $this->load('Message');
+         *  $this->Message->get();
+         * 
+         * or you could declare a new alias
+         * 
+         *  $this->load('Message', 'm');
+         *  $this->m->get();
+         * 
+         */
     }
     
     /**
@@ -37,9 +56,9 @@ class WelcomeController extends BaseController
 
         // Set CSS data
         $this->view->css = array(
-            $this->helpers->View->href('static/css/normalizet.css'),
-            $this->helpers->View->href('static/css/skeleton.css'),
-            $this->helpers->View->href('static/css/default.css')
+            Url::base('static/css/normalizet.css'),
+            Url::base('static/css/skeleton.css'),
+            Url::base('static/css/default.css')
         );
 
         /**
@@ -51,21 +70,8 @@ class WelcomeController extends BaseController
          * 
          */
         
-        /**
-         * Loading Models
-         * 
-         *  $this->load('Message');
-         *  $this->Message->get();
-         * 
-         * or you could declare a new alias
-         * 
-         *  $this->load('Message', 'm');
-         *  $this->m->get();
-         * 
-         */
-        
         // Passing data to view
-        $this->view->version = Config::get('app')->version;
+        $this->view->welcome_message = 'Up and Running!';
         
         // Start to render page
         return $this->render('template');
