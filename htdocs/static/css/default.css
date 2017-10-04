@@ -7,6 +7,10 @@
     color: #3320bd;
 }
 
+.red {
+    color: #bd2020 !important;
+}
+
 a {
     color: #3320bd;
     text-decoration: none;

@@ -64,7 +64,7 @@ $config['debugger'] = true;
  * 404 Not Found Page
  * 
  */
-$config['not_found_page'] = '';
+$config['not_found_page'] = '404';
 
 /**
  * Environment switches

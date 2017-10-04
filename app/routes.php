@@ -12,3 +12,6 @@ $routes['/'] = array(
     'method' => 'GET' /*  array('GET', 'POST') */,
     'cache' => true
 );
+
+/** 404 Page Not Found **/
+$routes['404'] = 'ErrorController.pagenotfoundAction';
