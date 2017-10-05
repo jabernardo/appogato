@@ -2,13 +2,13 @@
 
 defined('APP_BIN') or exit('APP_BIN wasn\'t declared');
 
-define('APP_BIN_GENERATE', APP_BIN . 'Generate/');
-define('APP_BIN_GENERATE_TEMPLATES', APP_BIN_GENERATE . 'Templates/');
+define('APP_BIN_CREATE', APP_BIN . 'Create/');
+define('APP_BIN_CREATE_TEMPLATES', APP_BIN_CREATE . 'Templates/');
 
 use \Lollipop\Config;
 
 /**
- * Generate Template
+ * Create Template
  * 
  * @package lmvc
  * @version 1.1
@@ -19,7 +19,7 @@ use \Lollipop\Config;
  * Class for generating LMVC template
  * 
  */
-class Generate
+class Create
 {
     /**
      * @var     array   Project config
@@ -144,8 +144,8 @@ class Generate
     private function _parseTemplate($template, array $config) {
         $data = '';
 
-        if (file_exists(APP_BIN_GENERATE_TEMPLATES . $template)) {
-            $data = file_get_contents(APP_BIN_GENERATE_TEMPLATES . $template);
+        if (file_exists(APP_BIN_CREATE_TEMPLATES . $template)) {
+            $data = file_get_contents(APP_BIN_CREATE_TEMPLATES . $template);
         }
         
         $vals = $this->_parseTemplateConfig();
@@ -181,9 +181,9 @@ class Generate
      * 
      */
     private function _parseTemplateConfig() {
-        if (!file_exists(APP_BIN_GENERATE_TEMPLATES . 'config.json')) return [];
+        if (!file_exists(APP_BIN_CREATE_TEMPLATES . 'config.json')) return [];
         
-        $config = json_decode(file_get_contents(APP_BIN_GENERATE_TEMPLATES . 'config.json'), true);
+        $config = json_decode(file_get_contents(APP_BIN_CREATE_TEMPLATES . 'config.json'), true);
         
         if (!$config) return [];
         

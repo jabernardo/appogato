@@ -39,7 +39,7 @@ if (!isset($config) && !isset($config['app']) && !is_array($config['app'])) {
 
 // @var     array   Commands for application
 $commands = [
-        'generate' => 'Generate',
+        'create' => 'Create',
         'cache' => 'Cache'
     ];
 
