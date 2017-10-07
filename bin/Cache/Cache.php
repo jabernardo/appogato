@@ -8,7 +8,7 @@ use \Lollipop\Config;
  * Cache
  * 
  * @package lmvc
- * @version 1.2
+ * @version 1.2.1
  * @author  John Aldrich Bernardo
  * @email   4ldrich@protonmail.com
  * @description
@@ -77,7 +77,7 @@ class Cache
                 break;
             default:
                 // Nah...
-                Console::error('Unknown command.');
+                Console::error('Cache commands: get, remove, or purge');
                 
                 break;
         }
