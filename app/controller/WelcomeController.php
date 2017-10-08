@@ -74,6 +74,6 @@ class WelcomeController extends BaseController
         $this->view->welcome_message = 'Up and Running!';
         
         // Start to render page
-        return $this->render('template');
+        return $this->render('welcome');
     }
 }

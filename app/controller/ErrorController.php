@@ -54,6 +54,6 @@ class ErrorController extends BaseController
         $this->view->message = 'The page that you have requested could not be found.';
         
         // @todo    Insert actions here
-        return $this->render('404');
+        return $this->render('error');
     }
 }

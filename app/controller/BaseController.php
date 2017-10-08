@@ -4,10 +4,15 @@ use \Lollipop\Config;
 use \Lollipop\CsrfToken;
 use \Lollipop\Log;
 use \Lollipop\Page;
+use \Lollipop\Request;
 use \Lollipop\Url;
 
 /**
  * Base Controller
+ * 
+ * @package Lollipop for MVC
+ * @author  John Aldrich Bernardo
+ * @version 1.0
  * 
  */
 class BaseController
@@ -17,9 +22,23 @@ class BaseController
      * 
      */
     function __construct() {
+        /**
+         * @var     stdClass    View variable holder
+         * 
+         */
         $this->view = new stdClass();
+        
+        /**
+         * @var     stdClass    Helper holder
+         * 
+         */
         $this->helpers = new stdClass();
+        
+        // Set all default view variables on class constuct
         $this->_setDefaultView();
+        
+        // Anti CSRF attacks
+        $this->_hookCSRF();
     }
     
     /**
@@ -71,13 +90,43 @@ class BaseController
          * @var string  Csrf Token
          * 
          */
-        $this->view->form = array(
+        $this->view->form = (object)array(
             'anti_csrf_input' => CsrfToken::getFormInput()
         );
     }
     
     /**
+     * Check all passing request for CSRF attack
+     * 
+     * @access  private
+     * @return  void
+     * 
+     */
+    private function _hookCSRF() {
+        $sugar = spare(Config::get('anti_csrf.name'), 'sugar');
+        
+        if ((isset($_POST) && count($_POST)) &&
+            !CsrfToken::isValid(Request::get($sugar))) {
+            
+            $this->view->css = array(
+                Url::base('static/css/normalize.css'),
+                Url::base('static/css/skeleton.css'),
+                Url::base('static/css/default.css')
+            );
+            
+            // Messages
+            $this->view->title = 'No Trespassing';
+            $this->view->message = 'Life is SHORT don\'t make it SHORTER.';
+            
+            exit($this->render('error'));
+        }
+    }
+    
+    /**
      * Generate data
+     * 
+     * @access  private
+     * @return  array
      * 
      */
     private function _getViewData() {
