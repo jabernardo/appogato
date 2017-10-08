@@ -1,6 +1,6 @@
 {
     "controller": {
-        "template": "controller.template",
+        "template": "controller.tpl",
         "path": "controller/",
         "vars": {
             "author": "$",
@@ -9,7 +9,7 @@
         }
     },
     "model": {
-        "template": "model.template",
+        "template": "model.tpl",
         "path": "model/",
         "vars": {
             "author": "$",

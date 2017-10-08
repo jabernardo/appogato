@@ -4,13 +4,13 @@
  * Lollipop for MVC
  * An extensive and flexible library for PHP
  *
- * @package    Lollipop
- * @version    1.0
+ * @package    Lollipop for MVC
+ * @version    2.0
  * @author     John Aldrich Bernardo <bjohnaldrich@gmail.com>
- * @copyright  Copyright (C) 2015 John Aldrich Bernardo. All rights reserved.
+ * @copyright  Copyright (C) 2017 John Aldrich Bernardo. All rights reserved.
  * @license
  *
- * Copyright (c) 2016 John Aldrich Bernardo
+ * Copyright (c) 2017 John Aldrich Bernardo
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
