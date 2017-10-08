@@ -108,6 +108,13 @@ class BaseController
         if ((isset($_POST) && count($_POST)) &&
             !CsrfToken::isValid(Request::get($sugar))) {
             
+            $this->view->title = 'Lollipop-PHP for MVC';
+            $this->view->meta = array(
+                'author' => Config::get('app')->author,
+                'description' => Config::get('app')->name,
+                'keywords' => Config::get('app')->name
+            );
+            
             $this->view->css = array(
                 Url::base('static/css/normalize.css'),
                 Url::base('static/css/skeleton.css'),
