@@ -6,12 +6,7 @@
 composer create-project jabernardo/lmvc hello_world
 ```
 
-## Building Docker Image
-
-```bash
-docker build -t lmvc .
-docker run --name lmvc_test -p 8000:80 lmvc
-```
+Please see this [tutorial](https://github.com/jabernardo/lmvc/blob/master/TUTORIAL.md) for using `Lollipop-PHP for MVC`.
 
 ## About LMVC
 LMVC is a web framework with a very little footprint. A very lightweight and easy-to-use framework. 
