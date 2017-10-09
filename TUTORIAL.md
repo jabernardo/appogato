@@ -117,3 +117,29 @@ class InventoryController extends BaseController
 
 ```
 
+## Application logs
+
+All application logs are saved into a text file in `app/logs`.
+
+
+## Cache Control
+
+By default, all cache are stored in `filesystem` in `app/cache`.
+
+Clearing cache through `lmvc.sh`.
+
+```bash
+./lmvc cache purge
+```
+
+Removing change by key
+
+```bash
+./lmvc cache remove key1 key ...
+```
+
+Getting cache content
+
+```bash
+./lmvc cache get key1 key ...
+```
