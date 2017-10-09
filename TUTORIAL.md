@@ -161,6 +161,19 @@ Here's what it looks like on `LMVC's Welcome Page`.
 </html>
 ```
 
+Forms...
+
+`Lollipop\CsrfToken` are checked on form submission by default.
+Please note to include `CSRF` token in forms.
+
+```php
+<form action="" method="POST" enctype="multipart/form-data">
+    <?= $form->anti_csrf_input ?>
+    ...
+    <input type="submit" />
+</form>
+
+```
 
 ## Application logs
 
