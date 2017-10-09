@@ -77,10 +77,10 @@ class Log
         $log_hourly = spare(Config::get('log.hourly'), false);
         $filename = $log_path . DIRECTORY_SEPARATOR . ($log_hourly ? date('Y-m-d-H') : date('Y-m-d')) . '.log';
         
-        $stored = file_get_contents($filename);
+        $stored = file_exists($filename) ? file_get_contents($filename) : '';
         
         while (1) {
-            $stream = file_get_contents($filename);
+            $stream = file_exists($filename) ? file_get_contents($filename) : '';
             
             if ($stored != $stream) {
                 $diff = str_replace($stored, '', $stream);
