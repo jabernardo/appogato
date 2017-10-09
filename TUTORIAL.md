@@ -117,6 +117,51 @@ class InventoryController extends BaseController
 
 ```
 
+## Views
+
+Rendering a `view`.
+
+```php
+<?php
+
+class WelcomeController extends BaseController
+{
+    function __construct() {
+        parent::__construct();
+    }
+
+    function indexAction() {
+        // Passing variable to view
+        $this->view->welcome_message = 'Hello World!';
+        
+        return $this->render('welcome');
+    }
+}
+```
+
+`$this->render` was declared in `BaseController`.
+Here's what it looks like on `LMVC's Welcome Page`.
+
+```php
+<!DOCTYPE>
+<html>
+    <head>
+        <?php include('default/meta.php') ?>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1><?= $welcome_message ?></h1>
+                <p>Thank you for using <a href="https://github.com/jabernardo/lmvc">Lollipop for MVC</a>. Don't forget to give a star!</p>
+            </div>
+        </div>
+        <?php include('default/css.php') ?>
+        <?php include('default/js.php') ?>
+    </body>
+</html>
+```
+
+
 ## Application logs
 
 All application logs are saved into a text file in `app/logs`.
@@ -135,11 +180,11 @@ Clearing cache through `lmvc.sh`.
 Removing change by key
 
 ```bash
-./lmvc cache remove key1 key ...
+./lmvc cache remove key1 key2 ...
 ```
 
 Getting cache content
 
 ```bash
-./lmvc cache get key1 key ...
+./lmvc cache get key1 key2 ...
 ```
