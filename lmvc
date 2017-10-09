@@ -39,8 +39,9 @@ if (!isset($config) && !isset($config['app']) && !is_array($config['app'])) {
 
 // @var     array   Commands for application
 $commands = [
-        'create' => 'Create',
-        'cache' => 'Cache'
+        'create',
+        'cache',
+        'log'
     ];
 
 // Get first main parameter from command line
@@ -51,9 +52,9 @@ if (!$cmd_main) {
     Console::error('No parameters found.');
 }
 
-if (isset($commands[$cmd_main])) {
+if (in_array($cmd_main, $commands)) {
     // Get command information
-    $cmd_info = $commands[$cmd_main];
+    $cmd_info = ucwords($cmd_main);
 
     // Get other parameters after main command
     $params = array_splice($argv, 2, count($argv) - 1);
