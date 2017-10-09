@@ -119,7 +119,7 @@ class InventoryController extends BaseController
 
 ## Views
 
-Rendering a `view`.
+Rendering a `view` on `app/view`.
 
 ```php
 <?php
