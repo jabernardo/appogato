@@ -179,6 +179,18 @@ Please note to include `CSRF` token in forms.
 
 All application logs are saved into a text file in `app/logs`.
 
+You could tail logs using `lmvc.sh`
+
+```bash
+./lmvc log tail
+```
+
+Purging of logs...
+
+```bash
+./lmvc log purge
+```
+
 
 ## Cache Control
 
