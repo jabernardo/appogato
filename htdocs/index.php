@@ -143,11 +143,15 @@ spl_autoload_register(function($class) {
  * Index Page using Controller
  *
  */
+$controller_prefix = 'LMVC\\Controller\\';
+ 
 foreach ($routes as $route => $value) {
-    if (is_string($value) || is_callable($value)) {
+    if (is_callable($value)) {
         \Lollipop\Route::all($route, $value);
+    } else if (is_string($value)) {
+        \Lollipop\Route::all($route, $controller_prefix . $value);
     } else if (is_array($value)) {
-        $callback = isset($value['callback']) ? $value['callback'] : function() { return 'No callback declared.'; };
+        $callback = isset($value['callback']) ? $controller_prefix . $value['callback'] : function() { return 'No callback declared.'; };
         $cache = isset($value['cache']) ? $value['cache'] : false;
         $method = isset($value['method']) ? $value['method'] : '';
 
