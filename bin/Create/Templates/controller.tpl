@@ -1,5 +1,7 @@
 <?php
 
+namespace LMVC\Controller;
+
 /**
  * {name} Controller
  * 
@@ -9,7 +11,7 @@
  * @email       {email}
  * 
  */
-class {name} extends BaseController
+class {name} extends \LMVC\Controller\Core\Base
 {
     /**
      * Class construct

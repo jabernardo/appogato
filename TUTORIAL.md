@@ -40,10 +40,10 @@ All controllers were autoloaded and should be placed in
 `app/controller` or you could use `lmvc.sh` to generate one.
 
 ```bash
-./lmvc create controller HelloController
+./lmvc create controller Hello
 ```
 
-Command will create a Controller `app/controller/HelloController.php`
+Command will create a Controller `app/controller/Hello.php`
 base from template. All `Actions` from `Controller` should be declared
 in `routes`.
 
@@ -65,7 +65,9 @@ This will generate a `CRUD` model.
 ```php
 <?php
 
-class InventoryController extends BaseController
+namespace LMVC\Controller;
+
+class InventoryController extends \LMVC\Controller\Core\Base
 {
     function __construct() {
         parent::__construct();
@@ -101,7 +103,7 @@ also, using it!
 ```php
 <?php
 
-class InventoryController extends BaseController
+class InventoryController extends \LMVC\Controller\Core\Base
 {
     function __construct() {
         parent::__construct();
@@ -124,7 +126,7 @@ Rendering a `view` on `app/view`.
 ```php
 <?php
 
-class WelcomeController extends BaseController
+class WelcomeController extends \LMVC\Controller\Core\Base
 {
     function __construct() {
         parent::__construct();
@@ -139,7 +141,7 @@ class WelcomeController extends BaseController
 }
 ```
 
-`$this->render` was declared in `BaseController`.
+`$this->render` was declared in `\LMVC\Controller\Core\Base`.
 Here's what it looks like on `LMVC's Welcome Page`.
 
 ```php

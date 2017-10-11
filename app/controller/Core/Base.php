@@ -1,5 +1,7 @@
 <?php
 
+namespace LMVC\Controller\Core;
+
 use \Lollipop\Config;
 use \Lollipop\CsrfToken;
 use \Lollipop\Log;
@@ -15,7 +17,7 @@ use \Lollipop\Url;
  * @version 1.0
  * 
  */
-class BaseController
+class Base
 {
     /**
      * Class Construct
@@ -23,16 +25,16 @@ class BaseController
      */
     function __construct() {
         /**
-         * @var     stdClass    View variable holder
+         * @var     \stdClass    View variable holder
          * 
          */
-        $this->view = new stdClass();
+        $this->view = new \stdClass();
         
         /**
-         * @var     stdClass    Helper holder
+         * @var     \stdClass    Helper holder
          * 
          */
-        $this->helpers = new stdClass();
+        $this->helpers = new \stdClass();
         
         // Set all default view variables on class constuct
         $this->_setDefaultView();
@@ -159,27 +161,32 @@ class BaseController
     public function load($name, $alias = null) {
         $f = false;
         
+        // Change path to UNIX directory separator '/' 
+        $class_path = str_replace('\\', '/', $name);
+        // Class alias should not contain any invalid characters, so did path separator
+        $class_alias = str_replace('/', '', $class_path);
+        
         // Load models
-        if (file_exists(APP_CORE_MODEL . $name . '.php')) {
-            require_once(APP_CORE_MODEL . $name . '.php');
+        if (file_exists(APP_CORE_MODEL . $class_path . '.php')) {
+            require_once(APP_CORE_MODEL . $class_path . '.php');
             $f = true;
             
             if ($alias) {
                 $this->{$alias} = new $name();
             } else {
-                $this->{$name} = new $name();
+                $this->{$class_alias} = new $name();
             }
         }
        
         // Load helpers
-        if (file_exists(APP_CORE_HELPER . $name . '.php')) {
-            require_once(APP_CORE_HELPER . $name . '.php');
+        if (file_exists(APP_CORE_HELPER . $class_path . '.php')) {
+            require_once(APP_CORE_HELPER . $class_path . '.php');
             $f = true;
             
             if ($alias) {
                 $this->{$alias} = new $name();
             } else {
-                $this->helpers->{$name} = new $name();
+                $this->helpers->{$class_alias} = new $name();
             }
         }
         

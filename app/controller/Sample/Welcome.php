@@ -1,5 +1,7 @@
 <?php
 
+namespace LMVC\Controller\Sample;
+
 use \Lollipop\Config;
 use \Lollipop\Url;
 
@@ -9,7 +11,7 @@ use \Lollipop\Url;
  * See `routes.php` on how this was working
  *
  */
-class WelcomeController extends BaseController
+class Welcome extends \LMVC\Controller\Core\Base
 {
     /**
      * Class construct

@@ -9,10 +9,10 @@
 // $routes['/'] = 'WelcomeController.indexAction';
 
 $routes['/'] = array(
-    'callback' => 'WelcomeController.indexAction',
+    'callback' => 'LMVC\\Controller\\Sample\\Welcome.indexAction',
     'method' => '' /*  array('GET', 'POST') */,
     'cache' => true
 );
 
 /** 404 Page Not Found **/
-$routes['404'] = 'ErrorController.pagenotfoundAction';
+$routes['404'] = 'LMVC\\Controller\\Sample\\Error.pagenotfoundAction';
