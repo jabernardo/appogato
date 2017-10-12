@@ -30,12 +30,6 @@ class Base
          */
         $this->view = new \stdClass();
         
-        /**
-         * @var     \stdClass    Helper holder
-         * 
-         */
-        $this->helpers = new \stdClass();
-        
         // Set all default view variables on class constuct
         $this->_setDefaultView();
         
@@ -147,52 +141,6 @@ class Base
         }
         
         return $d;
-    }
-
-    /**
-     * Load Models or Helpers
-     * 
-     * @access  public
-     * @param   string  $name   Name to load
-     * @param   string  $alias  Alias for loaded class
-     * @return  void
-     * 
-     */
-    public function load($name, $alias = null) {
-        $f = false;
-        
-        // Change path to UNIX directory separator '/' 
-        $class_path = str_replace('\\', '/', $name);
-        // Class alias should not contain any invalid characters, so did path separator
-        $class_alias = str_replace('/', '', $class_path);
-        
-        // Load models
-        if (file_exists(APP_CORE_MODEL . $class_path . '.php')) {
-            require_once(APP_CORE_MODEL . $class_path . '.php');
-            $f = true;
-            
-            if ($alias) {
-                $this->{$alias} = new $name();
-            } else {
-                $this->{$class_alias} = new $name();
-            }
-        }
-       
-        // Load helpers
-        if (file_exists(APP_CORE_HELPER . $class_path . '.php')) {
-            require_once(APP_CORE_HELPER . $class_path . '.php');
-            $f = true;
-            
-            if ($alias) {
-                $this->{$alias} = new $name();
-            } else {
-                $this->helpers->{$class_alias} = new $name();
-            }
-        }
-        
-        if (!$f) {
-            Log::error('Tried to load non-existent: ' . $name);
-        }
     }
     
     /**

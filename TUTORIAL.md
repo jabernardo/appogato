@@ -47,6 +47,7 @@ Command will create a Controller `app/controller/Hello.php`
 base from template. All `Actions` from `Controller` should be declared
 in `routes`.
 
+> All controllers must be declared with namespace `LMVC\Controller`
 
 
 ## Models
@@ -67,20 +68,23 @@ This will generate a `CRUD` model.
 
 namespace LMVC\Controller;
 
-class InventoryController extends \LMVC\Controller\Core\Base
+class Inventory extends \LMVC\Controller\Core\Base
 {
     function __construct() {
         parent::__construct();
         
-        $this->load('Products');
+        $this->products = new \LMVC\Model\Products();
     }
     
     public function getAction() {
-        return $this->Products->get();
+        return $this->products->get();
     }
 }
 
 ```
+
+> All model must be declared with namespace `LMVC\Model`
+
 
 ## Helpers
 
@@ -88,6 +92,8 @@ Defining a new helpers isn't that hard
 
 ```php
 <?php
+
+namespace LMVC\Helper;
 
 class Sort
 {
@@ -103,21 +109,25 @@ also, using it!
 ```php
 <?php
 
-class InventoryController extends \LMVC\Controller\Core\Base
+namespace LMVC\Controller;
+
+class Inventory extends \LMVC\Controller\Core\Base
 {
     function __construct() {
         parent::__construct();
         
-        $this->load('Products');
-        $this->load('Sort');
+        $this->products = new \LMVC\Model\Products();
+        $this->sort = new \LMVC\Helper\Sort();
     }
     
     public function getAction() {
-        return $this->Sort->bubble($this->Products->get());
+        return $this->sort->bubble($this->products->get());
     }
 }
 
 ```
+
+> All controllers must be declared with namespace `LMVC\Helper`
 
 ## Views
 
@@ -126,7 +136,9 @@ Rendering a `view` on `app/view`.
 ```php
 <?php
 
-class WelcomeController extends \LMVC\Controller\Core\Base
+namespace LMVC\Controller;
+
+class Welcome extends \LMVC\Controller\Core\Base
 {
     function __construct() {
         parent::__construct();

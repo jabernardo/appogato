@@ -91,6 +91,42 @@ if (isset($config['env'])) {
 /** Clear overrides **/
 if (isset($config['overrides'])) unset($config['overrides']);
 
+/**
+ * Autoload function
+ * for controllers
+ * 
+ */
+spl_autoload_register(function($class) {
+    // project-specific namespace prefix
+    $prefixes = array(
+            'LMVC\\Controller\\' => APP_CORE_CONTROLLER,
+            'LMVC\\Model\\' => APP_CORE_MODEL,
+            'LMVC\\Helper\\' => APP_CORE_HELPER
+        );
+
+    foreach ($prefixes as $prefix => $base_dir) {
+        // does the class use the namespace prefix?
+        $len = strlen($prefix);
+        
+        if (strncmp($prefix, $class, $len) !== 0) {
+            // no, move to the next registered prefix
+            continue;
+        }
+        
+        // get the relative class name
+        $relative_class = substr($class, $len);
+    
+        // replace the namespace prefix with the base directory, replace namespace
+        // separators with directory separators in the relative class name, append
+        // with .php
+        $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
+        
+        // if the file exists, require it
+        if (file_exists($file)) {
+            require $file;
+        }
+    }
+});
 
 /**
  * Include routes
@@ -104,40 +140,6 @@ require_once(APP_CORE . 'routes.php');
 
 if (!isset($routes) && !is_array($routes))
     die('Invalid routes!');
-
-/**
- * Autoload function
- * for controllers
- * 
- */
-spl_autoload_register(function($class) {
-    // project-specific namespace prefix
-    $prefix = 'LMVC\\Controller\\';
-
-    // base directory for the namespace prefix
-    $base_dir = APP_CORE_CONTROLLER;
-    
-    // does the class use the namespace prefix?
-    $len = strlen($prefix);
-    
-    if (strncmp($prefix, $class, $len) !== 0) {
-        // no, move to the next registered autoloader
-        return;
-    }
-    
-    // get the relative class name
-    $relative_class = substr($class, $len);
-
-    // replace the namespace prefix with the base directory, replace namespace
-    // separators with directory separators in the relative class name, append
-    // with .php
-    $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
-    
-    // if the file exists, require it
-    if (file_exists($file)) {
-        require $file;
-    }
-});
 
 /**
  * Index Page using Controller

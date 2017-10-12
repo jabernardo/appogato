@@ -1,5 +1,7 @@
 <?php
 
+namespace LMVC\Helper;
+
 use \Lollipop\Config;
 
 /**

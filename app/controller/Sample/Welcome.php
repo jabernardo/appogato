@@ -20,27 +20,6 @@ class Welcome extends \LMVC\Controller\Core\Base
     function __construct() {
         // Call parent construct function
         parent::__construct();
-        
-        /**
-         * Loading Helpers
-         * 
-         *  $this->load('Feature');
-         *  $this->helpers->Feature->on('feature-name')
-         * 
-         */
-        
-        /**
-         * Loading Models
-         * 
-         *  $this->load('Message');
-         *  $this->Message->get();
-         * 
-         * or you could declare a new alias
-         * 
-         *  $this->load('Message', 'm');
-         *  $this->m->get();
-         * 
-         */
     }
     
     /**
@@ -69,6 +48,20 @@ class Welcome extends \LMVC\Controller\Core\Base
          * $this->view->js = array(
          *       'https://code.jquery.com/jquery-3.2.1.min.js'
          *   );
+         * 
+         */
+         
+        /**
+         * Loading of models
+         * 
+         * $products = new \LMVC\Model\Products()
+         * 
+         */
+        
+        /**
+         * Loading of helpers
+         * 
+         * $features = new \LMVC\Helper\Feature()
          * 
          */
         
