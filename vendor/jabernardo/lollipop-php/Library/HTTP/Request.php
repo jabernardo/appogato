@@ -1,18 +1,28 @@
 <?php
 
-namespace Lollipop;
+namespace Lollipop\HTTP;
 
 defined('LOLLIPOP_BASE') or die('Lollipop wasn\'t loaded correctly.');
+
+/**
+ * Check application if running on web server
+ * else just terminate
+ * 
+ */
+if (!isset($_SERVER['REQUEST_URI'])) {
+    exit('Lollipop Application must be run on a web server.' . PHP_EOL);
+}
 
 use \Lollipop\Benchmark;
 use \Lollipop\Cache;
 use \Lollipop\Config;
 use \Lollipop\Log;
+use \Lollipop\HTTP\Response;
 
 /**
  * Request Class 
  *
- * @version     1.3.6
+ * @version     1.4.0
  * @author      John Aldrich Bernardo
  * @email       4ldrich@protonmail.com
  * @package     Lollipop 
@@ -26,7 +36,7 @@ class Request
      * @var     array   Centralized session requests
      * 
      */
-    static private $_all_requests = array();
+    private $_all_requests = array();
     
     /**
      * Check for request(s)
@@ -36,19 +46,19 @@ class Request
      * @return bool
      * 
      */
-    static function is($requests) {
+    function is($requests) {
         $is = true;
         
         // Also support PUT and DELETE
         parse_str(file_get_contents("php://input"), $_php_request);
         // Merge with POST and GET
-        self::$_all_requests = array_merge(self::$_all_requests, array_merge($_REQUEST, $_php_request));
+        $this->_all_requests = array_merge($this->_all_requests, array_merge($_REQUEST, $_php_request));
         
         if (is_array($requests)) {
             $returns = array();
             
             foreach ($requests as $request) {
-                array_push($returns, isset(self::$_all_requests[$request]));
+                array_push($returns, isset($this->_all_requests[$request]));
             }
             
             foreach ($returns as $return) {
@@ -57,10 +67,22 @@ class Request
                 }
             }
         } else {
-            $is = isset(self::$_all_requests[$requests]);
+            $is = isset($this->_all_requests[$requests]);
         }
         
         return $is;
+    }
+    
+    /**
+     * Check if request method is in use
+     * 
+     * @access  public
+     * @param   string  $method     Request method
+     * @return  bool
+     * 
+     */
+    function isMethod($method) {
+        return !strcasecmp($method, $_SERVER['REQUEST_METHOD']);
     }
     
     /**
@@ -71,25 +93,54 @@ class Request
      * @return  array
      * 
      */
-    static function get($requests = null) {
+    function get($requests = null) {
         $var = array();
         
         // Also support PUT and DELETE
         parse_str(file_get_contents("php://input"), $_php_request);
         // Merge with POST and GET
-        self::$_all_requests = array_merge(self::$_all_requests, array_merge($_REQUEST, $_php_request));
+        $this->_all_requests = array_merge($this->_all_requests, array_merge($_REQUEST, $_php_request));
         
         if (is_array($requests)) {
             foreach ($requests as $request) {
-                $var[$request] = isset(self::$_all_requests[$request]) ? self::$_all_requests[$request] : null;
+                $var[$request] = isset($this->_all_requests[$request]) ? $this->_all_requests[$request] : null;
             }
         } else if (is_null($requests)) {
-            $var = self::$_all_requests;
+            $var = $this->_all_requests;
         } else {
-            $var = (isset(self::$_all_requests[$requests])) ? self::$_all_requests[$requests] : null;
+            $var = (isset($this->_all_requests[$requests])) ? $this->_all_requests[$requests] : null;
         }
         
         return $var;
+    }
+    
+    /**
+     * Get request method
+     * 
+     * @access  public
+     * @return  string
+     * 
+     */
+    public function getMethod() {
+        return $_SERVER['REQUEST_METHOD'];
+    }
+    
+    /**
+     * Get request header value
+     * 
+     * @access  public
+     * @param   string  $header     Request header
+     * @return  mixed   `null` if header is not set
+     * 
+     */
+    public function header($header) {
+        foreach(getallheaders() as $k => $v) {
+            if (!strcasecmp($k, $header)) {
+                return $v;
+            }
+        }
+        
+        return null;
     }
     
     /**
@@ -124,7 +175,7 @@ class Request
      * @return  mixed
      * 
      */
-    static function send(array $options) {
+    function send(array $options) {
         // Get localdb location in config
         $localdb = spare(Config::get('localdb.folder'), LOLLIPOP_STORAGE_LOCALDB);
         
@@ -248,7 +299,7 @@ class Request
             }
         }
         
-        return $return;
+        return new Response($return);
     }
 }
 

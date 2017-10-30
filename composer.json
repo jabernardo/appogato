@@ -19,6 +19,6 @@
     },
     "require-dev": {
         "php": ">=5.4.0",
-        "jabernardo/lollipop-php": "^1.0"
+        "jabernardo/lollipop-php": "^2.0"
     }
 }

@@ -7,12 +7,11 @@
 
 /** Home Page **/
 // $routes['/'] = 'WelcomeController.indexAction';
-
-$routes['/'] = array(
+$routes['/'] = [
     'callback' => 'Sample\\Welcome.indexAction',
     'method' => '' /*  array('GET', 'POST') */,
-    'cache' => true
-);
+    'cachable' => true
+];
 
 /** 404 Page Not Found **/
 $routes['404'] = 'Sample\\Error.pagenotfoundAction';

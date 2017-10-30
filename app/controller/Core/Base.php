@@ -1,6 +1,6 @@
 <?php
 
-namespace LMVC\Controller\Core;
+namespace App\Controller\Core;
 
 use \Lollipop\Config;
 use \Lollipop\CsrfToken;

@@ -64,7 +64,10 @@ $config['debugger'] = true;
  * 404 Not Found Page
  * 
  */
-$config['not_found_page'] = '404';
+$config['page_not_found'] = array(
+        'show'  => true,
+        'route' => '404'
+    );
 
 /**
  * Environment switches
@@ -106,35 +109,35 @@ $config['log'] = array(
 $config['overrides'] = array(
         // Development
         'dev' => array(
-                'debugger' => true,
-                'db' => array(
-                        // Database
-                        'host' => 'localhost',
-                        'username' => 'root',
-                        'password' => '',
-                        'database' => 'phpmyadmin'
-                )
-            ),
+            'debugger' => true,
+            'db' => array(
+                    // Database
+                'host' => 'localhost',
+                'username' => 'root',
+                'password' => '',
+                'database' => 'aldrich'
+            )
+        ),
         // Staging
         'stg' => array(
-                'debugger' => false,
-                'db' => array(
-                        // Database
-                        'host' => 'localhost',
-                        'username' => 'root',
-                        'password' => '',
-                        'database' => 'aldrich'
-                )
-            ),
+            'debugger' => false,
+            'db' => array(
+                // Database
+                'host' => 'localhost',
+                'username' => 'root',
+                'password' => '',
+                'database' => 'aldrich'
+            )
+        ),
         // Production
         'prd' => array(
-                'debugger' => false,
-                'db' => array(
-                        // Database
-                        'host' => 'localhost',
-                        'username' => 'root',
-                        'password' => '',
-                        'database' => 'aldrich'
-                )
+            'debugger' => false,
+            'db' => array(
+                // Database
+                'host' => 'localhost',
+                'username' => 'root',
+                'password' => '',
+                'database' => 'aldrich'
             )
+        )
     );

@@ -1,13 +1,24 @@
 <?php
 
-namespace Lollipop;
+namespace Lollipop\HTTP;
+
+defined('LOLLIPOP_BASE') or die('Lollipop wasn\'t loaded correctly.');
+
+/**
+ * Check application if running on web server
+ * else just terminate
+ * 
+ */
+if (!isset($_SERVER['REQUEST_URI'])) {
+    exit('Lollipop Application must be run on a web server.' . PHP_EOL);
+}
 
 use \Lollipop\Cookie;
 
 /**
  * Lollipop Route Class
  *
- * @version     1.0.0
+ * @version     1.0.2
  * @author      John Aldrich Bernardo
  * @email       4ldrich@protonmail.com
  * @package     Lollipop
@@ -126,7 +137,7 @@ class Response
      * 
      */
     public function cookies(array $data) {
-        $this->_cookies = array_merge($this->_cookies, $data);
+        $this->_cookies = array_merge_recursive($this->_cookies, $data);
         
         return  $this;
     }
@@ -138,8 +149,10 @@ class Response
      * @return  string
      * 
      */
-    public function get() {
-        return $this->_format($this->_data);
+    public function get($raw = false) {
+        return $raw 
+                ? $this->_data
+                : $this->_format($this->_data);
     }
     
     /**
@@ -171,6 +184,17 @@ class Response
      */
     public function getHeaders() {
         return $this->_headers;
+    }
+    
+    /**
+     * Get cookies for response
+     * 
+     * @access  public
+     * @return  array
+     * 
+     */
+    public function getCookies() {
+        return $this->_cookies;
     }
     
     /**

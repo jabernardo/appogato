@@ -1,6 +1,6 @@
 <?php
 
-namespace LMVC\Controller\Sample;
+namespace App\Controller\Sample;
 
 use \Lollipop\Config;
 use \Lollipop\Url;
@@ -11,7 +11,7 @@ use \Lollipop\Url;
  * See `routes.php` on how this was working
  *
  */
-class Welcome extends \LMVC\Controller\Core\Base
+class Welcome extends \App\Controller\Core\Base
 {
     /**
      * Class construct
@@ -26,7 +26,7 @@ class Welcome extends \LMVC\Controller\Core\Base
      * Hello World!
      *
      */
-    public function indexAction() {
+    public function indexAction(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Response $res) {
         // Set page meta
         $this->view->title = 'Lollipop-PHP for MVC';
         $this->view->meta = array(

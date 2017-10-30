@@ -1,6 +1,6 @@
 <?php
 
-namespace LMVC\Controller;
+namespace App\Controller;
 
 /**
  * {name} Controller
@@ -11,7 +11,7 @@ namespace LMVC\Controller;
  * @email       {email}
  * 
  */
-class {name} extends \LMVC\Controller\Core\Base
+class {name} extends \App\Controller\Core\Base
 {
     /**
      * Class construct
@@ -34,8 +34,8 @@ class {name} extends \LMVC\Controller\Core\Base
      * @return  void
      * 
      */
-    public function indexAction() {
+    public function indexAction(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Response $res) {
         // @todo    Insert actions here
-        return 'Hello World!';
+        return $res->set('Hello World!');
     }
 }

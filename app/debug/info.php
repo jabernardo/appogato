@@ -37,8 +37,8 @@ use \Lollipop\Benchmark;
 use \Lollipop\Config;
 use \Lollipop\Log;
 use \Lollipop\Page;
-use \Lollipop\Request;
-use \Lollipop\Route;
+use \Lollipop\HTTP\Request;
+use \Lollipop\HTTP\Route;
 use \Lollipop\Session;
 use \Lollipop\Url;
 
@@ -47,8 +47,10 @@ use \Lollipop\Url;
  * Prepare route: Benchmark
  * 
  */
-Route::prepare(function() {
+Route::prepare(function($req, $res) {
     Benchmark::mark('_lmvc_start');
+    
+    return $res;
 });
 
 
@@ -56,13 +58,13 @@ Route::prepare(function() {
  * Clean function
  * 
  */
-Route::clean(function() {
+Route::clean(function($req, $res) {
     // End benchmark
     Benchmark::mark('_lmvc_stop');
     
     // Check if Debugger is enabled
     if (!Config::get('debugger')) return false;
-    if (Request::is('disable-debugger')) return false;
+    if ($req->is('disable-debugger')) return false;
     if (Session::get('disable-debugger')) {
         Session::drop('disable-debugger');
         return false;
@@ -70,21 +72,17 @@ Route::clean(function() {
 
     $is_html = false;
     $content_type_headers_count = 0;
+    $raw_res = $res->get(true);
 
-    foreach (headers_list() as $header) {
+    foreach ($res->getHeaders() as $header) {
         // Check if text/html is set as header
         if (preg_match_all('/content-type:\s*text\/html/iU', $header)) {
             $is_html = true;
             break;
         }
-        
-        // Check for count of header with content-type
-        if (preg_match_all('/content-type/iU', $header)) {
-            $content_type_headers_count++;
-        }
     }
     
-    $is_html = $is_html || !$content_type_headers_count;
+    $is_html = $is_html || (!is_array($raw_res) && !is_object($raw_res));
     
     if ($is_html) {
         $data = array();
@@ -123,6 +121,11 @@ Route::clean(function() {
                 'info' => Log::get('info')
             );
         
-        exit(Page::render(APP_CORE_DEBUG . 'summary.php', $data));
+        $response = $res->get(true);
+        $debugger = Page::render(APP_CORE_DEBUG . 'summary.php', $data);
+        
+        return $res->set($response . $debugger);
     }
+    
+    return $res;
 });

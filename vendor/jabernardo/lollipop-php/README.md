@@ -38,13 +38,11 @@ require('/path/to/lollipop-php/autoload.php');
 // or if using composer
 // require('./vendor/autoload.php');
 
-use \Lollipop\Route;
-
 // Your index page
-Route::get('/', function() {
-    return 'Hello World!';
+\Lollipop\HTTP\Route::get('/', function($request, $response) {
+    return $response->set('Hello World!');
 }, true);
-           
+
 ```
 ###### DOWNLOAD
 Get the latest version of Lollipop-PHP framework from our Git repository hosted on GitHub

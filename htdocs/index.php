@@ -99,9 +99,9 @@ if (isset($config['overrides'])) unset($config['overrides']);
 spl_autoload_register(function($class) {
     // project-specific namespace prefix
     $prefixes = array(
-            'LMVC\\Controller\\' => APP_CORE_CONTROLLER,
-            'LMVC\\Model\\' => APP_CORE_MODEL,
-            'LMVC\\Helper\\' => APP_CORE_HELPER
+            'App\\Controller\\' => APP_CORE_CONTROLLER,
+            'App\\Model\\' => APP_CORE_MODEL,
+            'App\\Helper\\' => APP_CORE_HELPER
         );
 
     foreach ($prefixes as $prefix => $base_dir) {
@@ -145,18 +145,20 @@ if (!isset($routes) && !is_array($routes))
  * Index Page using Controller
  *
  */
-$controller_prefix = 'LMVC\\Controller\\';
+$controller_prefix = 'App\\Controller\\';
  
 foreach ($routes as $route => $value) {
     if (is_callable($value)) {
-        \Lollipop\Route::all($route, $value);
+        \Lollipop\HTTP\Route::all($route, $value);
     } else if (is_string($value)) {
-        \Lollipop\Route::all($route, $controller_prefix . $value);
+        \Lollipop\HTTP\Route::all($route, $controller_prefix . $value);
     } else if (is_array($value)) {
-        $callback = isset($value['callback']) ? $controller_prefix . $value['callback'] : function() { return 'No callback declared.'; };
-        $cache = isset($value['cache']) ? $value['cache'] : false;
-        $method = isset($value['method']) ? $value['method'] : '';
-
-        \Lollipop\Route::serve($method, $route, $callback, $cache);
+        $value['path'] = $route;
+        
+        if (is_string($value['callback'])) {
+            $value['callback'] = $controller_prefix . $value['callback'];
+        }
+        
+        \Lollipop\HTTP\Route::serve($value);
     }
 }

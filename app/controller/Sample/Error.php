@@ -1,6 +1,6 @@
 <?php
 
-namespace LMVC\Controller\Sample;
+namespace App\Controller\Sample;
 
 use \Lollipop\Config;
 use \Lollipop\Url;
@@ -14,7 +14,7 @@ use \Lollipop\Url;
  * @email       youremail@domain.ext
  * 
  */
-class Error extends \LMVC\Controller\Core\Base
+class Error extends \App\Controller\Core\Base
 {
     /**
      * Class construct
