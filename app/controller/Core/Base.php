@@ -3,10 +3,11 @@
 namespace App\Controller\Core;
 
 use \Lollipop\Config;
+use \Lollipop\Cookie;
 use \Lollipop\CsrfToken;
 use \Lollipop\Log;
 use \Lollipop\Page;
-use \Lollipop\Request;
+use \Lollipop\HTTP\Response;
 use \Lollipop\Url;
 
 /**
@@ -14,7 +15,7 @@ use \Lollipop\Url;
  * 
  * @package Lollipop for MVC
  * @author  John Aldrich Bernardo
- * @version 1.0
+ * @version 1.1
  * 
  */
 class Base
@@ -30,11 +31,20 @@ class Base
          */
         $this->view = new \stdClass();
         
+        /**
+         * @var     \stdClass   Cookies
+         * 
+         */
+        $this->cookies = array();
+        
+        /**
+         * @var     \stdClass   Headers
+         * 
+         */
+        $this->headers = array();
+        
         // Set all default view variables on class constuct
         $this->_setDefaultView();
-        
-        // Anti CSRF attacks
-        $this->_hookCSRF();
     }
     
     /**
@@ -92,40 +102,6 @@ class Base
     }
     
     /**
-     * Check all passing request for CSRF attack
-     * 
-     * @access  private
-     * @return  void
-     * 
-     */
-    private function _hookCSRF() {
-        $sugar = spare(Config::get('anti_csrf.name'), 'sugar');
-        
-        if ((isset($_POST) && count($_POST)) &&
-            !CsrfToken::isValid(Request::get($sugar))) {
-            
-            $this->view->title = 'Lollipop-PHP for MVC';
-            $this->view->meta = array(
-                'author' => Config::get('app')->author,
-                'description' => Config::get('app')->name,
-                'keywords' => Config::get('app')->name
-            );
-            
-            $this->view->css = array(
-                Url::base('static/css/normalize.css'),
-                Url::base('static/css/skeleton.css'),
-                Url::base('static/css/default.css')
-            );
-            
-            // Messages
-            $this->view->title = 'No Trespassing';
-            $this->view->message = 'Life is SHORT don\'t make it SHORTER.';
-            
-            exit($this->render('error'));
-        }
-    }
-    
-    /**
      * Generate data
      * 
      * @access  private
@@ -144,6 +120,29 @@ class Base
     }
     
     /**
+     * Process response
+     * 
+     * @access  private
+     * @
+     * 
+     */
+    private function _createResponse($page) {
+        // Render view
+        $rendered = Page::render(APP_CORE_VIEW . $page . '.php', $this->_getViewData());
+        
+        // Create response
+        $response = new Response($rendered);
+        
+        // Set response cookies
+        $response->cookies($this->cookies);
+        
+        // Set response headers
+        $response->header($this->headers);
+
+        return $response;
+    }
+    
+    /**
      * Render structure
      * 
      * @access  public
@@ -152,6 +151,6 @@ class Base
      * 
      */
     public function render($page) {
-        return Page::render(APP_CORE_VIEW . $page . '.php', $this->_getViewData());
+        return $this->_createResponse($page);
     }
 }
