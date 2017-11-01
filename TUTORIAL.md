@@ -29,7 +29,7 @@ $routes['/'] = 'WelcomeController.indexAction';
 $routes['/'] = array(
     'callback' => 'WelcomeController.indexAction',
     'method' => '' /*  array('GET', 'POST') */,
-    'cache' => true
+    'cachable' => true
 );
 
 ```
@@ -47,12 +47,12 @@ Command will create a Controller `app/controller/Hello.php`
 base from template. All `Actions` from `Controller` should be declared
 in `routes`.
 
-> All controllers must be declared with namespace `LMVC\Controller`
+> All controllers must be declared with namespace `App\Controller`
 
 
 ## Models
 
-All models are placed in `app/model`, just like `Controllers` 
+All models are placed in `App/model`, just like `Controllers` 
 models can be generated through `lmvc.sh`.
 
 ```bash
@@ -66,14 +66,14 @@ This will generate a `CRUD` model.
 ```php
 <?php
 
-namespace LMVC\Controller;
+namespace App\Controller;
 
-class Inventory extends \LMVC\Controller\Core\Base
+class Inventory extends \App\Controller\Core\Base
 {
     function __construct() {
         parent::__construct();
         
-        $this->products = new \LMVC\Model\Products();
+        $this->products = new \App\Model\Products();
     }
     
     public function getAction() {
@@ -83,7 +83,7 @@ class Inventory extends \LMVC\Controller\Core\Base
 
 ```
 
-> All model must be declared with namespace `LMVC\Model`
+> All model must be declared with namespace `App\Model`
 
 
 ## Helpers
@@ -93,7 +93,7 @@ Defining a new helpers isn't that hard
 ```php
 <?php
 
-namespace LMVC\Helper;
+namespace App\Helper;
 
 class Sort
 {
@@ -109,15 +109,15 @@ also, using it!
 ```php
 <?php
 
-namespace LMVC\Controller;
+namespace App\Controller;
 
-class Inventory extends \LMVC\Controller\Core\Base
+class Inventory extends \App\Controller\Core\Base
 {
     function __construct() {
         parent::__construct();
         
-        $this->products = new \LMVC\Model\Products();
-        $this->sort = new \LMVC\Helper\Sort();
+        $this->products = new \App\Model\Products();
+        $this->sort = new \App\Helper\Sort();
     }
     
     public function getAction() {
@@ -127,7 +127,7 @@ class Inventory extends \LMVC\Controller\Core\Base
 
 ```
 
-> All controllers must be declared with namespace `LMVC\Helper`
+> All controllers must be declared with namespace `App\Helper`
 
 ## Views
 
@@ -136,9 +136,9 @@ Rendering a `view` on `app/view`.
 ```php
 <?php
 
-namespace LMVC\Controller;
+namespace App\Controller;
 
-class Welcome extends \LMVC\Controller\Core\Base
+class Welcome extends \App\Controller\Core\Base
 {
     function __construct() {
         parent::__construct();
@@ -153,7 +153,7 @@ class Welcome extends \LMVC\Controller\Core\Base
 }
 ```
 
-`$this->render` was declared in `\LMVC\Controller\Core\Base`.
+`$this->render` was declared in `\App\Controller\Core\Base`.
 Here's what it looks like on `LMVC's Welcome Page`.
 
 ```php
