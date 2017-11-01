@@ -9,7 +9,10 @@ composer create-project jabernardo/lmvc hello_world
 ## Building Docker Image
 
 ```bash
+# Build Docker Image
 docker build -t lmvc .
+
+# Run instance
 docker run --name lmvc_test -p 8000:80 lmvc
 ```
 
