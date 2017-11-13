@@ -63,11 +63,11 @@ Route::clean(function($req, $res) {
     Benchmark::mark('_lmvc_stop');
     
     // Check if Debugger is enabled
-    if (!Config::get('debugger')) return false;
-    if ($req->is('disable-debugger')) return false;
+    if (!Config::get('debugger')) return $res;
+    if ($req->is('disable-debugger')) return $res;
     if (Session::get('disable-debugger')) {
         Session::drop('disable-debugger');
-        return false;
+        return $res;
     }
 
     $is_html = false;
@@ -120,6 +120,27 @@ Route::clean(function($req, $res) {
                 'notice' => Log::get('notice'),
                 'info' => Log::get('info')
             );
+        
+        // Configuration
+        $data['config'] = json_decode(json_encode(\Lollipop\Config::get()), true);
+        
+        // Route information
+        $route = \Lollipop\HTTP\Route::getActiveRoute();
+        
+        if (!is_null($route) && !empty($route)) {
+            $path = key($route);
+            $route_info = $route[$path];
+            
+            $data['route'] = (object)array(
+                    'path' => $path,
+                    'method' => spare(is_array($route_info['method']) ? implode(',', $route_info['method']) : $route_info['method'], 'all'),
+                    'callback' => $route_info['callback'],
+                    'cachable' => $route_info['cachable'] ? 'true' : 'false',
+                    'cache_time' => $route_info['cache_time'],
+                    'before' => '[' . implode(',', $route_info['before']) . ']',
+                    'after' => '[' . implode(',', $route_info['after']) . ']'
+                );
+        }
         
         $response = $res->get(true);
         $debugger = Page::render(APP_CORE_DEBUG . 'summary.php', $data);

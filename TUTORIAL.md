@@ -18,7 +18,7 @@ docker run --name lmvc_test -p 8000:80 lmvc
 
 ## Routes
 
-All the request should be registered in `app/routes.php`
+All the request should be registered in `app/routes/`
 
 ```php
 <?php
@@ -51,6 +51,32 @@ base from template. All `Actions` from `Controller` should be declared
 in `routes`.
 
 > All controllers must be declared with namespace `App\Controller`
+
+## Middlewares
+
+All middlewares are loaded through routes and are placed in `app/middleware` folder.
+
+```bash
+./lmvc create middleware Test
+```
+
+Command will create a Middleware `app/middleware/Test.php`
+base from template.
+All middleware should have a public function named `handle` as an entry point.
+
+```php
+<?php
+
+$route['/'] = [
+    'callback' => 'Sample\\Welcome.indexAction',
+    'method' => '' /*  array('GET', 'POST') */,
+    'cachable' => false,
+    'after' => ['\\App\\Middleware\\Test']
+];
+
+?>
+```
+> Registering middleware in `before` or `after` event
 
 
 ## Models

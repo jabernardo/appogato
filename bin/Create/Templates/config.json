@@ -16,5 +16,14 @@
             "email": "$",
             "package": "$"
         }
+    },
+    "middleware": {
+        "template": "middleware.tpl",
+        "path": "middleware/",
+        "vars": {
+            "author": "$",
+            "email": "$",
+            "package": "$"
+        }
     }
 }

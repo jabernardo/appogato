@@ -45,10 +45,12 @@ require_once(realpath(dirname(__DIR__)) . '/vendor/autoload.php');
  */
 define('APP_ROOT', realpath(dirname(__DIR__)));
 define('APP_CORE', APP_ROOT . '/app/');
+define('APP_CORE_ROUTES', APP_ROOT . '/app/routes/');
 define('APP_CORE_CONTROLLER', APP_CORE . 'controller/');
 define('APP_CORE_MODEL', APP_CORE . 'model/');
 define('APP_CORE_VIEW', APP_CORE . 'view/');
 define('APP_CORE_HELPER', APP_CORE . 'helper/');
+define('APP_CORE_MIDDLEWARE', APP_CORE . 'middleware/');
 define('APP_CORE_CACHE', APP_CORE . 'cache/');
 define('APP_CORE_LOG', APP_CORE . 'log/');
 define('APP_CORE_DB', APP_CORE . 'db/');
@@ -88,9 +90,6 @@ if (isset($config['env'])) {
  */
 \Lollipop\Config::load($config);
 
-/** Clear overrides **/
-if (isset($config['overrides'])) unset($config['overrides']);
-
 /**
  * Autoload function
  * for controllers
@@ -101,7 +100,8 @@ spl_autoload_register(function($class) {
     $prefixes = array(
             'App\\Controller\\' => APP_CORE_CONTROLLER,
             'App\\Model\\' => APP_CORE_MODEL,
-            'App\\Helper\\' => APP_CORE_HELPER
+            'App\\Helper\\' => APP_CORE_HELPER,
+            'App\\Middleware\\' => APP_CORE_MIDDLEWARE
         );
 
     foreach ($prefixes as $prefix => $base_dir) {
@@ -132,28 +132,37 @@ spl_autoload_register(function($class) {
  * Include routes
  * 
  */
-if (!file_exists(APP_CORE . 'routes.php'))
-    die('Routes not found!');
+foreach (glob(APP_CORE_ROUTES . '*.php') as $route_file) {
+    require_once($route_file);
+}
 
-require_once(APP_CORE_DEBUG . 'info.php');
-require_once(APP_CORE . 'routes.php');
-
-if (!isset($routes) && !is_array($routes))
+if (!isset($route) && !is_array($route))
     die('Invalid routes!');
 
 /**
- * Index Page using Controller
+ * Lollipop Debugger
+ * 
+ */
+require_once(APP_CORE_DEBUG . 'info.php');
+
+/**
+ * Controller Pre-fix for LMVC Application
  *
  */
 $controller_prefix = 'App\\Controller\\';
- 
-foreach ($routes as $route => $value) {
+
+/**
+ * Register every route
+ * to lollipop dispatcher
+ * 
+ */
+foreach ($route as $key => $value) {
     if (is_callable($value)) {
-        \Lollipop\HTTP\Route::all($route, $value);
+        \Lollipop\HTTP\Route::all($key, $value);
     } else if (is_string($value)) {
-        \Lollipop\HTTP\Route::all($route, $controller_prefix . $value);
+        \Lollipop\HTTP\Route::all($key, $controller_prefix . $value);
     } else if (is_array($value)) {
-        $value['path'] = $route;
+        $value['path'] = $key;
         
         if (is_string($value['callback'])) {
             $value['callback'] = $controller_prefix . $value['callback'];

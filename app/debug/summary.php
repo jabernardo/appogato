@@ -17,6 +17,53 @@
             <td><label class="lollipop-label">Memory Used:</label></td>
             <td><label class="lollipop-green"><?= $debug->response->memory_used ?></label></td>
         </tr>
+        <?php if (isset($route) && is_object($route)) { ?>
+        <tr>
+            <td><label class="lollipop-label">Route:</label></td>
+            <td><a class="ldebug-toggle" ldebug-toggle="ldebug-tab-routes" href="javascript: void(0);"><?= $route->path ?></a></td>
+        </tr>
+        <tr id="ldebug-tab-routes" style="display: none;">
+            <td></td>
+            <td>
+                <div class="container">
+                    <table>
+                        <tr>
+                            <td>Method:</td>
+                            <td><?= $route->method ?></td>
+                        </tr>
+                        <tr>
+                            <td>Callback:</td>
+                            <td><?= $route->callback ?></td>
+                        </tr>
+                        <tr>
+                            <td>Cachable:</td>
+                            <td><?= $route->cachable ?></td>
+                        </tr>
+                        <tr>
+                            <td>Cache Life:</td>
+                            <td><?= $route->cache_time ?></td>
+                        </tr>
+                        <tr>
+                            <td>Before:</td>
+                            <td><?= $route->before ?></td>
+                        </tr>
+                        <tr>
+                            <td>After:</td>
+                            <td><?= $route->after ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <?php } ?>
+        <tr>
+            <td><label class="lollipop-label">Config:</label></td>
+            <td><a class="ldebug-toggle" ldebug-toggle="ldebug-tab-config" href="javascript: void(0);"><?= count($config) ?></a></td>
+        </tr>
+        <tr id="ldebug-tab-config" style="display: none;">
+            <td></td>
+            <td><div class="container"><pre><?php print_r($config); ?></pre></div></td>
+        </tr>
         <tr>
             <td><label class="lollipop-label">Files:</label></td>
             <td><a class="ldebug-toggle" ldebug-toggle="ldebug-tab-files" href="javascript: void(0);"><?= count(get_included_files()) ?> Total File(s)</a></td>
@@ -105,7 +152,7 @@
         overflow: auto !important;
     }
     
-    .lollipop-debug > table {
+    .lollipop-debug table {
         color: black;
         font-family: inherit !important;
         font-size: inherit !important;
@@ -114,8 +161,8 @@
         max-width: 100% !important;
     }
 
-    .lollipop-debug > table tr,
-    .lollipop-debug > table tr td {
+    .lollipop-debug table tr,
+    .lollipop-debug table tr td {
         border: none;
     }
     
@@ -174,13 +221,30 @@
 
                         if (_target) {
                             for (var i = 0; i < _target.length; i++) {
-                                _target[i].style.display = '';
+                                if (_target[i].style.display == 'none') {
+                                    _target[i].style.display = '';
+                                } else {
+                                    _target[i].style.display = 'none';
+                                }
                             }
-                        }
-
-                        if (window.LollipopDebug.buttonMinimize) {
-                            for (var i = 0; i < window.LollipopDebug.buttonMinimize.length; i++) {
-                                window.LollipopDebug.buttonMinimize[i].style.display = '';
+                            
+                            var _tabs = document.querySelectorAll('[id^=ldebug-tab-]');
+                            var _open = false;
+                            
+                            for (var k = 0; k < _tabs.length; k++) {
+                                if (_tabs[k].style.display != 'none') {
+                                    _open = true;
+                                }
+                            }
+    
+                            if (!_open && window.LollipopDebug.buttonMinimize) {
+                                for (var i = 0; i < window.LollipopDebug.buttonMinimize.length; i++) {
+                                    window.LollipopDebug.buttonMinimize[i].style.display = 'none';
+                                }
+                            } else {
+                                for (var i = 0; i < window.LollipopDebug.buttonMinimize.length; i++) {
+                                    window.LollipopDebug.buttonMinimize[i].style.display = '';
+                                }
                             }
                         }
                     }

@@ -75,7 +75,7 @@ $config['page_not_found'] = array(
  * dev/stg/prd
  *
  */
-$config['env'] = 'dev';
+$config['environment'] = 'dev';
 
 /**
  * Cache location
@@ -106,38 +106,39 @@ $config['log'] = array(
  * Overrides per environment
  * 
  */
-$config['overrides'] = array(
-        // Development
-        'dev' => array(
-            'debugger' => true,
-            'db' => array(
-                    // Database
-                'host' => 'localhost',
-                'username' => 'root',
-                'password' => '',
-                'database' => 'aldrich'
-            )
-        ),
-        // Staging
-        'stg' => array(
-            'debugger' => false,
-            'db' => array(
-                // Database
-                'host' => 'localhost',
-                'username' => 'root',
-                'password' => '',
-                'database' => 'aldrich'
-            )
-        ),
-        // Production
-        'prd' => array(
-            'debugger' => false,
-            'db' => array(
-                // Database
-                'host' => 'localhost',
-                'username' => 'root',
-                'password' => '',
-                'database' => 'aldrich'
-            )
-        )
-    );
+$config['overrides']['dev'] = array(
+    // Development
+    'debugger' => true,
+    'db' => array(
+        // Database
+        'host' => 'localhost',
+        'username' => 'root',
+        'password' => '',
+        'database' => 'aldrich'
+    )
+);
+
+
+// Staging
+$config['overrides']['stg'] = array(
+    'debugger' => false,
+    'db' => array(
+        // Database
+        'host' => 'localhost',
+        'username' => 'root',
+        'password' => '',
+        'database' => 'aldrich'
+    )
+);
+
+// Production
+$config['overrides']['prd'] = array(
+    'debugger' => false,
+    'db' => array(
+        // Database
+        'host' => 'localhost',
+        'username' => 'root',
+        'password' => '',
+        'database' => 'aldrich'
+    )
+);

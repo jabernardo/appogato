@@ -24,6 +24,11 @@ class Welcome extends \App\Controller\Core\Base
     
     /**
      * Hello World!
+     * 
+     * @access  public
+     * @param   \Lollipop\HTTP\Request  $req    HTTP Request Object
+     * @param   \Lollipop\HTTP\Response $res    HTTP Response Object
+     * @return  \Lollipop\HTTP\Response Response
      *
      */
     public function indexAction(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Response $res) {
