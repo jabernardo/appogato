@@ -3,7 +3,14 @@
 ## Getting started
 
 ```bash
-composer create-project jabernardo/lmvc hello_world
+
+# Create a new project from LMVC
+composer create-project jabernardo/lmvc hello_world;
+
+# Test copy with `docker-compose`
+docker-compose up;
+# http://localhost:3000
+
 ```
 
 Please see this [tutorial](https://github.com/jabernardo/lmvc/blob/master/TUTORIAL.md) for using `Lollipop-PHP for MVC`.
