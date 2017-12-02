@@ -4,21 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ec0ed8184f6008147d520741aa0657f5",
-    "packages": [],
-    "packages-dev": [
+    "content-hash": "7851f1a296f2204cd0f5ba24eadf31d8",
+    "packages": [
         {
             "name": "jabernardo/lollipop-php",
-            "version": "v2.0.1",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jabernardo/lollipop-php.git",
-                "reference": "a6703e63b04f27586b0ef4c55dc1d0846e000238"
+                "reference": "950eb4de24fe70f07b1531d918ae0ea8c76d5270"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jabernardo/lollipop-php/zipball/a6703e63b04f27586b0ef4c55dc1d0846e000238",
-                "reference": "a6703e63b04f27586b0ef4c55dc1d0846e000238",
+                "url": "https://api.github.com/repos/jabernardo/lollipop-php/zipball/950eb4de24fe70f07b1531d918ae0ea8c76d5270",
+                "reference": "950eb4de24fe70f07b1531d918ae0ea8c76d5270",
                 "shasum": ""
             },
             "require": {
@@ -53,9 +52,10 @@
                 "php-framework",
                 "web-framework"
             ],
-            "time": "2017-10-31T12:59:15+00:00"
+            "time": "2017-12-01T02:26:23+00:00"
         }
     ],
+    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": [],
@@ -64,7 +64,5 @@
     "platform": {
         "php": ">=5.4.0"
     },
-    "platform-dev": {
-        "php": ">=5.4.0"
-    }
+    "platform-dev": []
 }
