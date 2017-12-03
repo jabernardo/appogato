@@ -38,18 +38,18 @@ class Error extends \App\Controller\Core\Base
     public function pagenotfoundAction() {
         // Set page meta
         $this->view->title = '404 Page Not Found';
-        $this->view->meta = array(
+        $this->view->meta = [
             'author' => Config::get('app')->author,
             'description' => Config::get('app')->name,
             'keywords' => Config::get('app')->name
-        );
+        ];
 
         // Set CSS data
-        $this->view->css = array(
+        $this->view->css = [
             Url::base('static/css/normalize.css'),
             Url::base('static/css/skeleton.css'),
             Url::base('static/css/default.css')
-        );
+        ];
         
         // Messages
         $this->view->title = 'Page Not Found';

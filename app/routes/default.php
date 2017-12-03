@@ -9,7 +9,7 @@
 // $routes['/'] = 'WelcomeController.indexAction';
 $route['/'] = [
     'callback' => 'Sample\\Welcome.indexAction',
-    'method' => '' /*  array('GET', 'POST') */,
+    'method' => '' /*  [ 'GET', 'POST' ] */,
     'cachable' => true
 ];
 
