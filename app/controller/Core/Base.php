@@ -32,16 +32,16 @@ class Base
         $this->view = new \stdClass();
         
         /**
-         * @var     \stdClass   Cookies
+         * @var     array   Cookies
          * 
          */
-        $this->cookies = array();
+        $this->cookies = [];
         
         /**
-         * @var     \stdClass   Headers
+         * @var     array   Headers
          * 
          */
-        $this->headers = array();
+        $this->headers = [];
         
         // Set all default view variables on class constuct
         $this->_setDefaultView();
@@ -71,14 +71,14 @@ class Base
          * @var array   JS Files
          * 
          */
-        $this->view->js = array();
+        $this->view->js = [];
         
         /**
          * @var array   CSS Files
          * 
          * 
          */
-        $this->view->css = array();
+        $this->view->css = [];
 
         /**
          * @var string  Domain name
@@ -96,9 +96,9 @@ class Base
          * @var string  Csrf Token
          * 
          */
-        $this->view->form = (object)array(
+        $this->view->form = (object) [
             'anti_csrf_input' => CsrfToken::getFormInput()
-        );
+        ];
     }
     
     /**
@@ -109,7 +109,7 @@ class Base
      * 
      */
     private function _getViewData() {
-        $d = array();
+        $d = [];
         
         // Build-up data
         foreach (get_object_vars($this->view) as $var => $val) {

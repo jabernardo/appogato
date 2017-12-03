@@ -85,14 +85,14 @@ Route::clean(function($req, $res) {
     $is_html = $is_html || (!is_array($raw_res) && !is_object($raw_res));
     
     if ($is_html) {
-        $data = array();
+        $data = [];
         
         // Get application information
-        $data['app'] = array(
+        $data['app'] = [
                 'name' => 'Untitled Application',
                 'version' => '1.0.0.0',
                 'author' => 'Unknown'
-            );
+            ];
         
         $config_app = Config::get('app');
         
@@ -105,21 +105,22 @@ Route::clean(function($req, $res) {
         // Debugging Data
         $bm = (object)Benchmark::elapsed('_lmvc_start', '_lmvc_stop');
         
-        $data['debug'] = array(
-            'response' => (object)array(
+        $data['debug'] = [
+            'response' => (object) [
                     'time' => $bm->time_elapsed,
                     'memory_used' => $bm->real_memory_usage
-                )
-        );
-        $data['debug'] = (object)$data['debug'];
+                ]
+        ];
+        
+        $data['debug'] = (object) $data['debug'];
         
         // Logs
-        $data['logs'] = (object)array(
+        $data['logs'] = (object) [
                 'error' => Log::get('error'),
                 'warn' => Log::get('warn'),
                 'notice' => Log::get('notice'),
                 'info' => Log::get('info')
-            );
+            ];
         
         // Configuration
         $data['config'] = json_decode(json_encode(\Lollipop\Config::get()), true);
@@ -131,7 +132,7 @@ Route::clean(function($req, $res) {
             $path = key($route);
             $route_info = $route[$path];
             
-            $data['route'] = (object)array(
+            $data['route'] = (object) [
                     'path' => $path,
                     'method' => spare(is_array($route_info['method']) ? implode(',', $route_info['method']) : $route_info['method'], 'all'),
                     'callback' => $route_info['callback'],
@@ -139,7 +140,7 @@ Route::clean(function($req, $res) {
                     'cache_time' => $route_info['cache_time'],
                     'before' => '[' . implode(',', $route_info['before']) . ']',
                     'after' => '[' . implode(',', $route_info['after']) . ']'
-                );
+                ];
         }
         
         $response = $res->get(true);

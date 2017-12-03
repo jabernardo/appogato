@@ -34,25 +34,25 @@ class Welcome extends \App\Controller\Core\Base
     public function indexAction(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Response $res) {
         // Set page meta
         $this->view->title = 'Lollipop-PHP for MVC';
-        $this->view->meta = array(
+        $this->view->meta = [
             'author' => Config::get('app')->author,
             'description' => Config::get('app')->name,
             'keywords' => Config::get('app')->name
-        );
+        ];
 
         // Set CSS data
-        $this->view->css = array(
+        $this->view->css = [
             Url::base('static/css/normalize.css'),
             Url::base('static/css/skeleton.css'),
             Url::base('static/css/default.css')
-        );
+        ];
 
         /**
          * JS to load
          * 
-         * $this->view->js = array(
+         * $this->view->js = [
          *       'https://code.jquery.com/jquery-3.2.1.min.js'
-         *   );
+         *   ];
          * 
          */
          
