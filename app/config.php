@@ -108,6 +108,12 @@ $config['log'] = array(
  */
 $config['overrides']['dev'] = array(
     // Development
+    'cache' => array(
+            'driver' => 'memcached',
+            'servers' => array (
+                array( 'memcached', '11211' )
+            )
+        ),
     'debugger' => true,
     'db' => array(
         // Database
