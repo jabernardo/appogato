@@ -45,6 +45,7 @@ require_once(realpath(dirname(__DIR__)) . '/vendor/autoload.php');
  */
 define('APP_ROOT', realpath(dirname(__DIR__)));
 define('APP_CORE', APP_ROOT . '/app/');
+define('APP_CORE_CONFIG', APP_ROOT . '/app/config/');
 define('APP_CORE_ROUTES', APP_ROOT . '/app/routes/');
 define('APP_CORE_CONTROLLER', APP_CORE . 'controller/');
 define('APP_CORE_MODEL', APP_CORE . 'model/');
@@ -55,40 +56,6 @@ define('APP_CORE_CACHE', APP_CORE . 'cache/');
 define('APP_CORE_LOG', APP_CORE . 'log/');
 define('APP_CORE_DB', APP_CORE . 'db/');
 define('APP_CORE_DEBUG', APP_CORE . 'debug/');
-
-/**
- * Load configuration
- *
- */
-if (!file_exists(APP_CORE . 'config.php'))
-    die('Configuration not found!');
-
-require_once(APP_CORE . 'config.php');
-
-if (!isset($config) && !is_array($config))
-    die('Configuration was invalid');
-    
-/**
- * Check if environment is valid
- * 
- */
-if (isset($config['env'])) {
-    switch (strtolower($config['env'])) {
-        case 'dev':
-        case 'stg':
-        case 'prd':
-            break;
-        default:
-            die('Environment was invalid');
-            break;
-    }
-}
-
-/**
- * Initialize configuration in Lollipop
- * 
- */
-\Lollipop\Config::load($config);
 
 /**
  * Autoload function
@@ -127,6 +94,41 @@ spl_autoload_register(function($class) {
         }
     }
 });
+
+/**
+ * Load configuration files
+ *
+ */
+$config = [];
+
+foreach (glob(APP_CORE_CONFIG . '*.php') as $config_file) {
+    $config = array_merge_recursive($config, include($config_file));
+}
+
+if (!isset($config) && !is_array($config))
+    die('Configuration was invalid');
+    
+/**
+ * Check if environment is valid
+ * 
+ */
+if (isset($config['env'])) {
+    switch (strtolower($config['env'])) {
+        case 'dev':
+        case 'stg':
+        case 'prd':
+            break;
+        default:
+            die('Environment was invalid');
+            break;
+    }
+}
+
+/**
+ * Initialize configuration in Lollipop
+ * 
+ */
+\Lollipop\Config::load($config);
 
 /**
  * Include routes
