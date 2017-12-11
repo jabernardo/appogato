@@ -11,11 +11,11 @@
         </tr>
         <tr>
             <td><label class="lollipop-label">Response Time:</label></td>
-            <td><label class="lollipop-green"><?= $debug->response->time ?>s</label></td>
+            <td><label class="lollipop-green"><?= $benchmark->response->time ?>s</label></td>
         </tr>
         <tr>
             <td><label class="lollipop-label">Memory Used:</label></td>
-            <td><label class="lollipop-green"><?= $debug->response->memory_used ?></label></td>
+            <td><label class="lollipop-green"><?= $benchmark->response->memory_used ?></label></td>
         </tr>
         <?php if (isset($route) && is_object($route)) { ?>
         <tr>

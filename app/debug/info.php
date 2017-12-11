@@ -105,14 +105,12 @@ Route::clean(function($req, $res) {
         // Debugging Data
         $bm = (object)Benchmark::elapsed('_lmvc_start', '_lmvc_stop');
         
-        $data['debug'] = [
+        $data['benchmark'] = (object)[
             'response' => (object) [
                     'time' => $bm->time_elapsed,
                     'memory_used' => $bm->real_memory_usage
                 ]
         ];
-        
-        $data['debug'] = (object) $data['debug'];
         
         // Logs
         $data['logs'] = (object) [
