@@ -59,7 +59,8 @@
     </div>
     <div id="lollipop-debug-body">
         <div id="lollipop-debug-tab-app">
-            <?= $app->name ?> v<?= $app->version ?> by <?= $app->author ?>
+            <?= $app->name ?> v<?= $app->version ?><br>
+            by <?= $app->author ?>
         </div>
         <div id="lollipop-debug-tab-files">
             <ul>
@@ -135,6 +136,12 @@
     padding: 2px;
     border-radius: 2px;
     margin-right: 2px;
+}
+
+#lollipop-debug a,
+#lollipop-debug a:hover,
+#lollipop-debug a:visited {
+    outline: none;
 }
 
 #lollipop-debug .blue {
