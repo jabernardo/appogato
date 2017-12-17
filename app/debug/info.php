@@ -113,12 +113,7 @@ Route::clean(function($req, $res) {
         ];
         
         // Logs
-        $data['logs'] = (object) [
-                'error' => Log::get('error'),
-                'warn' => Log::get('warn'),
-                'notice' => Log::get('notice'),
-                'info' => Log::get('info')
-            ];
+        $data['logs'] = (object) Log::get();
         
         // Configuration
         $data['config'] = json_decode(json_encode(\Lollipop\Config::get()), true);
@@ -130,7 +125,7 @@ Route::clean(function($req, $res) {
             $path = key($route);
             $route_info = $route[$path];
             
-            $data['route'] = (object) [
+            $data['route'] = [
                     'path' => $path,
                     'method' => spare(is_array($route_info['method']) ? implode(',', $route_info['method']) : $route_info['method'], 'all'),
                     'callback' => $route_info['callback'],
