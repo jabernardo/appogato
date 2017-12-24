@@ -483,6 +483,51 @@ _.select.prototype.hasClass = function(name) {
 }
 
 /**
+ * Toggle class prototype
+ * 
+ * @param   {String}    name    Class name
+ * @return  {Object}
+ * 
+ */
+_.select.prototype.toggleClass = function(name) {
+    var elem = this._item;
+    
+    for (var i = 0; i < elem.length; i++) {
+        var found = false;
+        
+        if (typeof elem[i].getAttribute !== "undefined") {
+            if (!elem[i].hasAttribute("class")) {
+                elem[i].setAttribute("class", "");
+            }
+            
+            var vals = elem[i].getAttribute("class") ? elem[i].getAttribute("class").split(" ") : [];
+            var vals_new = [];
+            
+            vals.forEach(function(v) {
+               if (v === name) {
+                   found = true;
+               }
+            });
+            
+            if (found) {
+                vals.forEach(function(v) {
+                   if (v !== name) {
+                       vals_new.push(v);
+                   }
+                });
+            } else {
+                vals_new = vals;
+                vals_new.push(name);
+            }
+            
+            elem[i].setAttribute("class", vals_new.join(" "));
+        }
+    }
+    
+    return this;
+}
+
+/**
  * Set or get attribute
  * 
  * @param   {String}    name    Attribute name
@@ -568,6 +613,79 @@ _.select.prototype.hide = function() {
     
     return this;
 }
+
+/**
+ * Get or set innerHTML
+ * 
+ * @param   {String}    str    HTML Code
+ * @return  {Mixed}
+ * 
+ */
+_.select.prototype.html = function(str) {
+    var elem = this._item;
+    var iter = (typeof str !== "undefined") ? elem.length : 1;
+    
+    for (var i = 0; i < iter; i++) {
+        if (typeof elem[i].innerHTML !== "undefined") {
+            if (typeof str !== "undefined") {
+                elem[i].innerHTML = str;
+            } else {
+                return elem[i].innerHTML;
+            }
+        }
+    }
+    
+    return this;
+}
+
+/**
+ * Get or set innerText
+ * 
+ * @param   {String}    str    innerText
+ * @return  {Mixed}
+ * 
+ */
+_.select.prototype.text = function(str) {
+    var elem = this._item;
+    var iter = (typeof str !== "undefined") ? elem.length : 1;
+    
+    for (var i = 0; i < iter; i++) {
+        if (typeof elem[i].innerText !== "undefined") {
+            if (typeof str !== "undefined") {
+                elem[i].innerText = str;
+            } else {
+                return elem[i].innerText;
+            }
+        }
+    }
+    
+    return this;
+}
+
+/**
+ * Get or set value
+ * 
+ * @param   {String}    str    Value
+ * @return  {Mixed}
+ * 
+ */
+_.select.prototype.val = function(str) {
+    var elem = this._item;
+    var iter = (typeof str !== "undefined") ? elem.length : 1;
+    
+    for (var i = 0; i < iter; i++) {
+        if (typeof elem[i].value !== "undefined") {
+            if (typeof str !== "undefined") {
+                elem[i].value = str;
+            } else {
+                return elem[i].value;
+            }
+        }
+    }
+    
+    return this;
+}
+
 
 /***************************************************/
 /***    END SELECT *********************************/
