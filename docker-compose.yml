@@ -4,5 +4,7 @@ services:
         build: .
         ports:
          - "3000:80"
+        volumes:
+            - .:/var/www/lmvc
     memcached:
         image: "memcached:alpine"
