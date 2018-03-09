@@ -32,17 +32,6 @@ return [
     ],
     
     /**
-     * Anti-CSRF
-     * 
-     */
-    'anti_csrf' => [
-        'enable' => true,       // Enable or disable this functionality
-        'name' => 'sugar',      // Application keyword
-        'key' => '',            // Salt
-        'expiration' => 1800    // or 30mins
-    ],
-        
-    /**
      * Disable XSS injection in Page::render
      * 
      */
@@ -80,15 +69,6 @@ return [
      */
     'debugger' => true,
 
-    /**
-     * 404 Not Found Page
-     * 
-     */
-    'page_not_found' => [
-        'show'  => true,
-        'route' => '404'
-    ],
-        
     /**
      * Environment switches
      *

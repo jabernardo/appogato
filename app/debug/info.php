@@ -47,18 +47,15 @@ use \Lollipop\Url;
  * Prepare route: Benchmark
  * 
  */
-Route::prepare(function($req, $res) {
-    Benchmark::mark('_lmvc_start');
-    
-    return $res;
-});
-
+Benchmark::mark('_lmvc_start');
 
 /**
  * Clean function
  * 
  */
-Route::clean(function($req, $res) {
+Route::addMiddleware(function($req, $res, $next) {
+    $res = $next($req, $res);
+    
     // End benchmark
     Benchmark::mark('_lmvc_stop');
     
@@ -122,24 +119,12 @@ Route::clean(function($req, $res) {
         $route = \Lollipop\HTTP\Route::getActiveRoute();
         
         if (!is_null($route) && !empty($route)) {
-            $path = key($route);
-            $route_info = $route[$path];
-            
-            $data['route'] = [
-                    'path' => $path,
-                    'method' => spare(is_array($route_info['method']) ? implode(',', $route_info['method']) : $route_info['method'], 'all'),
-                    'callback' => $route_info['callback'],
-                    'cachable' => $route_info['cachable'] ? 'true' : 'false',
-                    'cache_time' => $route_info['cache_time'],
-                    'before' => '[' . implode(',', $route_info['before']) . ']',
-                    'after' => '[' . implode(',', $route_info['after']) . ']'
-                ];
+            $data['route'] = $route;
         }
         
-        $response = $res->get(true);
         $debugger = Page::render(APP_CORE_DEBUG . 'summary.php', $data);
         
-        return $res->set($response . $debugger);
+        return $res->set($res->get() . $debugger);
     }
     
     return $res;
