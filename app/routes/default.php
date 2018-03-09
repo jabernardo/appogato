@@ -6,11 +6,13 @@
  */
 
 /** Home Page **/
-// $routes['/'] = 'WelcomeController.indexAction';
+// $route['/'] = 'Sample\\Welcome.indexAction';
 $route['/'] = [
     'callback' => 'Sample\\Welcome.indexAction',
-    'method' => '' /*  [ 'GET', 'POST' ] */,
-    'cachable' => true
+    'method' => [] /*  [ 'GET', 'POST' ] */,
+    'middlewares' => [
+        new \Lollipop\HTTP\Middleware\AntiCsrf()
+    ]
 ];
 
 /** 404 Page Not Found **/
