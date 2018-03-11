@@ -128,6 +128,17 @@
     position: fixed;
     bottom: 0;
     border-top: 2px solid #b7b7b7;
+    z-index: 20000;
+    background-color: #f1f1f1;
+}
+
+#lollipop-debug.active {
+    top: 0;
+    left: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 20000;
 }
 
 #lollipop-debug span.key {
@@ -219,11 +230,10 @@
 
 #lollipop-debug #lollipop-debug-body div[id^="lollipop-debug-tab-"].active {
     border-top: 1px solid #b7b7b7;
-    min-height: 128px;
-    max-height: 128px;
     overflow-y: auto;
     display: block;
-    background-color: #f1f1f1;
+    position: relative;
+    height: 94%;
 }
 
 #lollipop-debug #lollipop-debug-body ul {
@@ -410,7 +420,10 @@ _.select.prototype.addClass = function(name) {
             }
             
             var vals = elem[i].getAttribute("class") ? elem[i].getAttribute("class").split(" ") : [];
-            vals.push(name);
+            
+            if (vals.indexOf(name) === -1) {
+                vals.push(name);
+            }
             
             elem[i].setAttribute("class", vals.join(" "));
         }
@@ -698,22 +711,25 @@ window.LollipopDebug.create = function() {
        var tab = "#lollipop-debug-tab-" + _(this).attr("ldebug-toggle");
        
        if (!_(this).hasClass("active")) {
-           _("[ldebug-toggle]").removeClass("active");
-           _("[id^=lollipop-debug-tab-]").removeClass("active");
-           _(tab).addClass("active");
-           _(this).addClass("active");
-           _("#lollipop-debug #lollipop-debug-header a.close").show();
+            _("[ldebug-toggle]").removeClass("active");
+            _("[id^=lollipop-debug-tab-]").removeClass("active");
+            _("#lollipop-debug").addClass("active");
+            _(tab).addClass("active");
+            _(this).addClass("active");
+            _("#lollipop-debug #lollipop-debug-header a.close").show();
        } else {
-           _("[ldebug-toggle]").removeClass("active");
-           _("[id^=lollipop-debug-tab-]").removeClass("active");
-           _("#lollipop-debug #lollipop-debug-header a.close").hide();
+            _("#lollipop-debug").removeClass("active");
+            _("[ldebug-toggle]").removeClass("active");
+            _("[id^=lollipop-debug-tab-]").removeClass("active");
+            _("#lollipop-debug #lollipop-debug-header a.close").hide();
        }
     });
     
     _("#lollipop-debug #lollipop-debug-header a.close").on("click", function() {
-       _("#lollipop-debug #lollipop-debug-header a.close").hide();
-       _("[ldebug-toggle]").removeClass("active");
-       _("[id^=lollipop-debug-tab-]").removeClass("active");
+        _("#lollipop-debug").removeClass("active");
+        _("#lollipop-debug #lollipop-debug-header a.close").hide();
+        _("[ldebug-toggle]").removeClass("active");
+        _("[id^=lollipop-debug-tab-]").removeClass("active");
     });
 }
 
