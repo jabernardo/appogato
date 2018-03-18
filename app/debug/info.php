@@ -42,18 +42,14 @@ use \Lollipop\HTTP\Route;
 use \Lollipop\Session;
 use \Lollipop\Url;
 
-
-/**
- * Prepare route: Benchmark
- * 
- */
-Benchmark::mark('_lmvc_start');
-
 /**
  * Clean function
  * 
  */
 Route::addMiddleware(function($req, $res, $next) {
+    // Start Benchmark
+    Benchmark::mark('_lmvc_start');
+
     $res = $next($req, $res);
     
     // End benchmark
