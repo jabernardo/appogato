@@ -234,16 +234,19 @@
     content: "]";
 }
 
+#lollipop-debug #lollipop-debug-body {
+    overflow-y: auto;
+    height: 94%;
+    border-top: 1px solid #b7b7b7;
+}
+
 #lollipop-debug #lollipop-debug-body div[id^="lollipop-debug-tab-"] {
     display: none;
 }
 
 #lollipop-debug #lollipop-debug-body div[id^="lollipop-debug-tab-"].active {
-    border-top: 1px solid #b7b7b7;
-    overflow-y: auto;
     display: block;
     position: relative;
-    height: 94%;
 }
 
 #lollipop-debug #lollipop-debug-body ul {
