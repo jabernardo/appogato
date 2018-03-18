@@ -6,6 +6,9 @@
         <a href="javascript:" ldebug-toggle="files">
             Files <span class="count"><?= count(get_included_files()) ?></span>
         </a>
+        <a href="javascript:" ldebug-toggle="session">
+            Session <span class="count"><?= count($session) ?></span>
+        </a>
         <a href="javascript:" ldebug-toggle="config">
             Config
         </a>
@@ -66,6 +69,13 @@
             <ul>
             <?php foreach (get_included_files() as $file) { ?>
             <li><?= $file ?></li>
+            <?php } ?>
+            </ul>
+        </div>
+        <div id="lollipop-debug-tab-session">
+            <ul>
+            <?php foreach ($session as $key => $val) { ?>
+            <li><span class="key"><?= $key ?></span> <?= $val?></li>
             <?php } ?>
             </ul>
         </div>

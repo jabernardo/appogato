@@ -46,7 +46,7 @@ use \Lollipop\Url;
  * Clean function
  * 
  */
-Route::addMiddleware(function($req, $res, $next) {
+Route::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Response $res, Callable $next) {
     // Start Benchmark
     Benchmark::mark('_lmvc_start');
 
@@ -111,6 +111,9 @@ Route::addMiddleware(function($req, $res, $next) {
         // Configuration
         $data['config'] = json_decode(json_encode(\Lollipop\Config::get()), true);
         
+        // Session
+        $data['session'] = Session::getAll();
+
         // Route information
         $route = \Lollipop\HTTP\Route::getActiveRoute();
         
