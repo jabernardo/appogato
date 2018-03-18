@@ -10,9 +10,25 @@ class ComposerStaticInit6f607aee34bbee36751a7a084e8024a6
         'bbad387a660abcc9359398c8ef33a2f3' => __DIR__ . '/..' . '/jabernardo/lollipop-php/autoload.php',
     );
 
+    public static $prefixLengthsPsr4 = array (
+        'C' => 
+        array (
+            'Console\\' => 8,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Console\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jabernardo/console.php/src/Console',
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit6f607aee34bbee36751a7a084e8024a6::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit6f607aee34bbee36751a7a084e8024a6::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }
