@@ -70,6 +70,16 @@ return [
     'debugger' => true,
 
     /**
+     * Lollipop Error and Exception handler
+     * 
+     */ 
+    'lollipop' => [
+        'error' => [
+            'handler' => true
+        ]
+    ],
+
+    /**
      * Environment switches
      *
      * dev/stg/prd
