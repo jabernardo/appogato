@@ -141,6 +141,10 @@ foreach (glob(APP_CORE_ROUTES . '*.php') as $route_file) {
 if (!isset($route) && !is_array($route))
     die('Invalid routes!');
 
+
+if (!strcmp(php_sapi_name(), 'cli'))
+    return;
+
 /**
  * Lollipop Debugger
  * 
