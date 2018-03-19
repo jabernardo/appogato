@@ -1,13 +1,13 @@
 <?php
 
-namespace LMVC\Helper;
+namespace App\Helper;
 
 use \Lollipop\Config;
 
 /**
  * Feature Switch Helper
  * 
- * @version     1.1
+ * @version     1.2
  * @author      John Aldrich Bernardo
  * @description Easy feature toggle using `switch` config
  * 
@@ -15,7 +15,7 @@ use \Lollipop\Config;
 class Feature
 {
     /**
-     * Checks if application is on
+     * Checks if application feature is on
      * 
      * @access  public
      * @param   string  $key    Switch key
@@ -25,3 +25,4 @@ class Feature
         return isset(Config::get('switch')->$key) && Config::get('switch')->$key;
     }
 }
+ 
