@@ -20,6 +20,20 @@ class Welcome extends \App\Controller\Core\Base
     function __construct() {
         // Call parent construct function
         parent::__construct();
+
+        /**
+         * Loading of models
+         * 
+         * $this->products = new \App\Model\Products();
+         * 
+         */
+        
+        /**
+         * Loading of helpers
+         *
+         * $this->features = new \App\Helper\Feature();
+         * 
+         */
     }
     
     /**
@@ -53,20 +67,6 @@ class Welcome extends \App\Controller\Core\Base
          * $this->view->js = [
          *       'https://code.jquery.com/jquery-3.2.1.min.js'
          *   ];
-         * 
-         */
-         
-        /**
-         * Loading of models
-         * 
-         * $products = new \LMVC\Model\Products()
-         * 
-         */
-        
-        /**
-         * Loading of helpers
-         * 
-         * $features = new \LMVC\Helper\Feature()
          * 
          */
         
