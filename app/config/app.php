@@ -110,6 +110,24 @@ return [
     'log' => [
         'enable' => true,
         'folder' => APP_CORE_LOG
+    ],
+
+    /**
+     * \Lollipop\HTTP\Request::send
+     * cURL Wrapper
+     * 
+     */
+    'request' => [
+        [
+            // Auto JSON format
+            'json' => true,
+
+            // Request cache
+            'cache' => [
+                'enable' => true,
+                // 'time' => 1440
+            ]
+        ]
     ]
     
 ];
