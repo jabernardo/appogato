@@ -38,7 +38,7 @@ use \Lollipop\Config;
 use \Lollipop\Log;
 use \Lollipop\Page;
 use \Lollipop\HTTP\Request;
-use \Lollipop\HTTP\Route;
+use \Lollipop\HTTP\Router;
 use \Lollipop\Session;
 use \Lollipop\Url;
 
@@ -46,7 +46,7 @@ use \Lollipop\Url;
  * Clean function
  * 
  */
-Route::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Response $res, Callable $next) {
+Router::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Response $res, Callable $next) {
     // Start Benchmark
     Benchmark::mark('_lmvc_start');
 
@@ -115,7 +115,7 @@ Route::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Respon
         $data['session'] = Session::getAll();
 
         // Route information
-        $route = \Lollipop\HTTP\Route::getActiveRoute();
+        $route = \Lollipop\HTTP\Router::getActiveRoute();
         
         if (!is_null($route) && !empty($route)) {
             $data['route'] = $route;

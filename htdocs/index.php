@@ -164,9 +164,9 @@ $controller_prefix = 'App\\Controller\\';
  */
 foreach ($route as $key => $value) {
     if (is_callable($value)) {
-        \Lollipop\HTTP\Route::all($key, $value);
+        \Lollipop\HTTP\Router::all($key, $value);
     } else if (is_string($value)) {
-        \Lollipop\HTTP\Route::all($key, $controller_prefix . $value);
+        \Lollipop\HTTP\Router::all($key, $controller_prefix . $value);
     } else if (is_array($value)) {
         $value['path'] = $key;
         
@@ -174,7 +174,7 @@ foreach ($route as $key => $value) {
             $value['callback'] = $controller_prefix . $value['callback'];
         }
         
-        \Lollipop\HTTP\Route::serve($value);
+        \Lollipop\HTTP\Router::serve($value);
     }
 }
 
