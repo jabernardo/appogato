@@ -109,7 +109,8 @@ return [
      */
     'log' => [
         'enable' => true,
-        'folder' => APP_CORE_LOG
+        'folder' => APP_CORE_LOG,
+        'hourly' => false
     ],
 
     /**
@@ -127,6 +128,16 @@ return [
                 'enable' => true,
                 // 'time' => 1440
             ]
+        ]
+    ],
+
+    // Text Lock and Unlock
+    // OpenSSL Encrypt Settings
+    'text' => [
+        'security' => [
+            'method' => 'AES256',
+            'key' => SUGAR,
+            'iv' => substr(md5(SUGAR), 0, 16)
         ]
     ]
     
