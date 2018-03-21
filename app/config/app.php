@@ -113,6 +113,11 @@ return [
         'hourly' => false
     ],
 
+    // Auto Dispatch function
+    'router' => [
+        'auto_dispatch' => true
+    ],
+
     /**
      * \Lollipop\HTTP\Request::send
      * cURL Wrapper
