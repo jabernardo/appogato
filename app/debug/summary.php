@@ -142,6 +142,12 @@
     background-color: #f1f1f1;
 }
 
+@media (max-width: 640px) {
+    #lollipop-debug {
+        display: none;
+    }
+}
+
 #lollipop-debug.active {
     top: 0;
     left: 0;
