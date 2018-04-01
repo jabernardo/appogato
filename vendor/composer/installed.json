@@ -50,17 +50,17 @@
     },
     {
         "name": "jabernardo/lollipop-php",
-        "version": "v2.0.3",
-        "version_normalized": "2.0.3.0",
+        "version": "v3.0-alpha-1",
+        "version_normalized": "3.0.0.0-alpha1",
         "source": {
             "type": "git",
             "url": "https://github.com/jabernardo/lollipop-php.git",
-            "reference": "13a4650fa966c2406bf29372d3b3626969c8d6ba"
+            "reference": "047647049a9ff74d930591fc9193aacd8d5d303f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/jabernardo/lollipop-php/zipball/13a4650fa966c2406bf29372d3b3626969c8d6ba",
-            "reference": "13a4650fa966c2406bf29372d3b3626969c8d6ba",
+            "url": "https://api.github.com/repos/jabernardo/lollipop-php/zipball/047647049a9ff74d930591fc9193aacd8d5d303f",
+            "reference": "047647049a9ff74d930591fc9193aacd8d5d303f",
             "shasum": ""
         },
         "require": {
@@ -69,9 +69,9 @@
         "require-dev": {
             "phpunit/phpunit": "^6.0"
         },
-        "time": "2017-12-03T14:24:54+00:00",
+        "time": "2018-03-21T14:45:47+00:00",
         "type": "library",
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "files": [
                 "autoload.php"
