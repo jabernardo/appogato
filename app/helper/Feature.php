@@ -21,7 +21,7 @@ class Feature
      * @param   string  $key    Switch key
      * 
      */
-    public function on($key) {
+    public static function on($key) {
         return isset(Config::get('switch')->$key) && Config::get('switch')->$key;
     }
 }
