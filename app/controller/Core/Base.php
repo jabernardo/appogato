@@ -9,6 +9,7 @@ use \Lollipop\Log;
 use \Lollipop\Page;
 use \Lollipop\HTTP\Response;
 use \Lollipop\Url;
+use \App\Helper\Form;
 
 /**
  * Base Controller
@@ -96,9 +97,7 @@ class Base
          * @var string  Csrf Token
          * 
          */
-        $this->view->form = (object) [
-            'anti_csrf_input' => CsrfToken::getFormInput()
-        ];
+        $this->view->form = Form::class;
     }
     
     /**
