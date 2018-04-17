@@ -8,8 +8,6 @@ use \Lollipop\CsrfToken;
 use \Lollipop\Log;
 use \Lollipop\Page;
 use \Lollipop\HTTP\Response;
-use \Lollipop\Url;
-use \App\Helper\Form;
 
 /**
  * Base Controller
@@ -56,48 +54,31 @@ class Base
      * 
      */
     private function _setDefaultView() {
-        /**
-         * @var string  Title
-         * 
-         */
+        // Title
         $this->view->title = Config::get('app')->name;
         
-        /**
-         * @var string  Page
-         * 
-         */
+        // Page name
         $this->view->page = 'home';
         
-        /**
-         * @var array   JS Files
-         * 
-         */
+        // JS Files
         $this->view->js = [];
         
-        /**
-         * @var array   CSS Files
-         * 
-         * 
-         */
+        // CSS Files
         $this->view->css = [];
 
-        /**
-         * @var string  Domain name
-         * 
-         */
-        $this->view->domain = Url::base();
+        // Domain name
+        $this->view->domain = \Lollipop\Url::base();
         
-        /**
-         * @var string  Request URI
-         * 
-         */
-        $this->view->request_uri = Url::here();
+        // Request URI
+        $this->view->request_uri = \Lollipop\Url::here();
         
-        /**
-         * @var string  Csrf Token
-         * 
-         */
-        $this->view->form = Form::class;
+        /*************** HELPERs ***************/
+
+        // Form Helper
+        $this->view->form = \App\Helper\Form::class;
+
+        // URL Helper
+        $this->view->url = \Lollipop\Url::class;
     }
     
     /**
