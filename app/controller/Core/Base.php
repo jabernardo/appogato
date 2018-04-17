@@ -74,11 +74,19 @@ class Base
         
         /*************** HELPERs ***************/
 
-        // Form Helper
-        $this->view->form = \App\Helper\Form::class;
+        $this->view->helper = (object) [
+            'feature'   => \App\Helper\Feature::class,
+            'form'      => \App\Helper\Form::class
+        ];
 
-        // URL Helper
-        $this->view->url = \Lollipop\Url::class;
+        /*************** ALIASes ***************/
+
+        $this->view->lollipop = (object) [
+            'config'    => \Lollipop\Config::class,
+            'number'    => \Lollipop\Number::class,
+            'text'      => \Lollipop\Text::class,
+            'url'       => \Lollipop\Url::class
+        ];
     }
     
     /**
