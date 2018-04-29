@@ -114,6 +114,9 @@ Router::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Respo
         // Session
         $data['session'] = Session::getAll();
 
+        // Request
+        $data['request'] = $req->get();
+
         // Route information
         $route = \Lollipop\HTTP\Router::getActiveRoute();
         

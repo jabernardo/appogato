@@ -9,6 +9,9 @@
         <a href="javascript:" ldebug-toggle="session">
             Session <span class="count"><?= count($session) ?></span>
         </a>
+        <a href="javascript:" ldebug-toggle="request">
+            Requests <span class="count"><?= count($request) ?></span>
+        </a>
         <a href="javascript:" ldebug-toggle="config">
             Config
         </a>
@@ -75,6 +78,13 @@
         <div id="lollipop-debug-tab-session">
             <ul>
             <?php foreach ($session as $key => $val) { ?>
+            <li><span class="key"><?= $key ?></span> <?= $val?></li>
+            <?php } ?>
+            </ul>
+        </div>
+        <div id="lollipop-debug-tab-request">
+            <ul>
+            <?php foreach ($request as $key => $val) { ?>
             <li><span class="key"><?= $key ?></span> <?= $val?></li>
             <?php } ?>
             </ul>
