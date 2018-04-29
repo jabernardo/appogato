@@ -10,6 +10,7 @@ if (!class_exists('\PHPUnit\Framework\TestCase') &&
 }
 
 use \Lollipop\Text;
+use \Lollipop\Text\Inflector;
 use \PHPUnit\Framework\TestCase;
 
 class TextTest extends TestCase
@@ -21,5 +22,19 @@ class TextTest extends TestCase
                 'hello',
                 Text::unlock($locked, 12345)
             );
+    }
+
+    public function testRepeat() {
+        $this->assertEquals(
+            Text::repeat('h', 3),
+            'hhh'
+        );
+    }
+
+    public function testCensor() {
+        $this->assertEquals(
+            Inflector::censor('fuck you', ['Fuck'], 'beep'),
+            'beep you'
+        );
     }
 }

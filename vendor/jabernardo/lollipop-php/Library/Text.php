@@ -9,7 +9,7 @@ use \Lollipop\Config;
 /**
  * Text Class 
  *
- * @version     2.2.4
+ * @version     2.2.5
  * @author      John Aldrich Bernardo
  * @email       4ldrich@protonmail.com
  * @package     Lollipop 
@@ -125,6 +125,23 @@ class Text
         $chars = str_repeat('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', rand(1, 4));
         
         return substr(str_shuffle($chars), 0, $length);
+    }
+
+    /**
+     * Repeat text
+     * 
+     * @param   string  $str    String to be repeated
+     * @param   int     $n      Number of repetition
+     * 
+     */
+    static function repeat($str, $n) {
+        $nstr = '';
+
+        for ($i = 0; $i < $n; $i++) {
+            $nstr .= $str;
+        }
+
+        return $nstr;
     }
 
     /**
