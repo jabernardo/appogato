@@ -73,6 +73,10 @@ class Welcome extends \App\Controller\Core\Base
         // Passing data to view
         $this->view->welcome_message = 'Up and Running!';
         
+        // If you want to compress application output
+        // uncomment code below
+        //  $this->compress();
+
         // Start to render page
         return $this->render('welcome');
     }

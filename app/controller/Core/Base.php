@@ -8,6 +8,8 @@ use \Lollipop\CsrfToken;
 use \Lollipop\Log;
 use \Lollipop\Page;
 use \Lollipop\HTTP\Response;
+use \Lollipop\HTTP\Request;
+use \Lollipop\Session;
 
 /**
  * Base Controller
@@ -20,28 +22,37 @@ use \Lollipop\HTTP\Response;
 class Base
 {
     /**
+     * @var     \stdClass    View variable holder
+     * 
+     */
+    public $view = null;
+    
+    /**
+     * Compress output
+     *
+     * @var bool
+     */
+    public $compress = false;
+
+    /**
+     * @var     array   Cookies
+     * 
+     */
+    public $cookies = [];
+    
+    /**
+     * @var     array   Headers
+     * 
+     */
+    public $headers = [];
+
+    /**
      * Class Construct
      * 
      */
     function __construct() {
-        /**
-         * @var     \stdClass    View variable holder
-         * 
-         */
         $this->view = new \stdClass();
-        
-        /**
-         * @var     array   Cookies
-         * 
-         */
-        $this->cookies = [];
-        
-        /**
-         * @var     array   Headers
-         * 
-         */
-        $this->headers = [];
-        
+
         // Set all default view variables on class constuct
         $this->_setDefaultView();
     }
@@ -83,6 +94,8 @@ class Base
 
         $this->view->lollipop = (object) [
             'config'    => \Lollipop\Config::class,
+            'filter'    => \Lollipop\Text\Filter::class,
+            'inflector' => \Lollipop\Text\Inflector::class,
             'number'    => \Lollipop\Number::class,
             'text'      => \Lollipop\Text::class,
             'url'       => \Lollipop\Url::class
@@ -127,7 +140,28 @@ class Base
         // Set response headers
         $response->header($this->headers);
 
+        // Check if Debugger is enabled
+        // Then let debugger turn-on the gzip compression
+        $req = new Request();
+
+        if (Config::get('debugger') && !$req->is('disable-debugger')) {
+            Session::set('debugger-compress-output', $this->compress);
+        } else {
+            // else
+            $response->compress($this->compress);
+        }
+
         return $response;
+    }
+
+    /**
+     * Compress output
+     *
+     * @param   boolean $enable
+     * @return  void
+     */
+    public function compress($enable = true) {
+        $this->compress = $enable;
     }
     
     /**

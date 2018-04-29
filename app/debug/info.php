@@ -123,7 +123,14 @@ Router::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Respo
         
         $debugger = Page::render(APP_CORE_DEBUG . 'summary.php', $data);
         
-        return $res->set($res->get() . $debugger);
+        // Output compression for debugger
+        $res->set($res->get() . $debugger);
+
+        if (Session::exists('debugger-compress-output')) {
+            $res->compress(Session::get('debugger-compress-output'));
+        }
+
+        return $res;
     }
     
     return $res;
