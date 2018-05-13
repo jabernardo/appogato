@@ -44,5 +44,7 @@ $app = new \Console\Application();
 // - cache command
 $app->add('cache', new \bin\Cache());
 
+// Register new commands here...
+
 // Run application
 $app->run();
