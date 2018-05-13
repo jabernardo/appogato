@@ -12,9 +12,9 @@ $route['/'] = [
     'method' => [] /*  [ 'GET', 'POST' ] */,
     'middlewares' => [
         new \Lollipop\HTTP\Middleware\Cache(),
+        new \Lollipop\HTTP\Middleware\Gzip(),
         new \Lollipop\HTTP\Middleware\AntiCsrf()
-    ],
-    'cache' => true
+    ]
 ];
 
 /** 404 Page Not Found **/
