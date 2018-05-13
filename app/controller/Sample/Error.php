@@ -55,6 +55,11 @@ class Error extends \App\Controller\Core\Base
         $this->view->title = 'Page Not Found';
         $this->view->message = 'The page that you have requested could not be found.';
         
+        // Set 404 header
+        $this->headers = [
+            'HTTP/1.0 404 Not Found'
+        ];
+
         // @todo    Insert actions here
         return $this->render('error');
     }
