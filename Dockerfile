@@ -3,9 +3,9 @@ FROM php:7.0-apache
 # Copy files to /var/www/lmvc
 ADD . /var/www/lmvc
 
-# Create a symlink for htdocs
+# Create a symlink for public
 # then allow file permission for cache, db and log
-RUN rm -rf /var/www/html && ln -s /var/www/lmvc/htdocs /var/www/html &&\
+RUN rm -rf /var/www/html && ln -s /var/www/lmvc/public /var/www/html &&\
     chown -R www-data /var/www/lmvc/app/cache /var/www/lmvc/app/log /var/www/lmvc/app/db
 
 # Install vim and common php libs
