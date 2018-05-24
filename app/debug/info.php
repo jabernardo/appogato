@@ -40,7 +40,7 @@ use \Lollipop\Page;
 use \Lollipop\HTTP\Request;
 use \Lollipop\HTTP\Router;
 use \Lollipop\Session;
-use \Lollipop\Url;
+use \Lollipop\HTTP\URL;
 
 /**
  * Clean function

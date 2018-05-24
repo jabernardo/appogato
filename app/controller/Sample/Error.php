@@ -3,7 +3,7 @@
 namespace App\Controller\Sample;
 
 use \Lollipop\Config;
-use \Lollipop\Url;
+use \Lollipop\HTTP\URL;
 
 /**
  * ErrorController Controller
@@ -46,9 +46,9 @@ class Error extends \App\Controller\Core\Base
 
         // Set CSS data
         $this->view->css = [
-            Url::base('static/css/normalize.css'),
-            Url::base('static/css/skeleton.css'),
-            Url::base('static/css/default.css')
+            URL::base('static/css/normalize.css'),
+            URL::base('static/css/skeleton.css'),
+            URL::base('static/css/default.css')
         ];
         
         // Messages

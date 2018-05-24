@@ -78,10 +78,10 @@ class Base
         $this->view->css = [];
 
         // Domain name
-        $this->view->domain = \Lollipop\Url::base();
+        $this->view->domain = \Lollipop\HTTP\URL::base();
         
-        // Request URI
-        $this->view->request_uri = \Lollipop\Url::here();
+        // Request URL
+        $this->view->request_uri = \Lollipop\HTTP\URL::here();
         
         /*************** HELPERs ***************/
 
@@ -98,7 +98,7 @@ class Base
             'inflector' => \Lollipop\Text\Inflector::class,
             'number'    => \Lollipop\Number::class,
             'text'      => \Lollipop\Text::class,
-            'url'       => \Lollipop\Url::class
+            'url'       => \Lollipop\HTTP\URL::class
         ];
     }
     

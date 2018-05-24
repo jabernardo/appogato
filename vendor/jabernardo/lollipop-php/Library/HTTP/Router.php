@@ -22,7 +22,6 @@ use \Lollipop\HTTP\Request;
 /**
  * Lollipop Router Class
  *
- * @version     3.1.1
  * @author      John Aldrich Bernardo
  * @email       4ldrich@protonmail.com
  * @package     Lollipop
@@ -198,6 +197,12 @@ class Router
             $route['arguments'] = [];
         }
         
+        // Report duplicated path
+        if (isset(self::$_stored_routes[$path])) {
+            Log::error('Duplicated path: "' . $path . '"');
+            return false;
+        }
+
         // Store route
         self::$_stored_routes[$path] = $route;
 
@@ -254,7 +259,7 @@ class Router
         
         // Create an instance of URL parser for checking if current
         // path matches any route
-        $parser = new \Lollipop\HTTP\URL\Parser($url);
+        $parser = new \Lollipop\HTTP\URL\Pretty($url);
         
         // Get 404 Page Not Found
         // Check if `404` route was declared
@@ -459,5 +464,3 @@ class Router
         ];
     }
 }
-
-?>
