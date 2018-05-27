@@ -5,12 +5,12 @@
  * An extensive and flexible library for PHP
  *
  * @package    Lollipop for MVC
- * @version    1.3
+ * @version    1.4
  * @author     John Aldrich Bernardo <bjohnaldrich@gmail.com>
  * @copyright  Copyright (C) 2015 John Aldrich Bernardo. All rights reserved.
  * @license
  *
- * Copyright (c) 2016 John Aldrich Bernardo
+ * Copyright (c) 2018 John Aldrich Bernardo
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -42,26 +42,64 @@ use \Lollipop\HTTP\Router;
 use \Lollipop\Session;
 use \Lollipop\HTTP\URL;
 
+
 /**
  * Clean function
  * 
  */
 Router::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Response $res, Callable $next) {
-    // Start Benchmark
-    Benchmark::mark('_lmvc_start');
+    // Check if Debugger is enabled
+    $debugger_disabled = !Config::get('debugger') ||
+            $req->is('disable-debugger') ||
+            Session::get('disable-debugger');
+    
+    
+    if (!$debugger_disabled) {
+        // Start Benchmark
+        Benchmark::mark('_lmvc_start');
+    
+        /**
+         * Lollipop error handler
+         * 
+         * @param   int     $errno      Error number
+         * @param   string  $errstr     Message
+         * @param   string  $errfile    Filename
+         * @param   int     $errline    Line
+         * @return  void
+         * 
+         */
+        set_error_handler(function($errno, $errstr, $errfile, $errline) {
+            switch ($errno) {
+                case E_USER_WARNING:
+                    \Lollipop\Log::warn($errstr . ' on \'' . $errfile . ':' . $errline . '\'');
+                    break;
+                case E_USER_NOTICE:
+                    \Lollipop\Log::notice($errstr . ' on \'' . $errfile . ':' . $errline . '\'');
+                    break;
+                default:
+                    \Lollipop\Log::error($errstr . ' on \'' . $errfile . ':' . $errline . '\'');
+                    break;
+            }
+        });
+        
+        /**
+         * Exception handler
+         * 
+         * @param   stdClass    Exception class instance
+         * @return  void
+         * 
+         */
+        set_exception_handler(function($ex) {
+            \Lollipop\Log::error('Exception received with message "' . $ex->getMessage() . '" on ' . $ex->getFile() . ':' . $ex->getLine());
+        });
+    }
 
     $res = $next($req, $res);
     
+    if ($debugger_disabled) return $res;
+    
     // End benchmark
     Benchmark::mark('_lmvc_stop');
-    
-    // Check if Debugger is enabled
-    if (!Config::get('debugger')) return $res;
-    if ($req->is('disable-debugger')) return $res;
-    if (Session::get('disable-debugger')) {
-        Session::drop('disable-debugger');
-        return $res;
-    }
 
     $is_html = false;
     $content_type_headers_count = 0;

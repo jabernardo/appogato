@@ -177,11 +177,3 @@ foreach ($route as $key => $value) {
         \Lollipop\HTTP\Router::serve($value);
     }
 }
-
-// Restore default error and exception handler
-$lerrhandler = \Lollipop\Config::get('lollipop.error.handler');
-
-if (!is_null($lerrhandler) && $lerrhandler === false) {
-    restore_error_handler();
-    restore_exception_handler();
-}

@@ -147,7 +147,7 @@
     width: 100%;
     position: fixed;
     bottom: 0;
-    border-top: 2px solid #b7b7b7;
+    border-top: 2px solid #3320bd;
     z-index: 20000;
     background-color: #f1f1f1;
 }
@@ -252,7 +252,8 @@
 
 #lollipop-debug #lollipop-debug-body {
     overflow-y: auto;
-    height: 94%;
+    position: relative;
+    height: 96.333333%;
     border-top: 1px solid #b7b7b7;
 }
 
