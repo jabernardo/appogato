@@ -54,14 +54,6 @@ return [
         // Compression (gzip)
         'compression' => false
     ],
-        
-    /**
-     * Development tools
-     *
-     * @note    Enables purging of cache
-     * 
-     */
-    'dev_tools' => true,
 
     /**
      * Lollipop Debugger
