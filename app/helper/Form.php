@@ -3,7 +3,7 @@
 namespace App\Helper;
 
 use \Lollipop\Config;
-use \Lollipop\CsrfToken;
+use \Lollipop\Security\CsrfToken;
 use \Lollipop\DOM\Tag;
 use \Lollipop\Text;
 use \Lollipop\HTTP\Request;
@@ -81,9 +81,10 @@ class Form
     /**
      * Submit button
      *
-     * @return \Lollipop\DOM\Tag
+     * @param   string  $name   Submit button name
+     * @return  \Lollipop\DOM\Tag
      */
-    public static function submit() {
-        return Tag::create('input', true)->add('type', 'submit');
+    public static function submit($name) {
+        return Tag::create('input', true)->add('type', 'submit')->add('name', $name);
     }
 }
