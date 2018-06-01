@@ -53,7 +53,7 @@ class Form
      * @return \Lollipop\DOM\Tag
      */
     public static function input($name, $value = '', $secured = true) {
-        return Tag::create('input')
+        return Tag::create('input', true)
             ->add('name', $secured ? Text::lock($name) : $name)
             ->add('value', $value);
     }
@@ -75,7 +75,7 @@ class Form
      * @return \Lollipop\DOM\Tag
      */
     public static function getAntiCsrfInput() {
-        return Tag::create('input')->add('type', 'hidden')->add('name', CsrfToken::getName())->add('value', CsrfToken::get());
+        return Tag::create('input', true)->add('type', 'hidden')->add('name', CsrfToken::getName())->add('value', CsrfToken::get());
     }
 
     /**
