@@ -55,6 +55,7 @@ define('APP_CORE_MIDDLEWARE', APP_CORE . 'middleware/');
 define('APP_CORE_CACHE', APP_CORE . 'cache/');
 define('APP_CORE_LOG', APP_CORE . 'log/');
 define('APP_CORE_DB', APP_CORE . 'db/');
+define('APP_CORE_UPLOAD', APP_CORE . 'upload/');
 define('APP_CORE_DEBUG', APP_CORE . 'debug/');
 
 /**
