@@ -82,24 +82,6 @@ class Base
         
         // Request URL
         $this->view->request_uri = \Lollipop\HTTP\URL::here();
-        
-        /*************** HELPERs ***************/
-
-        $this->view->helper = (object) [
-            'feature'   => \App\Helper\Feature::class,
-            'form'      => \App\Helper\Form::class
-        ];
-
-        /*************** ALIASes ***************/
-
-        $this->view->lollipop = (object) [
-            'config'    => \Lollipop\Config::class,
-            'filter'    => \Lollipop\Text\Filter::class,
-            'inflector' => \Lollipop\Text\Inflector::class,
-            'number'    => \Lollipop\Number::class,
-            'text'      => \Lollipop\Text::class,
-            'url'       => \Lollipop\HTTP\URL::class
-        ];
     }
     
     /**
