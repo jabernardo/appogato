@@ -22,14 +22,15 @@
         <?php } ?>
         <?php if (count($logs->info) ||
                 count($logs->warn) ||
-                count($logs->notice) ||
-                count($logs->error))
+                count($logs->error) ||
+                count($logs->fatal) ||
+                count($logs->debug))
          { ?>
         <span class="separator"></span>
         <?php } ?>
         <?php if (count($logs->info)) { ?>
         <a href="javascript:" ldebug-toggle="logs">
-            Logs <span class="count"><?= count($logs->info) ?></span>
+            Logs <span class="count"><?= count(array_merge($logs->info, $logs->debug)) ?></span>
         </a>
         <?php } ?>
         <?php if (count($logs->warn)) { ?>
@@ -37,14 +38,14 @@
             Warnings <span class="count"><?= count($logs->warn) ?></span>
         </a>
         <?php } ?>
-        <?php if (count($logs->notice)) { ?>
-        <a href="javascript:" ldebug-toggle="notices">
-            Notices <span class="count"><?= count($logs->notice) ?></span>
+        <?php if (count($logs->error)) { ?>
+        <a href="javascript:" ldebug-toggle="error">
+            Errors <span class="count"><?= count($logs->error) ?></span>
         </a>
         <?php } ?>
-        <?php if (count($logs->error)) { ?>
-        <a href="javascript:" ldebug-toggle="errors">
-            Errors <span class="count"><?= count($logs->error) ?></span>
+        <?php if (count($logs->fatal)) { ?>
+        <a href="javascript:" ldebug-toggle="fatal">
+            Fatal <span class="count"><?= count($logs->fatal) ?></span>
         </a>
         <?php } ?>
         <span class="separator"></span>
@@ -104,7 +105,7 @@
         <?php if (count($logs->info)) { ?>
         <div id="lollipop-debug-tab-logs">
             <ul>
-            <?php foreach ($logs->info as $log) { ?>
+            <?php foreach (array_merge($logs->info, $logs->debug) as $log) { ?>
             <li><?= $log ?></li>
             <?php } ?>
             </ul>
@@ -119,20 +120,20 @@
             </ul>
         </div>
         <?php } ?>
-        <?php if (count($logs->notice)) { ?>
-        <div id="lollipop-debug-tab-notices">
+        <?php if (count($logs->error)) { ?>
+        <div id="lollipop-debug-tab-error">
             <ul>
-            <?php foreach ($logs->notice as $notice) { ?>
-            <li><?= $notice ?></li>
+            <?php foreach ($logs->error as $error) { ?>
+            <li><?= $error ?></li>
             <?php } ?>
             </ul>
         </div>
         <?php } ?>
-        <?php if (count($logs->error)) { ?>
-        <div id="lollipop-debug-tab-errors">
+        <?php if (count($logs->fatal)) { ?>
+        <div id="lollipop-debug-tab-fatal">
             <ul>
-            <?php foreach ($logs->error as $error) { ?>
-            <li><?= $error ?></li>
+            <?php foreach ($logs->fatal as $fatal) { ?>
+            <li><?= $fatal ?></li>
             <?php } ?>
             </ul>
         </div>
@@ -282,16 +283,16 @@
     background: #dbdbdb;
 }
 
-#lollipop-debug #lollipop-debug-header a[ldebug-toggle="errors"] {
+#lollipop-debug #lollipop-debug-header a[ldebug-toggle="fatal"] {
     color: #ff0000;
 }
 
-#lollipop-debug #lollipop-debug-header a[ldebug-toggle="errors"].active {
+#lollipop-debug #lollipop-debug-header a[ldebug-toggle="fatal"].active {
     color: #ffffff;
     background-color: #ff0000;
 }
 
-#lollipop-debug #lollipop-debug-header a[ldebug-toggle="errors"].active span.count {
+#lollipop-debug #lollipop-debug-header a[ldebug-toggle="fatal"].active span.count {
     color: #ff0000;
     background-color: #ffffff;
 }
@@ -324,16 +325,16 @@
     background-color: #ffffff;
 }
 
-#lollipop-debug #lollipop-debug-header a[ldebug-toggle="notices"] {
+#lollipop-debug #lollipop-debug-header a[ldebug-toggle="error"] {
     color: rgb(162, 151, 13);
 }
 
-#lollipop-debug #lollipop-debug-header a[ldebug-toggle="notices"].active {
+#lollipop-debug #lollipop-debug-header a[ldebug-toggle="error"].active {
     color: #ffffff;
     background-color: rgb(162, 151, 13);
 }
 
-#lollipop-debug #lollipop-debug-header a[ldebug-toggle="notices"].active span.count {
+#lollipop-debug #lollipop-debug-header a[ldebug-toggle="error"].active span.count {
     color: rgb(162, 151, 13);
     background-color: #ffffff;
 }
