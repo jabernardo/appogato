@@ -20,20 +20,6 @@ class Welcome extends \App\Controller\Core\Base
     function __construct() {
         // Call parent construct function
         parent::__construct();
-
-        /**
-         * Loading of models
-         * 
-         * $this->products = new \App\Model\Products();
-         * 
-         */
-        
-        /**
-         * Loading of helpers
-         *
-         * $this->features = new \App\Helper\Feature();
-         * 
-         */
     }
     
     /**
@@ -60,7 +46,7 @@ class Welcome extends \App\Controller\Core\Base
             URL::base('static/css/skeleton.css'),
             URL::base('static/css/default.css')
         ];
-
+        
         /**
          * JS to load
          * 
