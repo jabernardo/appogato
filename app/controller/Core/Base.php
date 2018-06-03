@@ -3,8 +3,6 @@
 namespace App\Controller\Core;
 
 use \Lollipop\Config;
-use \Lollipop\Cookie;
-use \Lollipop\CsrfToken;
 use \Lollipop\Log;
 use \Lollipop\Page;
 use \Lollipop\HTTP\Response;
