@@ -45,18 +45,19 @@ require_once(realpath(dirname(__DIR__)) . '/vendor/autoload.php');
  */
 define('APP_ROOT', realpath(dirname(__DIR__)));
 define('APP_CORE', APP_ROOT . '/app/');
-define('APP_CORE_CONFIG', APP_ROOT . '/app/config/');
-define('APP_CORE_ROUTES', APP_ROOT . '/app/routes/');
+define('APP_CORE_CONFIG', APP_CORE . 'config/');
+define('APP_CORE_ROUTES', APP_CORE . 'routes/');
 define('APP_CORE_CONTROLLER', APP_CORE . 'controller/');
 define('APP_CORE_MODEL', APP_CORE . 'model/');
 define('APP_CORE_VIEW', APP_CORE . 'view/');
 define('APP_CORE_HELPER', APP_CORE . 'helper/');
 define('APP_CORE_MIDDLEWARE', APP_CORE . 'middleware/');
-define('APP_CORE_CACHE', APP_CORE . 'cache/');
-define('APP_CORE_LOG', APP_CORE . 'log/');
-define('APP_CORE_DB', APP_CORE . 'db/');
-define('APP_CORE_UPLOAD', APP_CORE . 'upload/');
 define('APP_CORE_DEBUG', APP_CORE . 'debug/');
+define('APP_CORE_STORAGE', APP_CORE . 'storage/');
+define('APP_CORE_CACHE', APP_CORE_STORAGE . 'cache/');
+define('APP_CORE_LOG', APP_CORE_STORAGE . 'log/');
+define('APP_CORE_DB', APP_CORE_STORAGE . 'db/');
+define('APP_CORE_UPLOAD', APP_CORE_STORAGE . 'upload/');
 
 /**
  * Autoload function
