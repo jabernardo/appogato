@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e253e6aadf9fbb664b341f7cb9845fb",
+    "content-hash": "70e2382d1375347842814ef44eb51846",
     "packages": [
         {
             "name": "jabernardo/console.php",
@@ -55,16 +55,16 @@
         },
         {
             "name": "jabernardo/lollipop-php",
-            "version": "v3.0-alpha-1",
+            "version": "v3.0-rc1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jabernardo/lollipop-php.git",
-                "reference": "047647049a9ff74d930591fc9193aacd8d5d303f"
+                "reference": "88c8d931d211da602f36acff710bcf843c5a9fd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jabernardo/lollipop-php/zipball/047647049a9ff74d930591fc9193aacd8d5d303f",
-                "reference": "047647049a9ff74d930591fc9193aacd8d5d303f",
+                "url": "https://api.github.com/repos/jabernardo/lollipop-php/zipball/88c8d931d211da602f36acff710bcf843c5a9fd6",
+                "reference": "88c8d931d211da602f36acff710bcf843c5a9fd6",
                 "shasum": ""
             },
             "require": {
@@ -99,7 +99,7 @@
                 "php-framework",
                 "web-framework"
             ],
-            "time": "2018-03-21T14:45:47+00:00"
+            "time": "2018-06-10T15:16:35+00:00"
         }
     ],
     "packages-dev": [],
