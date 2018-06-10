@@ -18,6 +18,5 @@
         "php": ">=5.4.0",
         "jabernardo/lollipop-php": "v3.0-rc1",
         "jabernardo/console.php": "^0.1.0"
-    },
-    "minimum-stability": "dev"
+    }
 }
