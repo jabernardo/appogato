@@ -19,32 +19,6 @@ return [
         'author' => 'Programmer',
         'email' => 'youremail@domain.ext'
     ],
-    
-    /**
-    * Anti-CSRF
-    * 
-    */
-    'anti_csrf' => [
-        'enable' => true,       // Enable or disable this functionality
-        'name' => 'sugar',      // Application keyword
-        'key' => '',            // Salt
-        'expiration' => 1800    // or 30mins
-    ],
-    
-    /**
-     * Disable XSS injection in Page::render
-     * 
-     */
-    'anti_xss' => true,
-    
-    /**
-     * Feature Switches
-     *
-     */
-    'switch' => [
-        // For your custom logs you can use this switch
-        'logs' => true
-    ],
         
     /**
      * Output
@@ -95,7 +69,12 @@ return [
         'hourly' => false
     ],
 
-    // Auto Dispatch function
+    /**
+     * Auto Dispatch function
+     * 
+     * Enable auto dispatch
+     * 
+     */
     'router' => [
         'auto_dispatch' => true
     ],
@@ -118,14 +97,37 @@ return [
         ]
     ],
 
-    // Text Lock and Unlock
-    // OpenSSL Encrypt Settings
-    'text' => [
-        'security' => [
+    /**
+     * Security Configuration Section
+     * 
+     */
+    'security' => [
+        /**
+         * Text Lock and Unlock
+         * OpenSSL Encrypt Settings
+         * 
+         */
+        'text' => [
             'method' => 'AES256',
             'key' => SUGAR,
             'iv' => substr(md5(SUGAR), 0, 16)
-        ]
-    ]
+        ],
     
+        /**
+         * Anti-CSRF
+         * 
+         */
+        'anti_csrf' => [
+            'enable' => true,       // Enable or disable this functionality
+            'name' => 'sugar',      // Application keyword
+            'key' => '',            // Salt
+            'expiration' => 1800    // or 30mins
+        ],
+        
+        /**
+         * Disable XSS injection in Page::render
+         * 
+         */
+        'anti_xss' => true,
+    ]
 ];
