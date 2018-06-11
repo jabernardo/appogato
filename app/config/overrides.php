@@ -16,12 +16,12 @@ return [
          */
          
         'dev' => [
-            // 'cache' => [
-            //         'driver' => 'memcached',
-            //         'servers' => [
-            //             [ 'memcached', '11211' ]
-            //         ]
-            //     ],
+            'cache' => [
+                    'driver' => 'memcached',
+                    'servers' => [
+                        [ 'memcached', '11211' ]
+                    ]
+                ],
             'debugger' => true,
             'db' => [
                 'host' => 'localhost',
