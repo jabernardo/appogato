@@ -4,10 +4,10 @@
             Files <span class="count"><?= count(get_included_files()) ?></span>
         </a>
         <a href="javascript:" ldebug-toggle="session">
-            Session <span class="count"><?= count($session) ?></span>
+            Session <span class="count"><?= count((array)$session) ?></span>
         </a>
         <a href="javascript:" ldebug-toggle="request">
-            Requests <span class="count"><?= count($request) ?></span>
+            Requests <span class="count"><?= count((array)$request) ?></span>
         </a>
         <a href="javascript:" ldebug-toggle="config">
             Config
