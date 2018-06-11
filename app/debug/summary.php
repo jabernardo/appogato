@@ -1,8 +1,5 @@
 <div id="lollipop-debug">
     <div id="lollipop-debug-header">
-        <a href="javascript:" ldebug-toggle="app">
-            LMVC
-        </a>
         <a href="javascript:" ldebug-toggle="files">
             Files <span class="count"><?= count(get_included_files()) ?></span>
         </a>
@@ -30,7 +27,7 @@
         <?php } ?>
         <?php if (count($logs->info)) { ?>
         <a href="javascript:" ldebug-toggle="logs">
-            Logs <span class="count"><?= count(array_merge($logs->info, $logs->debug)) ?></span>
+            Logs <span class="count"><?= count($logs->info) ?></span>
         </a>
         <?php } ?>
         <?php if (count($logs->warn)) { ?>
@@ -65,10 +62,6 @@
         </a>
     </div>
     <div id="lollipop-debug-body">
-        <div id="lollipop-debug-tab-app">
-            <?= $app->name ?> v<?= $app->version ?><br>
-            by <?= $app->author ?>
-        </div>
         <div id="lollipop-debug-tab-files">
             <ul>
             <?php foreach (get_included_files() as $file) { ?>
@@ -79,21 +72,23 @@
         <div id="lollipop-debug-tab-session">
             <ul>
             <?php foreach ($session as $key => $val) { ?>
-            <li><span class="key"><?= $key ?></span> <?= $val?></li>
+            <li><label class="key"><?= $key ?></label> <?= $val?></li>
             <?php } ?>
             </ul>
         </div>
         <div id="lollipop-debug-tab-request">
             <ul>
             <?php foreach ($request as $key => $val) { ?>
-            <li><span class="key"><?= $key ?></span> <?= $val?></li>
+            <li><label class="key"><?= $key ?></label> <?php print_r($val) ?></li>
             <?php } ?>
             </ul>
         </div>
         <div id="lollipop-debug-tab-config">
             <ul>
-            <?php foreach ($config as $k => $v) { ?>
-            <li><span class="key"><?= $k ?></span><span><?php $v ? print_r($v) : print('null') ?></span></li>
+            <?php foreach ($config as $k => $v) { $pre_sel = 'config_' . sha1($k); ?>
+            <li>
+                <label class="key pre-clickable" pre-toggle="<?=  $pre_sel ?>"><?= $k ?></label><span id="<?= $pre_sel ?>"><?php $v ? print_r($v) : print('null') ?></span>
+            </li>
             <?php } ?>
             </ul>
         </div>
@@ -105,7 +100,7 @@
         <?php if (count($logs->info)) { ?>
         <div id="lollipop-debug-tab-logs">
             <ul>
-            <?php foreach (array_merge($logs->info, $logs->debug) as $log) { ?>
+            <?php foreach ($logs->info as $log) { ?>
             <li><?= $log ?></li>
             <?php } ?>
             </ul>
@@ -168,12 +163,14 @@
     z-index: 20000;
 }
 
-#lollipop-debug span.key {
+#lollipop-debug label.key {
     color: #ffffff;
     background-color: #5d5d5d;
     padding: 2px;
     border-radius: 2px;
     margin-right: 2px;
+    cursor: pointer;
+    display: inline;
 }
 
 #lollipop-debug a,
@@ -256,6 +253,12 @@
     position: relative;
     height: 96.333333%;
     border-top: 1px solid #b7b7b7;
+}
+
+#lollipop-debug #lollipop-debug-body .pre-enable {
+    display: block;
+    white-space: pre-wrap;
+    tab-size: 2;
 }
 
 #lollipop-debug #lollipop-debug-body div[id^="lollipop-debug-tab-"] {
@@ -377,7 +380,7 @@ _.select = function(selector) {
     } else {
         return false;
     }
-}
+};
 
 /**
  * Selected elements length
@@ -461,7 +464,7 @@ _.select.prototype.addClass = function(name) {
     }
     
     return this;
-}
+};
 
 /**
  * Remove class from element
@@ -493,7 +496,7 @@ _.select.prototype.removeClass = function(name) {
     }
     
     return this;
-}
+};
 
 /**
  * Has class prototype
@@ -524,7 +527,7 @@ _.select.prototype.hasClass = function(name) {
     }
     
     return found;
-}
+};
 
 /**
  * Toggle class prototype
@@ -569,7 +572,7 @@ _.select.prototype.toggleClass = function(name) {
     }
     
     return this;
-}
+};
 
 /**
  * Set or get attribute
@@ -592,7 +595,7 @@ _.select.prototype.attr = function(name, val) {
     }
     
     return typeof elem[0] !== "undefined" ? elem[0].getAttribute(name) : null;
-}
+};
 
 /**
  * Toggle display
@@ -618,7 +621,7 @@ _.select.prototype.toggle = function() {
     }
     
     return this;
-}
+};
 
 /**
  * Show elemements selected
@@ -637,7 +640,7 @@ _.select.prototype.show = function() {
     }
     
     return this;
-}
+};
 
 /**
  * Hide elements selected
@@ -656,7 +659,7 @@ _.select.prototype.hide = function() {
     }
     
     return this;
-}
+};
 
 /**
  * Get or set innerHTML
@@ -680,7 +683,7 @@ _.select.prototype.html = function(str) {
     }
     
     return this;
-}
+};
 
 /**
  * Get or set innerText
@@ -704,7 +707,7 @@ _.select.prototype.text = function(str) {
     }
     
     return this;
-}
+};
 
 /**
  * Get or set value
@@ -728,7 +731,7 @@ _.select.prototype.val = function(str) {
     }
     
     return this;
-}
+};
 
 
 /***************************************************/
@@ -761,6 +764,11 @@ window.LollipopDebug.create = function() {
         _("#lollipop-debug #lollipop-debug-header a.close").hide();
         _("[ldebug-toggle]").removeClass("active");
         _("[id^=lollipop-debug-tab-]").removeClass("active");
+    });
+    
+    _(".pre-clickable").on("click", function() {
+        var toggle = _(this).attr("pre-toggle");
+        _('#' + toggle).toggleClass("pre-enable");
     });
 }
 
