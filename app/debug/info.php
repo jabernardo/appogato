@@ -71,13 +71,13 @@ Router::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Respo
         set_error_handler(function($errno, $errstr, $errfile, $errline) {
             switch ($errno) {
                 case E_USER_WARNING:
-                    \Lollipop\Log::warn($errstr . ' on \'' . $errfile . ':' . $errline . '\'');
+                    \Lollipop\Log::error($errstr . ' on \'' . $errfile . ':' . $errline . '\'');
                     break;
                 case E_USER_NOTICE:
-                    \Lollipop\Log::notice($errstr . ' on \'' . $errfile . ':' . $errline . '\'');
+                    \Lollipop\Log::warn($errstr . ' on \'' . $errfile . ':' . $errline . '\'');
                     break;
                 default:
-                    \Lollipop\Log::error($errstr . ' on \'' . $errfile . ':' . $errline . '\'');
+                    \Lollipop\Log::fatal($errstr . ' on \'' . $errfile . ':' . $errline . '\'');
                     break;
             }
         });

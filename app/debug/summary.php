@@ -326,30 +326,30 @@
 }
 
 #lollipop-debug #lollipop-debug-header a[ldebug-toggle="warns"] {
-    color: rgb(214, 124, 13);
+    color: rgb(162, 151, 13);
 }
 
 #lollipop-debug #lollipop-debug-header a[ldebug-toggle="warns"].active {
     color: #ffffff;
-    background-color: rgb(214, 124, 13);
+    background-color: rgb(162, 151, 13);
 }
 
 #lollipop-debug #lollipop-debug-header a[ldebug-toggle="warns"].active span.count {
-    color: rgb(214, 124, 13);
+    color: rgb(162, 151, 13);
     background-color: #ffffff;
 }
 
 #lollipop-debug #lollipop-debug-header a[ldebug-toggle="error"] {
-    color: rgb(162, 151, 13);
+    color: rgb(214, 124, 13);
 }
 
 #lollipop-debug #lollipop-debug-header a[ldebug-toggle="error"].active {
     color: #ffffff;
-    background-color: rgb(162, 151, 13);
+    background-color: rgb(214, 124, 13);
 }
 
 #lollipop-debug #lollipop-debug-header a[ldebug-toggle="error"].active span.count {
-    color: rgb(162, 151, 13);
+    color: rgb(214, 124, 13);
     background-color: #ffffff;
 }
 
