@@ -143,6 +143,7 @@
     width: 100%;
     position: fixed;
     bottom: 0;
+    left: 0;
     border-top: 2px solid #3320bd;
     z-index: 20000;
     background-color: #f1f1f1;
@@ -210,7 +211,7 @@
 #lollipop-debug #lollipop-debug-header a:visited,
 #lollipop-debug #lollipop-debug-header a:hover {
     display: inline-block;
-    padding: 4px;
+    padding: 6px;
     text-decoration: none;
     font-weight: bold;
     color: #3320bd;
@@ -268,6 +269,16 @@
 #lollipop-debug #lollipop-debug-body div[id^="lollipop-debug-tab-"].active {
     display: block;
     position: relative;
+    padding: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 1rem;
+}
+
+#lollipop-debug #lollipop-debug-body div[id^="lollipop-debug-tab-"].active * {
+    padding: 2px;
+    margin: 0;
 }
 
 #lollipop-debug #lollipop-debug-body ul {
