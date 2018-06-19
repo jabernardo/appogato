@@ -44,6 +44,8 @@ class Error extends \App\Controller\Core\Base
             'keywords' => Config::get('app')->name
         ];
 
+        $this->view->favicon = URL::base('static/img/favicon.ico');
+
         // Set CSS data
         $this->view->css = [
             URL::base('static/css/normalize.css'),
