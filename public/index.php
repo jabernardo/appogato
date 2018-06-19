@@ -3,10 +3,10 @@
 /**
  * 
  * -----------------------------------------------------------------------------
- * Lollipop for MVC - An extensive and flexible library for PHP
+ * Appogato - An extensive and flexible library for PHP
  * -----------------------------------------------------------------------------
  *
- * @package    Lollipop for MVC
+ * @package    appogato
  * @version    3.0
  * @author     John Aldrich Bernardo <bjohnaldrich@gmail.com>
  * @copyright  Copyright (C) 2018 John Aldrich Bernardo. All rights reserved.
@@ -45,10 +45,10 @@
  * Composer Auto Loading
  * -----------------------------------------------------------------------------
  * 
- * LMVC requires the following packages as dependency:
+ * Appogato requires the following packages as dependency:
  * 
  *  - jabernardo/console.php
- *      Used in command-line based application in managing LMVC
+ *      Used in command-line based application in managing Appogato
  * 
  *  - jabernardo/lollipop-php
  *      Main framework used as back-end
@@ -86,7 +86,7 @@ define('APP_CORE_UPLOAD',       APP_CORE_STORAGE . 'upload/');
  * Auto-Loading
  * -----------------------------------------------------------------------------
  * 
- * LMVC requires to auto-load the following namespaces:
+ * Appogato requires to auto-load the following namespaces:
  * 
  *  - \App\Controller
  *  - \App\Model
@@ -137,7 +137,7 @@ spl_autoload_register(function($class) {
 
 /**
  * -----------------------------------------------------------------------------
- * Lollipop-PHP for MVC: Configuration
+ * Appogato: Configuration
  * -----------------------------------------------------------------------------
  * 
  * Configuration in initializing lollipop application
@@ -210,10 +210,10 @@ if (!isset($route) && !is_array($route))
  * SAPI checking
  * -----------------------------------------------------------------------------
  * 
- * LMVC was designed for the web. Also it supports command-line applications
+ * Appogato was designed for the web. Also it supports command-line applications
  * for managing its own
  * 
- * `return` is expected for LMVC command-line application to load configurations
+ * `return` is expected for Appogato command-line application to load configurations
  * and routes
  * 
  */
@@ -223,7 +223,7 @@ if (!strcmp(php_sapi_name(), 'cli'))
 
 /**
  * -----------------------------------------------------------------------------
- * LMVC Debug
+ * Appogato Debug
  * -----------------------------------------------------------------------------
  * 
  * See `app/debug` folder

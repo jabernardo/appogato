@@ -1,9 +1,9 @@
 {
-    "name": "jabernardo/lmvc",
+    "name": "jabernardo/appogato",
     "type": "library",
-    "description": "MVC Framework for PHP using lollipop-php",
+    "description": "Affogato for the Web",
     "keywords": ["framework","library","php-framework","php-7", "php7", "web-framework"],
-    "homepage": "https://github.com/jabernardo/lmvc",
+    "homepage": "https://github.com/jabernardo/appogato",
     "license": "MIT",
     "minimum-stability": "dev",
     "authors": [

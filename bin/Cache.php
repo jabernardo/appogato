@@ -7,7 +7,7 @@ namespace bin;
  * 
  * @version 1.0.0
  * @author  John Aldrich Bernardo <4ldrich@protonmail.com>
- * @package Lollipop-PHP for MVC
+ * @package Appogato
  * 
  */
 class Cache implements \Console\Command {

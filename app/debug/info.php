@@ -4,8 +4,8 @@
  * Lollipop Debug
  * An extensive and flexible library for PHP
  *
- * @package    Lollipop for MVC
- * @version    1.4
+ * @package    Appogato
+ * @version    1.5
  * @author     John Aldrich Bernardo <bjohnaldrich@gmail.com>
  * @copyright  Copyright (C) 2015 John Aldrich Bernardo. All rights reserved.
  * @license
@@ -56,7 +56,7 @@ Router::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Respo
     
     if (!$debugger_disabled) {
         // Start Benchmark
-        Benchmark::mark('_lmvc_start');
+        Benchmark::mark('_appogato_start');
     
         /**
          * Lollipop error handler
@@ -99,7 +99,7 @@ Router::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Respo
     if ($debugger_disabled) return $res;
     
     // End benchmark
-    Benchmark::mark('_lmvc_stop');
+    Benchmark::mark('_appogato_stop');
 
     $is_html = false;
     $content_type_headers_count = 0;
@@ -134,7 +134,7 @@ Router::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Respo
         $data['app'] = (object)$data['app'];
         
         // Debugging Data
-        $bm = (object)Benchmark::elapsed('_lmvc_start', '_lmvc_stop');
+        $bm = (object)Benchmark::elapsed('_appogato_start', '_appogato_stop');
         
         $data['benchmark'] = (object)[
             'response' => (object) [

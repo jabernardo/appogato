@@ -1,4 +1,4 @@
-<title><?= fuse($title, 'LMVC Test Application') ?></title>
+<title><?= fuse($title, 'Appogato Test Application') ?></title>
 <link rel="icon" type="<?= fuse($favicon_type, 'image/x-icon') ?>" href="<?= fuse($favicon, '') ?>">
 <link rel="shortcut icon" type="<?= fuse($favicon_type, 'image/x-icon') ?>" href="<?= fuse($favicon, '') ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">

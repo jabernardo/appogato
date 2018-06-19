@@ -5,6 +5,6 @@ services:
         ports:
          - "3000:80"
         volumes:
-            - .:/var/www/lmvc
+            - .:/var/www/appogato
     memcached:
         image: "memcached:alpine"

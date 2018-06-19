@@ -1,12 +1,12 @@
 FROM php:7.0-apache
 
-# Copy files to /var/www/lmvc
-ADD . /var/www/lmvc
+# Copy files to /var/www/appogato
+ADD . /var/www/appogato
 
 # Create a symlink for public
 # then allow file permission for cache, db and log
-RUN rm -rf /var/www/html && ln -s /var/www/lmvc/public /var/www/html &&\
-    chown -R www-data /var/www/lmvc/app/storage/cache /var/www/lmvc/app/storage/log /var/www/lmvc/app/storage/db
+RUN rm -rf /var/www/html && ln -s /var/www/appogato/public /var/www/html &&\
+    chown -R www-data /var/www/appogato/app/storage/cache /var/www/appogato/app/storage/log /var/www/appogato/app/storage/db
 
 # Install vim and common php libs
 RUN apt update && apt install vim libz-dev libmcrypt-dev libmemcached-dev -y

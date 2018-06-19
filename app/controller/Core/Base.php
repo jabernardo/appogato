@@ -12,9 +12,9 @@ use \Lollipop\Session;
 /**
  * Base Controller
  * 
- * @package Lollipop for MVC
+ * @package Appogato
  * @author  John Aldrich Bernardo
- * @version 1.1
+ * @version 1.2
  * 
  */
 class Base

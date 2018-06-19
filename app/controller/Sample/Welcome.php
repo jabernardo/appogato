@@ -33,7 +33,7 @@ class Welcome extends \App\Controller\Core\Base
      */
     public function indexAction(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Response $res) {
         // Set page meta
-        $this->view->title = 'Lollipop-PHP for MVC';
+        $this->view->title = 'Appogato: Affogato for the Web';
         $this->view->meta = [
             'author' => Config::get('app')->author,
             'description' => Config::get('app')->name,
