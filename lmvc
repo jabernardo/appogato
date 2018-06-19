@@ -7,7 +7,7 @@
 // Require lollipop-php
 require_once('./vendor/autoload.php');
 // Load web application configuration and routes
-require_once('./htdocs/index.php');
+require_once('./public/index.php');
 
 spl_autoload_register(function ($class) {
     // project-specific namespace prefix
