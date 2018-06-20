@@ -5,7 +5,7 @@ namespace bin;
 /**
  * Cache Command
  * 
- * @version 1.0.0
+ * @version 1.0.1
  * @author  John Aldrich Bernardo <4ldrich@protonmail.com>
  * @package Appogato
  * 
@@ -76,7 +76,7 @@ class Cache implements \Console\Command {
             // [{key}]
             // {value}
 
-            $value = \Lollipop\Cache::recover($key);
+            $value = \Lollipop\Cache::get($key);
 
             if ($i->hasFlag('s')) {
                 // Force serialization
@@ -103,14 +103,14 @@ class Cache implements \Console\Command {
      * @return  void
      */
     function __invoke(\Console\Input $i, \Console\Output $o) {
-        if ($i->hasFlag('x')) {
-            $this->_purge($i, $o);
-        } else if ($i->hasFlag('s')) {
+        if ($i->hasFlag('s')) {
             $this->_save($i, $o);
         } else if ($i->hasFlag('v')) {
             $this->_get($i, $o);
         } else if ($i->hasFlag('r')) {
             $this->_remove($i, $o);
+        } else if (in_array('purge', $i->getParameters())) {
+            $this->_purge($i, $o);
         } else {
             $o->writeln('[Cache] Command not found.');
         }
