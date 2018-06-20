@@ -298,16 +298,16 @@
 }
 
 #lollipop-debug #lollipop-debug-header a[ldebug-toggle="fatal"] {
-    color: #ff0000;
+    color: #ce2929;
 }
 
 #lollipop-debug #lollipop-debug-header a[ldebug-toggle="fatal"].active {
     color: #ffffff;
-    background-color: #ff0000;
+    background-color: #ce2929;
 }
 
 #lollipop-debug #lollipop-debug-header a[ldebug-toggle="fatal"].active span.count {
-    color: #ff0000;
+    color: #ce2929;
     background-color: #ffffff;
 }
 
