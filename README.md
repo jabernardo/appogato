@@ -1,9 +1,8 @@
 # Appogato
 
-<center>
-![Appogato](https://raw.githubusercontent.com/jabernardo/appogato/v3.x/public/static/img/affogato.png)<br/>
-*Affogato for the Web*
-</center>
+![Appogato](https://raw.githubusercontent.com/jabernardo/appogato/v3.x/public/static/img/affogato.png)
+
+> Affogato for the Web
 
 ## Getting started
 
