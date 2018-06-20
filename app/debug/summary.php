@@ -273,7 +273,7 @@
     margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
 }
 
 #lollipop-debug #lollipop-debug-body div[id^="lollipop-debug-tab-"].active * {
