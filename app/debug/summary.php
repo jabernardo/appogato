@@ -32,17 +32,17 @@
         <?php } ?>
         <?php if (count($logs->warn)) { ?>
         <a href="javascript:" ldebug-toggle="warns">
-            Warnings <span class="count"><?= count($logs->warn) ?></span>
+            Notice <span class="count"><?= count($logs->warn) ?></span>
         </a>
         <?php } ?>
         <?php if (count($logs->error)) { ?>
         <a href="javascript:" ldebug-toggle="error">
-            Errors <span class="count"><?= count($logs->error) ?></span>
+            Warning <span class="count"><?= count($logs->error) ?></span>
         </a>
         <?php } ?>
         <?php if (count($logs->fatal)) { ?>
         <a href="javascript:" ldebug-toggle="fatal">
-            Fatal <span class="count"><?= count($logs->fatal) ?></span>
+            Error <span class="count"><?= count($logs->fatal) ?></span>
         </a>
         <?php } ?>
         <span class="separator"></span>
