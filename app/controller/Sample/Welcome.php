@@ -14,12 +14,21 @@ use \Lollipop\HTTP\URL;
 class Welcome extends \App\Controller\Core\Base
 {
     /**
+     * @var string  Welcome message
+     * 
+     */
+    private $messages = null;
+    
+    /**
      * Class construct
      * 
      */
     function __construct() {
         // Call parent construct function
         parent::__construct();
+        
+        // Instantiate model
+        $this->messages = new \App\Model\Messages();
     }
     
     /**
@@ -32,7 +41,10 @@ class Welcome extends \App\Controller\Core\Base
      *
      */
     public function indexAction(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Response $res) {
-        // Set page meta
+        /**
+         * Set meta tags
+         * 
+         */
         $this->view->title = 'Appogato: Affogato for the Web';
         $this->view->meta = [
             'author' => Config::get('app')->author,
@@ -42,7 +54,10 @@ class Welcome extends \App\Controller\Core\Base
 
         $this->view->favicon = URL::base('static/img/favicon.ico');
 
-        // Set CSS data
+        /**
+         * Add CSS stylesheets
+         * 
+         */
         $this->view->css = [
             URL::base('static/css/normalize.css'),
             URL::base('static/css/skeleton.css'),
@@ -59,10 +74,12 @@ class Welcome extends \App\Controller\Core\Base
          */
         
         // Passing data to view
-        $this->view->welcome_message = 'Up and Running!';
+        $this->view->welcome_message = $this->messages->get('up');
         
-        // If you want to compress application output
-        // uncomment code below
+        // If you want to compress application output uncomment code below
+        //
+        // ** ALREADY ENABLED VIA MIDDLEWARE GZIP **
+        //
         //  $this->compress();
 
         // Start to render page
