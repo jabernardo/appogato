@@ -3,6 +3,7 @@
 namespace App\Helper;
 
 use \Lollipop\Config;
+use \Lollipop\Utils;
 
 /**
  * Feature Switch Helper
@@ -21,7 +22,7 @@ class Feature
      * 
      */
     public static function on($key) {
-        return spare_nan(Config::get('switch.' . $key), false) ? true : false;
+        return Utils::spare_nan(Config::get('switch.' . $key), false) ? true : false;
     }
 }
  

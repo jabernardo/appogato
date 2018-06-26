@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+use \Lollipop\Utils;
+
 /**
  * Messages Model
  * 
@@ -33,6 +35,6 @@ class Messages
      * 
      */
     public function get($message) {
-        return fuse($this->message[$message], $this->message['hello']);
+        return Utils::fuse($this->message[$message], $this->message['hello']);
     }
 }
