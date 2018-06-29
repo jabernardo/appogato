@@ -70,16 +70,6 @@ return [
     ],
 
     /**
-     * Auto Dispatch function
-     * 
-     * Enable auto dispatch
-     * 
-     */
-    'router' => [
-        'auto_dispatch' => true
-    ],
-
-    /**
      * \Lollipop\HTTP\Request::send
      * cURL Wrapper
      * 
