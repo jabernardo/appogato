@@ -43,6 +43,7 @@ $app = new \Console\Application();
 // Registered commands
 // - cache command
 $app->add('cache', new \bin\Cache());
+$app->add('route', new \bin\Route());
 
 // Register new commands here...
 
