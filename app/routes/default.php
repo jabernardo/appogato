@@ -19,6 +19,6 @@ return [
     ],
     
     /** 404 Page Not Found **/
-    "404" => 'Sample\\Error.pagenotfoundAction'
+    '404' => 'Sample\\Error.pagenotfoundAction'
 
 ];
