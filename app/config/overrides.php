@@ -14,51 +14,21 @@ return [
          * Development
          * 
          */
-         
-        'dev' => [
-            // 'cache' => [
-            //         'driver' => 'memcached',
-            //         'servers' => [
-            //             [ 'memcached', '11211' ]
-            //         ]
-            //     ],
-            'debugger' => true,
-            'db' => [
-                'host' => 'localhost',
-                'username' => 'root',
-                'password' => '',
-                'database' => 'aldrich'
-            ]
-        ],
+        
+        'dev' => require(APP_CORE_CONFIG . 'env/dev.php'),
         
         /**
          * Staging
          * 
          */
         
-        'stg' => [
-            'debugger' => false,
-            'db' => [
-                'host' => 'localhost',
-                'username' => 'root',
-                'password' => '',
-                'database' => 'aldrich'
-            ]
-        ],
+        'stg' => require(APP_CORE_CONFIG . 'env/stg.php'),
         
         /**
          * Production
          * 
          */
          
-        'prd' => [
-            'debugger' => false,
-            'db' => [
-                'host' => 'localhost',
-                'username' => 'root',
-                'password' => '',
-                'database' => 'aldrich'
-            ]
-        ]
+        'prd' => require(APP_CORE_CONFIG . 'env/prd.php')
     ]
 ];
