@@ -124,7 +124,7 @@ class Base
         // Then let debugger turn-on the gzip compression
         $req = new Request();
 
-        if (Config::get('debugger') && !$req->is('disable-debugger')) {
+        if (Config::get('debugger') && !$req->has('disable-debugger')) {
             Session::set('debugger-compress-output', $this->compress);
         } else {
             // else

@@ -50,9 +50,8 @@ use \Lollipop\HTTP\URL;
 Router::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Response $res, Callable $next) {
     // Check if Debugger is enabled
     $debugger_disabled = !Config::get('debugger') ||
-            $req->is('disable-debugger') ||
+            $req->hasQuery('disable-debugger') ||
             Session::get('disable-debugger');
-    
     
     if (!$debugger_disabled) {
         // Start Benchmark
@@ -153,7 +152,7 @@ Router::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Respo
         $data['session'] = Session::getAll();
 
         // Request
-        $data['request'] = $req->get();
+        $data['request'] = $req->all();
 
         // Route information
         $route = \Lollipop\HTTP\Router::getActiveRoute();
