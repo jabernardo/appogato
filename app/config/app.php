@@ -75,15 +75,13 @@ return [
      * 
      */
     'request' => [
-        [
-            // Auto JSON format
-            'json' => true,
+        // Auto JSON format
+        'json' => true,
 
-            // Request cache
-            'cache' => [
-                'enable' => true,
-                // 'time' => 1440
-            ]
+        // Request cache
+        'cache' => [
+            'enable' => true,
+            // 'time' => 1440
         ]
     ],
 
