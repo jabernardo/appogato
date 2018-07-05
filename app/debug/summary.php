@@ -20,8 +20,7 @@
         <?php if (count($logs->info) ||
                 count($logs->warn) ||
                 count($logs->error) ||
-                count($logs->fatal) ||
-                count($logs->debug))
+                count($logs->fatal))
          { ?>
         <span class="separator"></span>
         <?php } ?>
@@ -79,7 +78,7 @@
         <div id="lollipop-debug-tab-request">
             <ul>
             <?php foreach ($request as $key => $val) { ?>
-            <li><label class="key"><?= $key ?></label> <?php print_r($val) ?></li>
+            <li><label class="key"><?= $key ?></label> <?= htmlentities(print_r($val, true)) ?></li>
             <?php } ?>
             </ul>
         </div>
@@ -87,14 +86,14 @@
             <ul>
             <?php foreach ($config as $k => $v) { $pre_sel = 'config_' . sha1($k); ?>
             <li>
-                <label class="key pre-clickable" pre-toggle="<?=  $pre_sel ?>"><?= $k ?></label><span id="<?= $pre_sel ?>"><?php $v ? print_r($v) : print('null') ?></span>
+                <label class="key pre-clickable" pre-toggle="<?=  $pre_sel ?>"><?= $k ?></label><span id="<?= $pre_sel ?>"><?= $v ? htmlentities(print_r($v, true)) : 'null' ?></span>
             </li>
             <?php } ?>
             </ul>
         </div>
         <?php if (isset($route)) { ?>
         <div id="lollipop-debug-tab-route">
-            <pre><?php print_r($route) ?></pre>
+            <pre><?= htmlentities(print_r($route, true)) ?></pre>
         </div>
         <?php } ?>
         <?php if (count($logs->info)) { ?>
