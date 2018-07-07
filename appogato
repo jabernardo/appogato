@@ -18,6 +18,7 @@ $app = new \Console\Application();
 // - cache command
 $app->add('cache',  new \App\Command\Cache());
 $app->add('route',  new \App\Command\Route());
+$app->add('help',   new \App\Command\Help($app), true);
 
 // Register new commands here...
 
