@@ -36,6 +36,9 @@ class Error extends \App\Controller\Core\Base
      * 
      */
     public function pagenotfoundAction() {
+        // Set page name to 404
+        $this->view->page = '404';
+        
         // Set page meta
         $this->view->title = '404 Page Not Found';
         $this->view->meta = [
