@@ -64,7 +64,7 @@
         <div id="lollipop-debug-tab-files">
             <ul>
             <?php foreach (get_included_files() as $file) { ?>
-            <li><?= $file ?></li>
+            <li><a href="file://<?= $file ?>" target="_blank"><?= $file ?></a></li>
             <?php } ?>
             </ul>
         </div>
