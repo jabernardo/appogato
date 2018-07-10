@@ -6,6 +6,19 @@
 
 ## Getting started
 
+### Running on PHP Built-in Web Server
+
+```bash
+
+# Go to `public` folder
+cd public;
+# App and Running!
+php -S localhost:3000
+
+```
+
+### Running on Docker
+
 ```bash
 
 # Create a new project from Appogato
