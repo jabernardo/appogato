@@ -39,17 +39,20 @@ use \Lollipop\Log;
 use \Lollipop\Page;
 use \Lollipop\HTTP\Request;
 use \Lollipop\HTTP\Router;
-use \Lollipop\Session;
 use \Lollipop\HTTP\URL;
-
+use \Lollipop\Session;
+use \Lollipop\Utils;
 
 /**
- * Clean function
+ * Register Lollipop Debug as the last middleware 
+ * to be executed before the main callback
  * 
  */
 Router::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Response $res, Callable $next) {
     // Check if Debugger is enabled
-    $debugger_disabled = !Config::get('debugger') ||
+    // Let user turn-off this feature by adding
+    // `?disable-debugger` as query param in the url
+    $debugger_disabled = Utils::spare_nan(Config::get('debugger'), true) ||
             $req->hasQuery('disable-debugger') ||
             Session::get('disable-debugger');
     
@@ -93,13 +96,18 @@ Router::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Respo
         });
     }
 
+    // Call next middleware...
     $res = $next($req, $res);
     
+    // Debugger was disabled? make sure to not modify
+    // the response from the last middleware
     if ($debugger_disabled) return $res;
     
     // End benchmark
     Benchmark::mark('_appogato_stop');
 
+    // We'll be making sure that Lollipop Debug Bar was only added to
+    // html responses since we don't be needing it on API response or related stuff.
     $is_html = false;
     $content_type_headers_count = 0;
     $raw_res = $res->get(true);
@@ -112,6 +120,7 @@ Router::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Respo
         }
     }
     
+    // Make sure it wasn't an array or object
     $is_html = $is_html || (!is_array($raw_res) && !is_object($raw_res));
     
     if ($is_html) {
