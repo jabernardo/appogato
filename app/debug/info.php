@@ -52,7 +52,8 @@ Router::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Respo
     // Check if Debugger is enabled
     // Let user turn-off this feature by adding
     // `?disable-debugger` as query param in the url
-    $debugger_disabled = Utils::spare_nan(Config::get('debugger'), true) ||
+    $debugger_disabled = is_null(Config::get('debugger')) ||
+            !Config::get('debugger') ||
             $req->hasQuery('disable-debugger') ||
             Session::get('disable-debugger');
     
