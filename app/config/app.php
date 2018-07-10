@@ -23,6 +23,12 @@ return [
     /**
      * Output
      * 
+     * - Why this feature is `off`?
+     * Turn this thing `on` if you want to compress all responses with 
+     * gzip, but it's recommended to use `\Lollipop\HTTP\Middleware\Gzip`
+     * on routes. Some responses aren't meant for compression like
+     * API responses.
+     * 
      */
     'output' => [
         // Compression (gzip)
@@ -31,6 +37,8 @@ return [
 
     /**
      * Lollipop Debugger
+     * 
+     * - See overrides on `env` folder
      * 
      */
     'debugger' => true,
@@ -46,6 +54,10 @@ return [
     /**
      * Cache location
      *
+     * - See `env` for overrides since this feature
+     * was configured to use `memcached` in development
+     * running on `docker-compose.yml`
+     * 
      */
     'cache' => [
         'folder' => APP_CORE_CACHE
@@ -53,6 +65,8 @@ return [
     
     /**
      * Local DB storage
+     * 
+     * - Want to store `sqlite` databases?
      * 
      */
     'localdb' => [
@@ -62,6 +76,8 @@ return [
     /**
      * Application logs 
      *
+     * - Application logging
+     * 
      */
     'log' => [
         'enable' => true,
@@ -72,6 +88,8 @@ return [
     /**
      * \Lollipop\HTTP\Request::send
      * cURL Wrapper
+     * 
+     * - A simple HTTP client using `curl` extension
      * 
      */
     'request' => [
