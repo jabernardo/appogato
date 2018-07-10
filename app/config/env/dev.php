@@ -3,7 +3,7 @@
 return [
     /**
      * Memcached server was named `memcached` in this example
-     * as configure on `docker-composer.yml`
+     * as configured on `docker-composer.yml`
      */
     'cache' => [
             'driver' => 'memcached',
