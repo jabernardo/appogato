@@ -74,7 +74,7 @@ class Route implements \Console\Command {
             $_SERVER['SCRIPT_NAME'] = 'index.php';
             
             $_REQUEST = [];
-            $_REQUEST = Utils::array_merge($_REQUEST, $decoded);
+            $_REQUEST = Utils::arrayMerge($_REQUEST, $decoded);
             
             $queries = [];
             parse_str($query, $queries);

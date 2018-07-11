@@ -22,7 +22,7 @@ class Feature
      * 
      */
     public static function on($key) {
-        return Utils::spare_nan(Config::get('switch.' . $key), false) ? true : false;
+        return Utils::spareNan(Config::get('switch.' . $key), false) ? true : false;
     }
 }
  
