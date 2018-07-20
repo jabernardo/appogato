@@ -43,6 +43,45 @@ use \Lollipop\HTTP\URL;
 use \Lollipop\Session;
 use \Lollipop\Utils;
 
+if (!function_exists('_lol_debug_error_handler')) {
+    /**
+     * Lollipop error handler
+     * 
+     * @param   int     $errno      Error number
+     * @param   string  $errstr     Message
+     * @param   string  $errfile    Filename
+     * @param   int     $errline    Line
+     * @return  void
+     * 
+     */
+    function _lol_debug_error_handler($errno, $errstr, $errfile, $errline) {
+        switch ($errno) {
+            case E_USER_WARNING:
+                \Lollipop\Log::error($errstr . ' on \'' . $errfile . ':' . $errline . '\'');
+                break;
+            case E_USER_NOTICE:
+                \Lollipop\Log::warn($errstr . ' on \'' . $errfile . ':' . $errline . '\'');
+                break;
+            default:
+                \Lollipop\Log::fatal($errstr . ' on \'' . $errfile . ':' . $errline . '\'');
+                break;
+        }
+    }
+}
+
+if (!function_exists('_lol_debug_exception_handler')) {
+    /**
+     * Exception handler
+     * 
+     * @param   stdClass    Exception class instance
+     * @return  void
+     * 
+     */
+    function _lol_debug_exception_handler($ex) {
+        \Lollipop\Log::error('Exception received with message "' . $ex->getMessage() . '" on ' . $ex->getFile() . ':' . $ex->getLine());
+    }
+}
+
 /**
  * Register Lollipop Debug as the last middleware 
  * to be executed before the main callback
@@ -60,41 +99,10 @@ Router::addMiddleware(function(\Lollipop\HTTP\Request $req, \Lollipop\HTTP\Respo
     if (!$debugger_disabled) {
         // Start Benchmark
         Benchmark::mark('_appogato_start');
-    
-        /**
-         * Lollipop error handler
-         * 
-         * @param   int     $errno      Error number
-         * @param   string  $errstr     Message
-         * @param   string  $errfile    Filename
-         * @param   int     $errline    Line
-         * @return  void
-         * 
-         */
-        set_error_handler(function($errno, $errstr, $errfile, $errline) {
-            switch ($errno) {
-                case E_USER_WARNING:
-                    \Lollipop\Log::error($errstr . ' on \'' . $errfile . ':' . $errline . '\'');
-                    break;
-                case E_USER_NOTICE:
-                    \Lollipop\Log::warn($errstr . ' on \'' . $errfile . ':' . $errline . '\'');
-                    break;
-                default:
-                    \Lollipop\Log::fatal($errstr . ' on \'' . $errfile . ':' . $errline . '\'');
-                    break;
-            }
-        });
         
-        /**
-         * Exception handler
-         * 
-         * @param   stdClass    Exception class instance
-         * @return  void
-         * 
-         */
-        set_exception_handler(function($ex) {
-            \Lollipop\Log::error('Exception received with message "' . $ex->getMessage() . '" on ' . $ex->getFile() . ':' . $ex->getLine());
-        });
+        set_error_handler('_lol_debug_error_handler');
+        
+        set_exception_handler('_lol_debug_exception_handler');
     }
 
     // Call next middleware...
