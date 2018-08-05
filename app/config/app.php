@@ -46,10 +46,12 @@ return [
     /**
      * Environment switches
      *
-     * dev/stg/prd
+     * Set LMVC_ENVIRONMENT in environment
+     * 
+     * development/staging/production
      *
      */
-    'environment' => 'dev',
+    'environment' => getenv('LMVC_ENVIRONMENT') ?: 'development',
     
     /**
      * Cache location

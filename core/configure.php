@@ -35,11 +35,18 @@ if (!isset($config) && !is_array($config))
  *  - stg (staging)
  *  - prd (production)
  */
-if (isset($config['env'])) {
-    switch (strtolower($config['env'])) {
-        case 'dev':
-        case 'stg':
-        case 'prd':
+if (isset($config['environment'])) {
+    $env_selected = strtolower($config['environment']);
+
+    switch ($env_selected) {
+        case 'development':
+        case 'staging':
+        case 'production':
+            $config = array_replace(
+                $config,
+                require(APP_CORE_CONFIG . "env/$env_selected.php")
+            );
+
             break;
         default:
             die('Environment was invalid');
