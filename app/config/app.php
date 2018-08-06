@@ -46,12 +46,12 @@ return [
     /**
      * Environment switches
      *
-     * Set LMVC_ENVIRONMENT in environment
+     * Set APPOGATO_ENVIRONMENT in environment
      * 
      * development/staging/production
      *
      */
-    'environment' => getenv('LMVC_ENVIRONMENT') ?: 'development',
+    'environment' => getenv('APPOGATO_ENVIRONMENT') ?: 'development',
     
     /**
      * Cache location

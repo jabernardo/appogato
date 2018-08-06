@@ -31,26 +31,40 @@ if (!isset($config) && !is_array($config))
  * Check if environment is valid
  *
  * Valid environments are:
- *  - dev (development)
- *  - stg (staging)
- *  - prd (production)
+ *  - development
+ *  - staging
+ *  - production
  */
 if (isset($config['environment'])) {
     $env_selected = strtolower($config['environment']);
+    $env_config = APP_CORE_CONFIG . "env/$env_selected.php";
 
     switch ($env_selected) {
         case 'development':
+            // Report all
+            error_reporting(E_ALL);
+
+            break;
         case 'staging':
+            // Report all except notice
+            error_reporting(E_ALL & ~E_NOTICE);
+
+            break;
         case 'production':
-            $config = array_replace(
-                $config,
-                require(APP_CORE_CONFIG . "env/$env_selected.php")
-            );
+            // Turn off reporting
+            error_reporting(0);
 
             break;
         default:
             die('Environment was invalid');
             break;
+    }
+
+    if (file_exists($env_config)) {
+        $config = array_replace(
+            $config,
+            require($env_config)
+        );
     }
 }
 
