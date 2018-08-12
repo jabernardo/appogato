@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "jabernardo/lollipop-php": "v3.0-rc1",
+        "jabernardo/lollipop-php": "v3.x-dev",
         "jabernardo/console.php": "v0.1.1"
     }
 }
