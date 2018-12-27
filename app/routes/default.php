@@ -10,7 +10,7 @@ return [
     /** Home Page **/
     '/' => [
         'callback' => 'Sample\\Welcome.indexAction',
-        'method' => [] /*  [ 'GET', 'POST' ] */,
+        'method' => [ 'GET', 'POST' ],
         'middlewares' => [
             new \Lollipop\HTTP\Middleware\Cache(),
             new \Lollipop\HTTP\Middleware\Gzip(),
